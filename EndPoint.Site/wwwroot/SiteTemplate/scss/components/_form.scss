@@ -1,0 +1,285 @@
+/*****************************
+26 - Components - Form
+*****************************/
+
+/*--- 26.00 - Global Form --*/
+
+.form{
+    &-notes{
+        color: $color-gray-2;
+        font-size: 14px;
+    }
+    &__label{
+        color: $color-gray-2;
+        font-size: 12px;
+        font-weight: 500;
+
+        &--2{
+            font-size: 14px;
+        }
+    }
+    &__input{
+        border: 1px solid $border-color;
+        width: 100%;
+        height: 36px;
+        padding-left: 10px;
+        @include border-radius(5px);
+        &--2{
+            height: 40px;
+            &.nice-select{
+                height: 40px;
+                width: 100%;
+            }
+        }
+        &--textarea{
+            height: 100px;
+        }
+        &.nice-select{
+            width: 100%;
+            height: 36px;
+        }
+    }
+    &__output{
+        text-align: left;
+        margin-top: 5px;
+        &.success{
+            color: $color-green;
+        }
+        &.error{ 
+            color: $color-red;
+        }
+    }
+    &__fieldset{
+        border: 1px solid $border-color;
+        margin: 0;
+        padding: 15px;
+    }
+    &__legend{
+        border: 0;
+        padding: 0 10px;
+        display: inline-block;
+        font-size: inherit;
+        width: auto;
+    }
+    &.shipping-calculator-form{
+        .nice-select{
+            margin-bottom: 1rem;
+            @include breakpoint(small){
+                margin-bottom: 1.5rem;
+            }
+        }
+    }
+}
+
+
+/*--- 26.01 - Newsletter Form --*/
+
+.newsletter-form {
+    @extend %flexbox;
+    @extend %align-center;
+    @extend %justify-start;
+    @include breakpoint(xsmall){
+        @include flex-wrap(wrap);
+    }
+
+    &__input {
+        border: 1px solid $border-color;
+        background-color: $color-sand;
+        height: 65px;
+        width: 100%;
+        font-size: 14px;
+        padding-left: 15px;
+        padding-right: 15px;
+        @extend %body-color;
+        @include placeholder() {
+            color: $body-color;
+        }
+        @include breakpoint(xsmall){
+            height: 55px;
+            margin-bottom: 15px;
+        }
+    }
+
+    &__submit {
+        height: 65px;
+        width: 199px;
+        text-align: center;
+        text-transform: uppercase;
+        border-width: 0px;
+        cursor: pointer;
+        @extend %white-color;
+        @extend %primary-bg-color;
+        @include breakpoint(xsmall){
+            height: 55px;
+            font-size: 14px;
+            width: 100%;
+        }
+    }
+}
+
+/*--- 26.02 - Search Form --*/
+
+.searchform {
+    @extend %posrelative;
+    width: 800px;
+    @include breakpoint(medium){
+        width: 700px;
+    }
+    @include breakpoint(small){
+        width: 95%;
+    }
+    &__input {
+        width: 100%;
+        background-color: transparent;
+        border: 0;
+        border-bottom: 2px solid #232324;
+        text-align: center;
+        font-size: 30px;
+        padding: 10px 50px 10px 10px;
+        font-weight: 400;
+        max-width: 100%;
+        color: #232324;
+        @extend %basetransition;
+        @include breakpoint(medium){
+            font-size: 25px;
+        }
+        @include breakpoint(small){
+            font-size: 20px;
+        }
+    }
+
+    &__submit {
+        @extend %posabsolute;
+        display: block;
+        cursor: pointer;
+        right: 5px;
+        border: none;
+        color: #000;
+        background: none;
+        padding: 0;
+        font-size: 30px;
+        height: 30px;
+        top: 50%;
+        @include transform(translateY(-50%));
+        i{
+            display: block;
+            font-size: 35px;
+        }
+    }
+
+    &-2{
+        @extend %flexbox;
+        @extend %justify-start;
+        &__input{
+            border: 1px solid $border-color;
+            height: 45px;
+            width: 100%;
+            padding-left: 15px;
+        }
+        &__submit{
+            border: none;
+            background-color: $color-persi;
+            width: 70px;
+            @extend %white-color;
+            cursor: pointer;
+        }
+    }
+}
+
+
+/*--- 27.03 - Nice Select --*/
+
+.nice-select{
+    padding-right: 0;
+    .current{
+        display: block;
+        font-size: $body-font-size;
+        color: $body-color;
+    }
+    &:after{
+        @extend %fontAwesome;
+        content: '\f107';
+        border: none;
+        top: 0;
+        right: 0;
+        margin-top: 0;
+        height: 100%;
+        width: 40px;
+        background-color: #eeeeee;
+        text-align: center;
+        line-height: 40px;
+        font-size: 16px;
+        @extend %heading-color;
+        @include transform-origin(0 0);
+        @include transform(rotate(0));
+    }
+    &.open{
+        &:after{
+            @include transform(rotate(0));
+        }
+    }
+    .list{
+        width: 100%;
+        max-height: 260px;
+    }
+}
+
+
+/*--- 27.04 - Review Form --*/
+
+.review-form-wrapper{
+    .reply-title{
+        color: $color-tundor;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+    .rating{
+        i{
+            color: $color-persi;
+            font-size: 14px;
+        }
+    }
+}
+
+
+/*-- 27.05 - Cart Form --*/ 
+
+.cart-form{
+    &__input{
+        border: none;
+        border-bottom: 1px solid $border-color;
+        @extend %heading-color;
+        width: 100%;
+        font-size: 12px;
+        padding-bottom: 5px;
+        @include placeholder{
+            color: $heading-color;
+        }
+    }
+    &__btn{
+        background: none;
+        border: none;
+        @extend %heading-color;
+        font-weight: 700;
+        font-size: 14px;
+        &:hover{
+            @extend %primary-color;
+        }
+    }
+    .coupon{
+        @extend %posrelative;
+        @include breakpoint(xsmall){
+            margin-bottom: 20px;
+        }
+        .cart-form{
+            &__input{
+                
+            }
+            &__btn{
+                @extend %posabsolute;
+                right: 0;
+                top: 0;
+            }
+        }
+    }
+}

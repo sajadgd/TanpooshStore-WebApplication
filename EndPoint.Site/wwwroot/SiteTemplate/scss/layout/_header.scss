@@ -1,0 +1,314 @@
+/*****************************
+10 - Layout - Header
+*****************************/
+
+
+.header{
+	&-inner{
+		padding: 30px 0;
+		@include breakpoint(medium){
+			padding: 25px 0;
+		}
+	}
+	&-toolbar{
+		&__item{
+			display: inline-block;
+			@extend %posrelative;
+			&:not(:first-child){
+				margin-left: 14px;
+			}
+			&.mini-cart-item{
+				margin-right: 6px;
+				width: 24px;
+			}
+		}
+		&__btn{
+			@extend %body-color; 
+			@extend %posrelative;
+			font-size: 23px;
+			line-height: 1;
+			vertical-align: middle;
+			
+			i{
+				font-size: 23px;
+			}
+			&.menu-btn{
+				i{
+					@extend %invisible;
+				}
+			}
+			&.mini-cart-btn{
+				.mini-cart-count{
+					@extend %posabsolute;
+					right: -13px;
+					top: -13px;
+					font-size: 14px;
+					text-align: center;
+					@include circle(22);
+					@include border-radius(50%);
+					@extend %primary-bg-color;
+					@extend %white-color;
+				}
+			}	
+		}
+		&.white-color{
+			.header-toolbar{
+				&__btn{
+					@extend %white-color;
+				}
+			}
+		}
+		&.heading-color{
+			.header-toolbar{
+				&__btn{
+					@extend %heading-color;
+				}
+			}
+		}
+		&.white-color-xs{
+			.header-toolbar{
+				&__btn{
+					@include breakpoint(xsmall){
+						color: $color-white;
+					}
+				}
+			}
+		}
+	}
+	&-topbar{
+		padding: 11px 0;
+	}
+	&-contact-list{
+		li{
+			&:not(:last-child){
+				margin-right: 30px;
+			}
+			span, a{
+				font-size: 14px;
+				font-weight: 300;
+				@extend %body-color;
+			}
+			i{
+				@extend %body-color;
+				margin-right: 5px;
+			}
+		}
+	}
+	.logo{
+		display: block;
+		&--transparent{
+			height: 0;
+			opacity: 0;
+			visibility: hidden;
+		}
+		&--normal{
+			height: auto;
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+	&-transparent{
+		background-color: transparent;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 9;
+		.header{
+			& > div{
+				background-color: transparent
+			}
+		}
+		.logo{
+			&--transparent{
+				height: auto;
+				visibility: visible;
+				opacity: 1;
+			}
+			&--normal{
+				opacity: 0;
+				visibility: hidden;
+				height: 0;
+			}
+		}
+	}
+}
+.sticky-header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    margin: 0;
+    background-color: $color-white;
+    @include animation(fadeInDown .8s ease-in-out);
+    @include box-shadow(0 1px 3px rgba(0,0,0,.14));
+    .header{
+		&-toolbar{
+			// @include breakpoint(xsmall){
+			// 	display: none;
+			// }
+			&.white-color{
+				.header-toolbar{
+					&__btn{
+						@extend %body-color;
+					}
+				}
+			}
+		}
+    }
+	.main-navigation{
+		.mainmenu{
+			&.white-color{
+				.mainmenu__link{
+					@include breakpoint(largeonly){
+						color: $body-color;
+					}
+				}
+			}
+		}
+	}
+	.mobile-menu{
+		.mean-bar .meanmenu-reveal{
+			@include breakpoint(medium){
+				top: -23px;
+			}
+			@include breakpoint(xsmall){
+				top: -23px;
+			}
+		}
+	}
+	.logo{
+		@include breakpoint(medium){
+			// display: inline-block;
+			// position: absolute;
+			// left: 0;
+			// padding-left: 15px;
+			// top: -15px;
+		}
+		@include breakpoint(xsmall){
+			top: 0;
+		}
+		&--transparent{
+			height: 0;
+			opacity: 0;
+			visibility: hidden;
+		}
+		&--normal{
+			height: auto;
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+	.toolbar-btn{
+		&.color--white{
+			@extend %body-color;
+		}
+	}
+	.mobile-menu{
+		&.white-color{
+			&.mean-container a.meanmenu-reveal span{
+				@extend %heading-bg-color;
+				&:before, &:after{
+					@extend %heading-bg-color;
+				}
+				&.menu-bar{
+					@extend %heading-bg-color;
+					&:before, &:after{
+						@extend %heading-bg-color;
+					}
+				}
+				&.menu-close{
+					background-color: transparent;
+				}
+			}
+		}
+	}
+	.container-fluid{
+		padding-left: 85px !important;
+		padding-right: 85px !important;
+		@include breakpoint(xlarge){
+			padding-left: 70px !important;
+			padding-right: 70px !important;
+		}
+		@include breakpoint(medium){
+			padding-left: 45px !important;
+			padding-right: 45px !important;
+		}
+		@include breakpoint(small){
+			padding-left: 15px !important;
+			padding-right: 15px !important;
+		}	
+	}
+}
+.header-style-2{
+	.sticky-header{
+	    .header{
+			&-toolbar{
+				@include breakpoint(xsmall){
+					display: block;
+				}
+			}
+	    }
+		.logo{
+			@include breakpoint(medium){
+				display: block;
+				position: relative;
+				padding-left: 0;
+				top: 0;
+			}
+		}
+	}
+}
+
+.user-info{
+	&:after{
+		@extend %pseudo;
+		left: 0;
+		top: 100%;
+		width: 100%;
+		height: 120%;
+	}
+	&-menu{
+		@extend %posabsolute;
+	    left: 50%;
+	    top: 150%;
+	    min-width: 200px;
+	    margin-top: 30px;
+	    background: #fff;
+	    padding: 15px 0;
+	    pointer-events: none;
+	    z-index: 111;
+	    @include white-space(nowrap);
+	    @include transform(translateX(-50%));
+	    @include box-shadow(0 2px 12px 2px rgba(0, 0, 0, 0.1));
+	    @extend %invisible;
+	    @extend %basetransition;
+	    @include breakpoint(xblarge){
+	    	@include transform(translateX(-67%));
+	    }
+	    @include breakpoint(xsmall){
+	    	@include transform(translateX(-50%));
+	    }
+	    li{
+	    	a{
+			    text-transform: uppercase;
+			    font-size: 13px;
+			    display: block;
+			    padding: 8px 30px;
+			    text-align: left;
+			    @extend %body-color;
+			    &:hover{
+			    	@extend %primary-color;
+			    }
+	    	}
+	    }
+	}
+	&:hover{
+		.user-info-menu{
+		    top: 100%;
+		    pointer-events: visible;
+		    @extend %visible;
+		}
+	}
+}

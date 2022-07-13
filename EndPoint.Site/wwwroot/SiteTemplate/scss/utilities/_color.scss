@@ -1,0 +1,113 @@
+/*****************************
+52 - Utilities - Color
+*****************************/
+
+%white-color{
+	color: $color-white;
+}
+%white-bg-color{
+	background-color: $color-white;
+}
+%white-border-color{
+	border-color: $color-white;
+}
+%primary-color{
+	color: $primary-color;
+}
+%primary-bg-color{
+	background-color: $primary-color;
+}
+%primary-border-color{
+	border-color: $primary-color;
+}
+%black-color{
+	color: $color-black;
+}
+%black-bg-color{
+	background-color: $color-black;
+}
+%black-border-color{
+	border-color: $color-black;
+}
+%body-color{
+	color: $body-color;
+}
+%body-bg-color{
+	background-color: $body-color;
+}
+%body-border-color{
+	border-color: $body-color;
+}
+%heading-color{
+	color: $heading-color;
+}
+%heading-bg-color{
+	background-color: $heading-color;
+}
+%heading-border-color{
+	border-color: $heading-color;
+}
+%sand-color{
+	color: $color-sand;
+}
+%sand-bg-color{
+	background-color: $color-sand;
+}
+%sand-border-color{
+	border-color: $color-sand;
+}
+%transparent-bg{
+	background-color: transparent;
+}
+
+
+// Color
+.color--primary{
+	color: $primary-color;
+}
+.color--light{
+	color: $color-light;
+}
+.color--black{
+	color: $color-black;
+}
+.color--white{
+	color: $color-white;
+}
+.color--dark{
+	color: $color-dark;
+}
+.color--alto{
+	color: $color-alto;
+}
+.heading-color{
+	color: $heading-color;
+}
+
+
+// Background
+.bg--white{
+	background-color: $color-white;
+}
+.bg--light{
+	background-color: $color-light;
+}
+.bg--dark{
+	background-color: $color-dark;
+}
+.bg--black{
+	background-color: $color-black;
+}
+.bg--blue{
+	background-color: $color-blue;
+}
+.bg--gray{
+	background-color: $color-gray;
+}
+.bg--dark{
+	background-color: $color-dark;
+}
+.primary-bg{
+	background-color: $primary-color;
+}
+

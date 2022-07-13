@@ -1,0 +1,244 @@
+﻿@using TanpooshStore.Application.Services.Products.Commands.AddNewProduct.Dto
+@model AddNewProductRequestDto
+
+@{
+    ViewData["Title"] = "AddNewProduct";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        محصول جدید
+        <small>محصولات</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-crop"></i> خانه</a></li>
+        <li><a href="#">محصولات</a></li>
+        <li class="active">افزودن</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">ثبت محصول جدید</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <form role="form" action="javascript:void(0);">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <!-- text input -->
+                        <div class="form-group">
+                            <label asp-for="Name"></label>
+                            <input asp-for="Name" type="text" class="form-control" placeholder="وارد کنید" id="name">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Brand"></label>
+                            <input asp-for="Brand" type="text" class="form-control" placeholder="وارد کنید" id="brand">
+                            <span asp-validation-for="Brand" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Price"></label>
+                            <input asp-for="Price" type="number" class="form-control" placeholder="وارد کنید" id="price">
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Invertory"></label>
+                            <input asp-for="Invertory" type="number" class="form-control" placeholder="وارد کنید" id="invertory">
+                            <span asp-validation-for="Invertory" class="text-danger"></span>
+                        </div>
+
+                        <!-- textarea -->
+                        <div class="form-group">
+                            <label asp-for="Description"></label>
+                            <textarea asp-for="Description" class="form-control" rows="5" placeholder="وارد کنید" id="description" style="resize:none;"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
+                        <!-- checkbox -->
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="displayed">
+                                    نمایش داده شود ؟
+                                </label>
+                            </div>
+                        </div>
+
+                        <!--choose file-->
+                        <div class="form-group">
+                            <label for="images">ارسال تصاویر</label>
+                            <input type="file" multiple accept="image/*" class="form-control" id="images">
+
+                            <p class="help-block">متن راهنما</p>
+                            <span asp-validation-for="Images" class="text-danger"></span>
+                        </div>
+
+                        <!-- select -->
+                        <fieldset class="form-group">
+                            <label for="basicInput">دسته بندی ها</label>
+                            <select class="form-control" id="categories" asp-items="@ViewBag.Categories"></select>
+                        </fieldset>
+
+                        <div class="form-group col-md-3">
+                            <label for="basicInput">نام ویژگی</label>
+                            <input type="text" class="form-control" placeholder="وارد کنید" id="featureName">
+                            <span asp-validation-for="Features" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label for="basicInput">مقدار ویژگی</label>
+                            <input type="text" class="form-control" placeholder="وارد کنید" id="featureValue">
+                        </div>
+
+                        <div class="form-group">
+                            <br />
+                            <a class="btn btn-success" id="btnAddFeatures">افزودن</a>
+                        </div>
+                        <br class="clearfix" />
+
+                        <table id="tblFeatures" class="col-md-12 table table-bordered table-hover table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        نام ویژگی
+                                    </th>
+                                    <th>
+                                        مقدار ویژگی
+                                    </th>
+                                    <th>
+
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary" onclick="Enablesubmit()">اضافه کردن به لیست</button>
+                        </div>
+
+                    </form>
+                    <a id="trigger" onclick="AddNewProduct()"></a>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+<partial name="_ValidationScriptsPartial" />
+<link href="~/Sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+<script src="~/Sweetalert2/sweetalert2.min.js"></script>
+
+<script>
+
+    // add features on table
+    $("#btnAddFeatures").on('click', function(){
+        var txtFeatureName = $("#featureName").val();
+        var txtFeatureValue = $("#featureValue").val();
+
+        if(txtFeatureName == "" || txtFeatureValue == ""){
+            swal.fire(
+            'هشدار !',
+            'لطفا نام و مقدار ویژگی را وارد کنید .',
+            'warning');
+        }
+        else{
+            $("#tblFeatures").append('<tr> <td>' + txtFeatureName + '</td> <td>' + txtFeatureValue + '</td> <td> <a class="idFeatures btnDelete btn btn-danger ">حذف</a> </td> </tr>');
+            $("#featureName").val('');
+            $("#featureValue").val('');
+        }
+    });
+    $("#tblFeatures").on('click', '.idFeatures', function(){
+        $(this).closest('tr').remove();
+    });
+
+    // enable submit
+    function Enablesubmit() {
+        document.getElementById("trigger").click();
+    }
+
+    // add new product
+    function AddNewProduct() {
+        swal.fire({
+            title: "محصول جدید",
+            text: "آیا میخواهید محصول جدید را اضافه کنید ؟",
+            icon: "info",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "d33",
+            confirmButtonText: 'بله انجام شود',
+            cancelButtonText: 'خیر'
+        }).then((result) => {
+            if (result.value) {
+                var data = new FormData();
+
+                data.append("Name" , $("#name").val());
+                data.append("Brand" , $("#brand").val());
+                data.append("Price" , $("#price").val());
+                data.append("Invertory" , $("#invertory").val());
+                data.append("Description" , $("#description").val());
+                data.append("Displayed" , $("#displayed").attr("checked") ? true : false);
+                data.append("CategoryId" , $("#categories").find("option:selected").val());
+
+                var productImages = document.getElementById("images");
+                if(productImages.files.length > 0){
+                    for(i = 0; i < productImages.files.length; i++){
+                        data.append("image - " + i , productImages.files[i]);
+                    }
+                }
+                var productFeatures = $("#tblFeatures tr:gt(0)").map(function(){
+                    return{
+                        DisplayName : $(this.cells[0]).text(),
+                        Value : $(this.cells[1]).text()
+                    };
+                }).get();
+                $.each(productFeatures, function(i , val){
+                    data.append('[' + i + '].DisplayName', val.DisplayName);
+                    data.append('[' + i + '].Value', val.Value);
+                });
+
+                // send data to controller
+                var ajaxRequest = $.ajax({
+                    contentType: false,
+                    processData: false,
+                    type: 'POST',
+                    url: 'AddNewProduct',
+                    data: data,
+                    success: function (data) {
+                        if (data.isSuccess == true) {
+                            swal.fire(
+                                'موفق !',
+                                data.message,
+                                'success'
+                            ).then(function (isConfirm) {
+                                location.reload();
+                            });
+                        }
+                        else {
+                            swal.fire(
+                                'خطا !',
+                                data.message,
+                                'warning'
+                            );
+                        }
+                    },
+                    error: function (request, status, error) {
+                        alert(request.responseText);
+                    }
+                });
+
+                ajaxRequest.done(function (xhr, textStatus){
+
+                });
+            }
+        });
+    }
+</script>
+}
+

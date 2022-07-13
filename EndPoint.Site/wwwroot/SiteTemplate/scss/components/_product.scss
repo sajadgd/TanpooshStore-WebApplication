@@ -1,0 +1,658 @@
+/*****************************
+30 - Components - Product
+*****************************/
+
+
+/*-- 30.00 - Proudct Global --*/
+
+.product{
+	&-inner{
+		@extend %posrelative;
+	}
+	&-image{
+		@extend %posrelative;
+		overflow: hidden;
+		a{
+			display: block;
+			img{
+				width: 100%;
+			}
+		}
+	}
+	&-badge{
+		@extend %primary-bg-color;
+		@extend %white-color;
+		@extend %posabsolute;
+		left: 10px;
+		top: 13px;
+		font-size: 12px;
+		padding: 1px 9px;
+	}
+	&-info{
+		text-align: center;
+		padding-top: 25px;
+	}
+	&-title{
+		font-size: $body-font-size;
+		font-weight: 400;
+		line-height: 24px;
+		& > a{
+			@extend %black-color;
+			&:hover{
+				@extend %primary-color;
+			}
+		}
+	}
+	&-size{
+		@extend %posrelative;
+		.action-btn{
+			span{
+				&.current{
+					@extend %black-color;
+				}
+			}
+		}
+		&-swatch{
+			@extend %posabsolute;
+	 		@extend %invisible;
+			bottom: 100%;
+			&-btn{
+	 			@extend %actionBtn;
+	 			@extend %black-color;
+	 			cursor: pointer;
+	 			background-color: rgba(255,255,255,.6);
+	 			margin-bottom: 1px;
+	 			@extend %invisible;
+	 			@extend %swatchAnimation;
+	 			&.clicked{
+	 				background-color: rgba(255,255,255,1);
+	 			}
+			}	
+		}
+		&:hover{
+			.product-size-swatch{
+				@extend %visible;
+				&-btn{
+					@extend %visible;
+				}
+			}
+		}
+	}
+	&-color{
+		@extend %posrelative;
+		.action-btn{
+			span{
+				&.current{
+					display: inline-block;
+					text-indent: -999999px;
+					&:after{
+						@extend %productSwatch;
+					}
+				}
+			}
+		}
+		&-swatch{
+			@extend %posabsolute;
+			bottom: 100%;
+			@extend %invisible;
+			&-btn{
+	 			@extend %actionBtn;
+	 			background-color: rgba(255,255,255,.6);
+	 			margin-bottom: 1px;
+	 			text-indent: -999999px;
+	 			cursor: pointer;
+	 			@extend %posrelative;
+	 			@extend %invisible;
+	 			@extend %swatchAnimation;
+	 			&:after{
+	 				@extend %productSwatch;
+	 			}
+	 			&.clicked{
+	 				background-color: rgba(255,255,255,1);
+	 			}
+			}
+		}
+
+		.abbey{
+			&:after{
+				background-color: $color-abbey;
+			}
+		}
+		.blue{
+			&:after{
+				background-color: $color-blue;
+			}
+		}
+		.copper{
+			&:after{
+				background-color: $color-copper;
+			}
+		}
+		.old-rose{
+			&:after{
+				background-color: $color-old-rose;
+			}
+		}
+		&:hover{
+			.product-color-swatch{
+				@extend %visible;
+				&-btn{
+					@extend %visible;
+				}
+			}
+		}
+	}
+	&-price-wrapper{
+		line-height: 1.4;
+		span{
+			font-size: $body-font-size;
+			@extend %body-color;
+			&.old-price{
+				text-decoration: line-through;
+			}
+			&.money-separator{
+				padding: 0 15px;	
+			}
+		}
+	}
+	&-short-description{
+		font-size: 14px;
+		color: $color-gray-2;
+	}
+	&-description{
+		p{
+			font-size: 14px;
+			line-height: 25px;
+			&:not(:last-child){
+				margin-bottom: 3rem;
+			}
+		}
+		&__heading{
+			color: #404040;
+			font-size: 14px;
+			line-height: 23px;
+			font-weight: 700;
+			margin-bottom: 20px;
+		}
+		ul{
+			li{
+				font-size: 14px;
+				line-height: 20px;
+				&:not(:last-child){
+					margin-bottom: 14px;
+				}
+				i{
+					padding-right: 10px;
+				}
+			}
+		}
+	}
+	&-footer-meta{
+		font-size: 14px;
+		font-weight: 600;
+		margin-bottom: 0;
+		a{
+			color: $color-gray-2;
+		}
+	}
+}
+
+.zakas-product{
+	&-action{
+		@extend %posabsolute;
+		left: 50%;
+		bottom: 0;
+		margin-bottom: 1px;
+		@include transform(translateX(-50%));
+		.action-btn{
+			margin-right: 1px;
+		}
+		.product-action{
+			@for $i from 1 through 4{
+				& > *:nth-child(#{$i}){
+					transition-delay: #{$i * 100}ms;
+				}
+			}
+			& > *{
+				opacity: 0;
+				transition-property: all;
+				transition-timing-function: linear;
+				transition-duration: .4s;
+			}
+		}
+
+		&-list{
+			.action-btn{
+				background-color: $color-gray;
+				@extend %posrelative;
+				margin-right: 4px;
+				height: 50px;
+			}
+			.btn-small{
+				height: 44px;
+				line-height: 44px;
+			}
+		}
+	}
+	&.product-style-2{
+		@extend %posrelative;
+		padding-bottom: 140px;
+		@include breakpoint(medium){
+			padding-bottom: 80px;
+		}
+		.product{
+			&-inner{
+				padding-top: 225px;
+				@include breakpoint(medium){
+					padding-top: 130px;
+				}
+			}
+			&-image{
+				margin-bottom: -140px;
+				@include breakpoint(medium){
+					margin-bottom: -80px;
+				}
+				a{
+					text-align: center;
+					img{
+						width: auto;
+					}
+				}
+			}
+			&-info{
+				padding-top: 0;
+				@extend %absCenter;
+				@include breakpoint(medium){
+					top: 65%;
+				}
+			}
+			&-title{
+				a{
+					@extend %white-color;
+				}
+			}
+			&-price-wrapper{
+				span{
+					@extend %white-color;
+				}
+			}
+		}
+		.zakas-product-action{
+			@extend %posrelative;
+			left: auto;
+			bottom: auto;
+			margin-bottom: 0px;
+			@include transform(translateX(0));
+			.product-action{
+				& > *{
+					opacity: 1;
+				}
+				.action-btn, 
+				.product-size-swatch-btn, 
+				.product-color-swatch-btn {
+					@include breakpoint(medium){
+					    width: 40px;
+					    height: 35px;
+					    line-height: 35px;
+					}
+				}
+				.action-btn{
+					i{
+						@include breakpoint(medium){
+							line-height: 35px;
+						}
+					}
+				}
+			}
+		}
+	}
+	&:hover{
+		.zakas-product-action{
+			.product-action{
+				& > *{
+					opacity: 1;
+				}
+			}
+		}
+		.btn{
+			@extend %primary-bg-color;
+			@extend %white-color;
+			&:after{
+				@extend %primary-bg-color;
+			}
+		}
+	}
+}
+
+/*-- 30.01 - Proudct List --*/
+
+.zakas-product-list{
+	.product{
+		&-inner{
+			@extend %flexbox;
+			@extend %flex-wrap;
+		}
+		&-image{
+			@include flex-basis(270px);
+			max-width: 270px;
+			@extend %posrelative;
+			@include breakpoint(small){
+				@include flex-basis(230px);
+				max-width: 230px;
+			}
+			@include breakpoint(xsmall){
+				@include flex-basis(100%);
+				max-width: 100%;
+			}
+		}
+		&-thumbnail-action{
+			@extend %posabsolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			@include transform(scale(.2, .2));
+			@extend %absFlexCenter;
+			@extend %invisible;
+			@extend %basetransition;
+		}
+		&-info{
+			@include flex-basis(calc(100% - 270px));
+			max-width: calc(100% - 270px);
+			padding-left: 40px;
+			text-align: left;
+			padding-top: 0;
+			@include breakpoint(small){
+				@include flex-basis(calc(100% - 230px));
+				max-width: calc(100% - 230px);
+				padding-left: 30px;
+			}
+			@include breakpoint(xsmall){
+				@include flex-basis(100%);
+				max-width: 100%;
+				padding-left: 0;
+				padding-top: 30px;
+			}
+			.star-rating{
+				margin-left: 0;
+			}
+		}
+		&-size{
+			@extend %verticalFlexCenter;
+		}
+		&-color{
+			@extend %verticalFlexCenter;
+		}
+		&-size-swatch,
+		&-color-swatch {
+		    bottom: auto;
+		    left: auto;
+		    position: relative;
+		    @extend %visible;
+		    &-btn{
+		    	@extend %visible;
+		    	background-color: $color-gray;
+		    	margin-bottom: 0;
+		    	height: 50px;
+		    }
+		}
+		&-title{
+			font-size: 28px;
+			line-height: 34px;
+			@include breakpoint(medium){
+				font-size: 24px;
+				line-height: 28px;
+			}
+		}
+		&-price-wrapper{
+
+		}
+	}
+	&:hover{
+		.product{
+			&-thumbnail-action{
+				@extend %visible;
+				@include transform(scale(1, 1));
+			}
+		}
+	}
+}
+
+/*-- 30.02 - Proudct Summary --*/
+
+.product-summary{
+	.product{
+		&-large-image{
+			@extend %posrelative;
+		}
+		&-navigation{
+			a{
+				border-width: 1px solid $border-color;
+				display: inline-block;
+				@include box-shadow(0px 0px 11.83px 1.17px rgba(72, 72, 72, 0.13));
+				width: 38px;
+				height: 31px;
+				text-align: center;
+				line-height: 31px;
+				background-color: $color-white;
+				font-size: 18px;
+				@extend %body-color;
+				&:hover{
+					@extend %primary-color;
+				}
+				&.next{
+					margin-left: 5px;
+				}
+			}
+		}
+		&-rating{
+			.star-rating{
+				margin-left: 0;
+			}
+		}
+		&-title{
+			font-size: 36px;
+			font-weight: 400;
+			line-height: 1;
+			@include breakpoint(small){
+				font-size: 26px;
+			}
+			a{
+				@extend %heading-color;
+				&:hover{
+					@extend %primary-color;
+				}
+			}
+		}
+		&-price-wrapper{
+			span{
+				font-size: 24px;
+				@extend %heading-color;
+				display: inline-block;
+				&.money{
+
+				}
+				&.money-separator{
+					padding: 0 10px;
+				}
+			}
+		}
+		&-footer-meta{
+			p{
+				line-height: 21px;
+				span{
+					@extend %variationLabel;
+					margin-right: 0;
+				}
+				a{
+					font-size: 14px;
+				}
+			}
+		}
+	}
+}
+
+/*-- 30.03 - Product Variations --*/
+
+.variation-form{
+	.variation{
+		float: left;
+		margin-right: 5px;
+		a{
+			display: inline-block;
+		}
+	}
+	.variation-label{
+		@extend %variationLabel;
+	}
+	.product-color-variations{
+		.product-color-variation{
+			overflow: hidden;
+			clear: both;
+			&-btn{
+				@extend %posrelative;
+				@extend %basetransition;
+				margin: 0;	
+				display: block;
+				text-indent: -99999px;
+				width: 45px;
+				height: 45px;
+				border-width: 1px;
+				border-style: solid;
+				border-color: transparent;
+				cursor: pointer;
+				&:after{
+					@extend %pseudo;
+					left: 0;
+					top: 0;
+					width: 100%;
+					height: 100%;
+					background-color: $color-white;
+					@include border-radius(50%);
+				}
+				&:hover{
+					border-color: transparent;
+				}
+				&.red{
+					&:hover{
+						border-color: $color-red;
+					}
+					&:after{
+						background-color: $color-red;
+					}
+					&.selected{
+						border-color: $color-red;
+					}
+				}
+				&.black{
+					&:hover{
+						border-color: $color-black;
+					}
+					&:after{
+						background-color: $color-black;
+					}
+				}
+				&.pink{
+					&:hover{
+						border-color: $color-pink;
+					}
+					&:after{
+						background-color: $color-pink;
+					}
+				}
+				&.blue{
+					&:hover{
+						border-color: $color-blue;
+					}
+					&:after{
+						background-color: $color-blue;
+					}
+				}
+			}
+		}
+	}
+	.product-size-variations{
+		.product-size-variation{
+			overflow: hidden;
+			clear: both;
+			&-btn{
+				width: 58px;
+				height: 43px;
+				line-height: 43px;
+				font-size: 14px;
+				font-weight: 600;
+				text-align: center;
+				border: 1px solid $border-color;
+				@include breakpoint(xsmall){
+					width: 50px;
+					height: 40px;
+					line-height: 40px;
+				}
+				@extend %heading-color;
+				&:hover{
+					@extend %primary-color;
+				}
+				&.selected{
+					@extend %primary-color;
+				}
+			}
+		}
+	}
+	.reset_variations{
+		@extend %posrelative;
+		@extend %heading-color;
+		padding-right: 20px;
+		font-weight: 500;
+		line-height: 30px;
+		&:before{
+		    @extend %pseudo;
+		    background: url(../img/icons/cross.png) no-repeat scroll right center;
+		    right: 0;
+		    top: 7px;
+		    width: 10px;
+		    height: 10px;
+		}
+	}	
+}
+
+/*-- 30.04 - Special Proudct --*/
+
+.special-product{
+	&-bg{
+		background-color: rgba(136, 68, 41, 0.569);
+		&-2{
+			background-color: rgba(46, 26, 21, 0.8);
+		}
+	}
+	&-price{
+		span{
+			@extend %white-color;
+			font-size: 36px;
+			display: inline-block;
+			&.old-price{
+				text-decoration: line-through;
+			}
+			&.money-separator{
+				padding: 0 5px;
+			}
+		}
+	}
+	&-stock{
+		@extend %white-color;
+		font-size: 24px;
+		line-height: 31px;
+	}
+	&-title{
+		font-weight: 300;
+		font-size: 36px;
+		line-height: 1.1;
+		margin-bottom: 0;
+		@extend %white-color;
+		a{
+			@extend %white-color;
+		}
+	}
+	&-item{
+		height: 100rem;
+	}
+}

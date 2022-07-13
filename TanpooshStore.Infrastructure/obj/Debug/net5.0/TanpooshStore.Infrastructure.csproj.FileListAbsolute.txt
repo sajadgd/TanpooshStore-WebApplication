@@ -1,0 +1,12 @@
+E:\Web\TanpooshStore\TanpooshStore.Infrastructure\bin\Debug\net5.0\TanpooshStore.Infrastructure.deps.json
+E:\Web\TanpooshStore\TanpooshStore.Infrastructure\bin\Debug\net5.0\TanpooshStore.Infrastructure.dll
+E:\Web\TanpooshStore\TanpooshStore.Infrastructure\bin\Debug\net5.0\TanpooshStore.Infrastructure.pdb
+E:\Web\TanpooshStore\TanpooshStore.Infrastructure\obj\Debug\net5.0\TanpooshStore.Infrastructure.csproj.AssemblyReference.cache
+E:\Web\TanpooshStore\TanpooshStore.Infrastructure\obj\Debug\net5.0\TanpooshStore.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+E:\Web\TanpooshStore\TanpooshStore.Infrastructure\obj\Debug\net5.0\TanpooshStore.Infrastructure.AssemblyInfoInputs.cache
+E:\Web\TanpooshStore\TanpooshStore.Infrastructure\obj\Debug\net5.0\TanpooshStore.Infrastructure.AssemblyInfo.cs
+E:\Web\TanpooshStore\TanpooshStore.Infrastructure\obj\Debug\net5.0\TanpooshStore.Infrastructure.csproj.CoreCompileInputs.cache
+E:\Web\TanpooshStore\TanpooshStore.Infrastructure\obj\Debug\net5.0\TanpooshStore.Infrastructure.dll
+E:\Web\TanpooshStore\TanpooshStore.Infrastructure\obj\Debug\net5.0\ref\TanpooshStore.Infrastructure.dll
+E:\Web\TanpooshStore\TanpooshStore.Infrastructure\obj\Debug\net5.0\TanpooshStore.Infrastructure.pdb
+E:\Web\TanpooshStore\TanpooshStore.Infrastructure\obj\Debug\net5.0\refint\TanpooshStore.Infrastructure.dll

@@ -1,0 +1,17 @@
+E:\Web\TanpooshStore\TanpooshStore.Application\bin\Debug\net5.0\TanpooshStore.Application.deps.json
+E:\Web\TanpooshStore\TanpooshStore.Application\bin\Debug\net5.0\TanpooshStore.Application.dll
+E:\Web\TanpooshStore\TanpooshStore.Application\bin\Debug\net5.0\TanpooshStore.Application.pdb
+E:\Web\TanpooshStore\TanpooshStore.Application\bin\Debug\net5.0\TanpooshStore.Domain.dll
+E:\Web\TanpooshStore\TanpooshStore.Application\bin\Debug\net5.0\TanpooshStore.Domain.pdb
+E:\Web\TanpooshStore\TanpooshStore.Application\obj\Debug\net5.0\TanpooshStore.Application.csproj.AssemblyReference.cache
+E:\Web\TanpooshStore\TanpooshStore.Application\obj\Debug\net5.0\TanpooshStore.Application.GeneratedMSBuildEditorConfig.editorconfig
+E:\Web\TanpooshStore\TanpooshStore.Application\obj\Debug\net5.0\TanpooshStore.Application.AssemblyInfoInputs.cache
+E:\Web\TanpooshStore\TanpooshStore.Application\obj\Debug\net5.0\TanpooshStore.Application.AssemblyInfo.cs
+E:\Web\TanpooshStore\TanpooshStore.Application\obj\Debug\net5.0\TanpooshStore.Application.csproj.CoreCompileInputs.cache
+E:\Web\TanpooshStore\TanpooshStore.Application\obj\Debug\net5.0\TanpooshStore.Application.dll
+E:\Web\TanpooshStore\TanpooshStore.Application\obj\Debug\net5.0\ref\TanpooshStore.Application.dll
+E:\Web\TanpooshStore\TanpooshStore.Application\obj\Debug\net5.0\TanpooshStore.Application.pdb
+E:\Web\TanpooshStore\TanpooshStore.Application\bin\Debug\net5.0\TanpooshStore.Common.dll
+E:\Web\TanpooshStore\TanpooshStore.Application\bin\Debug\net5.0\TanpooshStore.Common.pdb
+E:\Web\TanpooshStore\TanpooshStore.Application\obj\Debug\net5.0\TanpooshStore.Application.csproj.CopyComplete
+E:\Web\TanpooshStore\TanpooshStore.Application\obj\Debug\net5.0\refint\TanpooshStore.Application.dll

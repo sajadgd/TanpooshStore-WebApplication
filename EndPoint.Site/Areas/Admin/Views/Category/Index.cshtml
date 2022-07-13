@@ -1,0 +1,207 @@
+﻿@model EndPoint.Site.Areas.Admin.Models.CategoriesViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        دسته بندی ها
+        <small>محصولات</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-crop"></i> خانه</a></li>
+        <li><a href="#">دسته بندی ها</a></li>
+        <li class="active">لیست</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">لیست دسته بندی ها</h3>
+
+                    <div class="box-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <a asp-area="Admin" asp-controller="Category" asp-action="AddNewCategory" class="btn btn-success">افزودن دسته بندی جدید</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>دسته بندی</th>
+                                <th>پدر</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ListCategories)
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+                                    <td>
+                                        @{
+                                            string parent = item.Parent != null ? item.Parent.Name : "-";
+                                        }
+                                        <p>@parent</p>
+                                    </td>
+                                    <td>
+                                        @if (item.Parent == null)
+                                        {
+                                            <a asp-controller="Category" asp-action="AddNewCategory" asp-route-parentId="@item.Id" class="label label-success">افزودن فرزند</a>
+                                        }
+                                        @if (item.HasChild == true)
+                                        {
+                                            <a asp-controller="Category" asp-action="Index" asp-route-parentId="@item.Id" class="label label-info">مشاهده لیست فرزند ها</a>
+                                        }
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-warning" onclick="ShowModalEditCtegory('@item.Id' , '@item.Name')">ویرایش</button>
+                                        <button class="btn btn-danger" onclick="RemoveCategory('@item.Id')">حذف</button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+<link href="~/Sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+<script src="~/Sweetalert2/sweetalert2.min.js"></script>
+
+<script>
+    function ShowModalEditCtegory(CategoryId , CategoryName){
+        $('#Edit_CatId').val(CategoryId);
+        $('#Edit_CatName').val(CategoryName);
+
+        $('#EditCategory').modal('show');
+    }
+    function Editcategory(){
+        var categoryId = $('#Edit_CatId').val();
+        var categoryName = $('#Edit_CatName').val();
+
+        var postData = {
+            'categoryId': categoryId,
+            'name': categoryName
+        };
+
+        $.ajax({
+        contentType: 'application/x-www-form-urlencoded',
+        dataType: 'json',
+        type: 'POST',
+        url: "Category/Edit",
+        data: postData,
+        success: function (data) {
+            if (data.isSuccess) {
+                swal.fire(
+                    'موفق !',
+                    data.message,
+                    'success'
+                ).then(function (isConfirm) {
+                    location.reload();
+                });
+            }
+            else {
+                swal.fire(
+                    'خطا !',
+                    data.message,
+                    'warning'
+                );
+            }
+        },
+        error: function (request, status, error) {
+            alert(request.responseText);
+        }
+    })
+    }
+    function RemoveCategory(CategoryId){
+        swal.fire({
+            title: "حذف دسته بندی",
+            text: "آیا از حذف دسته بندی اطمینان دارید ؟",
+            icon: "info",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "d33",
+            confirmButtonText: 'بله انجام شود',
+            cancelButtonText: 'خیر'
+        }).then((result) => {
+            if (result.value) {
+                var postData = {
+                    'categoryId': CategoryId,
+                };
+
+                $.ajax({
+                    contentType: 'application/x-www-form-urlencoded',
+                    dataType: 'json',
+                    type: 'POST',
+                    url: "Category/Delete",
+                    data: postData,
+                    success: function (data) {
+                        if (data.isSuccess == true) {
+                            swal.fire(
+                                'موفق !',
+                                data.message,
+                                'success'
+                            ).then(function (isConfirm) {
+                                location.reload();
+                            });
+                        }
+                        else {
+                            swal.fire(
+                                'خطا !',
+                                data.message,
+                                'warning'
+                            );
+                        }
+                    },
+                    error: function (request, status, error) {
+                        alert(request.responseText);
+                    }
+                })
+            }
+        })
+    }
+</script>
+}
+
+@section Modals
+{
+<div class="modal fade" id="EditCategory" tabindex="-1" role="dialog" area-labelledby="exampleModalCenterTitle" area-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">ویرایش دسته بندی</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-xl-12 col-lg-12 col-md-12 mb-1">
+                    <fieldset class="form-group">
+                        <input type="hidden" id="Edit_CatId" />
+                        <label for="Edit_CatName">نام دسته بندی</label>
+                        <input type="text" class="form-control" id="Edit_CatName" />
+                    </fieldset>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-secondary" data-dismiss="modal">بستن</a>
+                <a class="btn btn-primary" onclick="Editcategory()">ویرایش</a>
+            </div>
+        </div>
+    </div>
+</div>
+}
+

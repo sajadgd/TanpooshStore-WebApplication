@@ -1,0 +1,246 @@
+/*****************************
+34 - Components - Tabs
+*****************************/
+
+
+/*-- 34.01 - Tab Style 1 --*/
+.tab-style-1{
+	.nav{
+		&-tabs{
+			@extend %tab-link;
+			overflow: hidden;
+		}
+		&-link{
+			@extend %tab-link;
+			@extend %body-color;
+			@extend %posrelative;
+			@include border-radius(0);
+			text-transform: uppercase;
+			line-height: 1;
+			padding: 7px 10px;
+			&:not(:last-child){
+				margin-right: 20px;
+			}
+			&:after{
+				@extend %pseudo;
+				left: 20px;
+				top: 0;
+				@extend %basetransition;
+				@include circle(11);
+				@extend %primary-bg-color;
+				@extend %invisible;
+			}
+			&.active{
+				@extend %primary-bg-color;
+				@extend %white-color;
+				&::after {
+					@extend %visible;
+					left: -5px;
+				}
+				
+			}
+			span{
+				@extend %tab-link-span;
+				border: none;
+			}
+		}
+	}
+}
+
+/*-- 34.02 - Tab Style 2 --*/
+
+.tab-style-2{
+	.nav{
+		&-tabs{
+			@extend %tab-link;
+			@include breakpoint(xsmall){
+				@include flex-direction(column);
+			}
+		}
+		&-link{
+			@extend %tab-link;
+			@extend %body-color;
+			@include border-radius(0);
+			text-transform: uppercase;
+			line-height: 13px;
+			padding: 0;
+			font-size: 16px;
+			&:not(:last-child){
+				margin-right: 40px;
+				@include breakpoint(medium){
+					margin-right: 30px;
+				}
+				@include breakpoint(small){
+					margin-right: 20px;
+				}
+				@include breakpoint(xsmall){
+					margin-bottom: 15px;
+					margin-right: 0;
+				}
+			}
+			span{
+				@extend %posrelative;
+				@extend %tab-link-span;
+				border-width: 0px;
+				display: inline-block;
+				&:after{
+					@extend %pseudo;
+					@extend %heading-bg-color;
+					left: 0;
+					top: 50%;
+					width: 0%;
+					height: 1px;
+					margin-top: -.5px;
+					@include transition(opacity .1s, visibility .1s, width 0.3s);
+					@extend %invisible;
+				}
+			}
+			&.active{
+				@extend %heading-color;
+				span{
+					&:after{
+						width: 100%;
+						@extend %visible;
+					}
+				}
+			}
+		}
+	}
+	&-1{
+		.nav{
+			&-link{
+				flex: 1 0 auto;
+				text-align: left;
+				margin-right: 0 !important;
+				@include breakpoint(xsmall){
+					text-align: center;
+				}
+			}
+		}
+	}
+}
+
+/*-- 34.03 - Tab Style 3 --*/
+
+.tab-style-3{
+	.nav{
+		&-tabs{
+			border-bottom: 1px solid #dddddd;
+			padding-bottom: 20px;
+			margin-bottom: 35px;
+			@include breakpoint(xsmall){
+				@include flex-direction(column);
+			}
+		}
+		&-link{
+			border: 1px solid #dddddd;
+			padding: 11px 15px;
+			color: #404040;
+			font-weight: bold;
+			@include border-radius(0);
+			&:not(:last-child){
+				margin-right: 5px;
+			}
+			@include breakpoint(xsmall){
+				width: 100%;
+			}
+			&.active{
+				@extend %heading-bg-color;
+				@extend %heading-border-color;
+				@extend %white-color;
+			}
+		}
+	}
+}
+
+/*-- 34.04 - User Dashboard tab --*/
+.user-dashboard-tab{
+	@extend %flexbox;
+	@extend %align-start;
+	&__head{
+		background-color: $color-alabaster;
+		padding: 15px 0;
+		@include flex-basis(190px);
+		max-width: 190px;
+		margin-right: 30px;
+		@include breakpoint(small){
+			@include flex-basis(100%);
+			max-width: 100%;
+			width: 100%;
+			margin-right: 0;
+			margin-bottom: 30px;
+			padding: 0;
+		}
+		.nav-link{
+		    display: block;
+		    padding: 10px 30px;
+		    @extend %body-color;
+		    @include breakpoint(small){
+		    	padding: 12px;
+		    }
+			&.active, 
+			&:hover{
+				@extend %primary-bg-color;
+				@extend %white-color;
+			}
+		}
+	}
+
+	&__content{
+		@include flex-basis(calc(100% - 220px));
+		max-width: calc(100% - 220px);
+		@include breakpoint(small){
+			@include flex-basis(100%);
+			max-width: 100%;
+			width: 100%;
+		}
+		p{
+			a{
+				&:hover{
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+}
+
+/*-- 34.05 - Tab Content --*/
+.tab-content {
+    width: 100%;
+    .tab-pane {
+        display: none;
+        height: 0;
+        max-width: 100%;
+        visibility: hidden;
+        overflow: hidden;
+        opacity: 0;
+        &.active {
+        	display: block;
+            height: auto;
+            visibility: visible;
+            opacity: 1;
+            overflow: visible;
+        }
+    }
+}
+
+.tab-content{
+	.tab-pane{
+		&.active{
+			.zakas-product{
+				animation: zakasFadeInUp .5s linear .1s;
+			}
+		}
+	}
+}
+.shop-products{
+	.tab-content{
+		.tab-pane{
+			&.active{
+				.zakas-product{
+					animation: zakasFadeInUp 0s linear 0s;
+				}
+			}
+		}
+	}	
+}

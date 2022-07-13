@@ -1,0 +1,94 @@
+/*****************************
+25 - Components - Comment
+*****************************/
+
+.comment{
+	margin-bottom: 35px;
+	@include breakpoint(small){
+		margin-bottom: 25px;
+	}
+	&-reply-title{
+		font-size: 18px;
+		font-weight: 700;
+		margin-bottom: 20px;
+	}
+	&-notes{
+		font-size: 12px;
+		color: $body-color;
+		margin-bottom: 10px;
+	}
+	.single-comment{
+		border: 1px solid $border-color;
+		margin: 0 0 20px;
+		padding: 30px;
+		width: 100%;
+		@extend %flexbox;
+		@include breakpoint(xsmall){
+			padding: 15px;
+			@include flex-direction(column);
+		}
+	}
+	&-avatar{
+		@include flex-basis(50px);
+		height: 50px;
+		margin-right: 25px;
+		@include breakpoint(xsmall){
+			height: auto;
+			margin-bottom: 15px;
+		}
+	}
+	&-info{
+		@include flex-basis(calc(100% - 75px));
+		@extend %heading-color;
+	}
+	&-meta{
+		margin-bottom: 10px;
+		@extend %posrelative;
+	}
+	&-author{
+		font-size: 14px;
+		a{
+			@extend %heading-color;
+			&:hover{
+				@extend %primary-color;
+			}
+		}
+	}
+	&-date{
+		font-size: 11px;
+		@include breakpoint(xsmall){
+			display: block;
+		}
+	}
+	&-content{
+		p{
+			@extend %heading-color;
+		}
+	}
+	.reply{
+	    border: 1px solid $heading-color;
+	    @extend %heading-color;
+	    display: inline-block;
+	    font-size: 12px;
+	    padding: 6px 18px;
+	    text-transform: uppercase;
+	    @extend %posabsolute;
+	    right: 0;
+	    top: 0;
+	    @include breakpoint(xsmall){
+			position: relative;
+			margin-top: 14px;
+	    }
+	    &:hover{
+	    	@extend %primary-bg-color;
+	    	@extend %primary-border-color;
+	    	color: #fff;
+	    }
+
+	}
+	.children{
+		margin-left: 20px;
+	}
+
+}
+

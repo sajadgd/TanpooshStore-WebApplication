@@ -1,0 +1,206 @@
+﻿@using TanpooshStore.Application.Services.Users.Commands.UserRegister.Dto
+@model RegisterRequestDto
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumb-area bg-color ptb--90" data-bg-color="#f6f6f6" style="background-color: rgb(246, 246, 246);">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center flex-sm-row flex-column">
+                    <h1 class="page-title">ورود و ثبت نام</h1>
+                    <ul class="breadcrumb">
+                        <li><a href="index.html" class="text-danger">خانه</a></li>/
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-content-inner pt--75 pb--80">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mb-sm--50">
+                <div class="login-box">
+                    <h3 class="heading__tertiary mb--30">ورود</h3>
+                    <div class="form form--login text-right">
+                        <div class="form__group mb--20">
+                            <label class="form__label form__label--2" for="login_email"> ایمیل <span class="required">*</span></label>
+                            <input type="email" class="form__input form__input--2" id="login_email">
+                        </div>
+                        <div class="form__group mb--20">
+                            <label class="form__label form__label--2" for="login_password">رمز ورود <span class="required">*</span></label>
+                            <input type="password" class="form__input form__input--2" id="login_password">
+                        </div>
+                        <div class="d-flex align-items-center mb--20">
+                            <div class="form__group mr--30">
+                                <button class="btn-submit" onclick="Loginuser()">ورود</button>
+                            </div>
+                            <div class="form__group">
+                                <label class="form__label checkbox-label" for="store_session">
+                                    <input type="checkbox" name="store_session" id="store_session">
+                                    <span>مرا به خاطر بسپار</span>
+                                </label>
+                            </div>
+                        </div>
+                        <a class="forgot-pass" asp-action="ForgotPassword">رمز خود را فراموش کردید؟</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="register-box">
+                    <h4 class="heading__tertiary mb--30">ثبت نام</h4>
+                    <form class="form form--login text-right" action="javascript:void(0);">
+                        <div class="box-body">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form__group mb--20">
+                                <label class="form__label form__label--2 ">نام و نام خانوادگی <span class="required">*</span></label>
+                                <input asp-for="FullName" type="text" class="form__input form__input--2" id="userName">
+                                <span asp-validation-for="FullName" class="text-danger"></span>
+                            </div>
+                            <div class="form__group mb--20">
+                                <label class="form__label form__label--2" for="email">ایمیل <span class="required">*</span></label>
+                                <input asp-for="Email" type="email" class="form__input form__input--2" id="email">
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="form__group mb--20">
+                                <label class="form__label form__label--2" for="register_password">گذرواژه <span class="required">*</span></label>
+                                <input asp-for="Password" type="password" class="form__input form__input--2" id="register_password">
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="form__group mb--20">
+                                <label class="form__label form__label--2" for="register_repassword">تکرار گذرواژه <span class="required">*</span></label>
+                                <input asp-for="RePassword" type="password" class="form__input form__input--2" id="register_repassword">
+                                <span asp-validation-for="RePassword" class="text-danger"></span>
+                            </div>
+                            <p class="privacy-text mb--20">
+                                اطلاعات شخصی شما برای پشتیبانی از تجربه شما در سراسر این وب سایت، مدیریت دسترسی به حساب شما و سایر اهدافی که در خط مشی رازداری ما توضیح داده شده است، استفاده خواهد شد.
+                            </p>
+
+                        </div>
+                        <div class="box-footer">
+                            <input type="submit" value="ثبت نام" class="btn btn-submit btn-style-1" onclick="Enablesubmit()">
+                        </div>
+                    </form>
+                    <a id="trigger" onclick="Registeruser()"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+    <link href="~/Sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+    <script src="~/Sweetalert2/sweetalert2.min.js"></script>
+
+    <script>
+        function Enablesubmit() {
+            document.getElementById("trigger").click();
+
+        }
+
+        function Registeruser() {
+            swal.fire({
+                title: "ثبت نام کاربر",
+                text: "آیا میخواهید ثبت نام را انجام دهید ؟",
+                icon: "info",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "d33",
+                confirmButtonText: 'بله انجام شود',
+                cancelButtonText: 'خیر'
+            }).then((result) => {
+                if (result.value) {
+                    var fullName = $('#userName').val();
+                    var email = $('#email').val();
+                    var password = $('#register_password').val();
+                    var rePassword = $('#register_repassword').val();
+
+                    var postData = {
+                        'fullName': fullName,
+                        'email': email,
+                        'password': password,
+                        'rePassword': rePassword
+                    };
+
+                    $.ajax({
+                        contentType: 'application/x-www-form-urlencoded',
+                        dataType: 'json',
+                        type: 'POST',
+                        url: 'LoginRegister/SignUp',
+                        data: postData,
+                        success: function (data) {
+                            if (data.isSuccess == true) {
+                                swal.fire(
+                                    'موفق !',
+                                    data.message,
+                                    'success'
+                                ).then(function (isConfirm) {
+                                    window.location.replace("/");
+                                });
+                            }
+                            else {
+                                swal.fire(
+                                    'خطا !',
+                                    data.message,
+                                    'warning'
+                                );
+                            }
+                        },
+                        error: function (request, status, error) {
+                            alert(request.responseText);
+                        }
+                    });
+
+                }
+            });
+        }
+
+        function Loginuser() {
+            var email = $('#login_email').val();
+            var password = $('#login_password').val();
+
+            var postData = {
+                'email': email,
+                'password': password,
+            };
+
+            $.ajax({
+                contentType: 'application/x-www-form-urlencoded',
+                dataType: 'json',
+                type: 'POST',
+                url: 'LoginRegister/Login',
+                data: postData,
+                success: function (data) {
+                    if (data.isSuccess == true) {
+                        swal.fire(
+                            'موفق !',
+                            data.message,
+                            'success'
+                        ).then(function (isConfirm) {
+                            window.location.replace("/");
+                        });
+                    }
+                    else {
+                        swal.fire(
+                            'خطا !',
+                            data.message,
+                            'warning'
+                        );
+                    }
+                },
+                error: function (request, status, error) {
+                    alert(request.responseText);
+                }
+            });
+
+
+        }
+    </script>
+}

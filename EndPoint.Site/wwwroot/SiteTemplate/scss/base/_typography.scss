@@ -1,0 +1,146 @@
+/*****************************
+00 - Base - Global
+*****************************/
+  
+html{
+	// Default
+	height: 100%;
+	font-size: 62.5%; // 1rem = 10px
+
+	// Extra Large Device >1199 to <1499
+	@include breakpoint(xlarge){
+		font-size: 56.25%;  // 1rem = 9px
+	}
+
+	// Large Device >991 to <1200
+	@include breakpoint(large){
+		font-size: 50%;  // 1rem = 8px
+	}
+	
+	// Medium Device >767 to <992
+	@include breakpoint(medium){
+		font-size: 37.5%;  // 1rem = 6px
+	}
+	
+	// Small Device <768
+	@include breakpoint(small){
+		font-size: 31.25%;  // 1rem = 5px
+	} 
+
+
+}
+body{
+	font-size: $body-font-size;
+	font-family: $body-font;
+	color: $body-color;
+	line-height: $line-height;
+	font-weight: 400;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+h1, h2, h3, h4, h5, h6{
+	font-weight: 700;
+	font-family: $body-font;
+	color: $heading-color;
+}
+p {
+    font-size: $body-font-size;
+    color: $body-color;
+    font-weight: 400;
+    line-height: $line-height;
+    &:last-child{
+    	margin-bottom: 0;
+    }
+}
+a{
+	@extend %body-color;
+}
+// Base
+
+ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+figure{
+	margin: 0;
+}
+img{
+	max-width: 100%;
+}
+a, button{
+	@extend %basetransition; 
+}
+a:hover{
+	color: $primary-color;
+	text-decoration: none;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button
+{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number]
+{
+  -moz-appearance: textfield;
+}
+
+a, a:hover, a:focus, a:active, button, button:focus, input, select, textarea, .slick-slide{
+	outline: none;
+}
+
+/*****************************
+01 - Base - Typography
+*****************************/
+
+.heading{
+	&__primary{
+		font-size: 6rem;
+		margin-bottom: 0;
+		line-height: 8.8rem;
+		&--main{
+			font-weight: 700;
+			display: block;
+		}
+		&--sub{
+			font-weight: 300;
+			display: block;
+		}
+		&--2{
+			font-size: 11rem;
+			margin-bottom: 0;
+			line-height: 13rem;
+			@include breakpoint(small){
+				font-size: 8rem;
+				line-height: 8.8rem;
+			}
+		}
+		&--3{
+			line-height: 7.5rem;
+		}
+	}
+	&__secondary{
+		font-size: 36px;
+		line-height: 40px;
+		font-weight: 400;
+		margin-bottom: 0;
+		@include breakpoint(medium){
+			font-size: 28px;
+			line-height: 32px;
+		}
+	}
+	&__tertiary{
+		font-size: 22px;
+		line-height: 30px;
+		font-weight: 400;
+		margin-bottom: 0;
+		@include breakpoint(medium){
+			font-size: 20px;
+		}
+	}
+}
+

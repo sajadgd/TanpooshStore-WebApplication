@@ -1,0 +1,62 @@
+/*****************************
+42 - Pages - Shop
+*****************************/
+
+.shop-toolbar{
+	.product{
+		&-view-mode{
+			a{
+				&:not(:last-child){
+					margin-right: 15px;
+				}
+			}
+		}
+		&-pages{
+
+		}
+		&-categories{
+			margin-right: 5rem; 
+		}
+		&-ordering{
+
+		}
+	}
+	.nice-select{
+		background-color: #f5f5f5;
+		width: 220px;
+		height: 40px;
+		border: none;
+		@include border-radius(0);
+		padding-right: 0;
+	}
+}
+
+.shop-products{
+	.zakas-product{
+		display: block;
+	}
+	.zakas-product-list{
+		display: none;
+	}
+	&.grid{
+		.zakas-product{
+			display: block;
+		}
+		.zakas-product-list{
+			display: none;
+		}
+	}
+	&.list{
+		.zakas-product{
+			display: none;
+		}
+		.zakas-product-list{
+			display: block;
+		}	
+		.row > [class^="col"]{
+			@include flex-basis(100%);
+			max-width: 100%;
+		}
+	}
+}
+

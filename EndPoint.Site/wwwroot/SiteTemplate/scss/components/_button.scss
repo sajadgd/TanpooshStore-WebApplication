@@ -1,0 +1,175 @@
+/*****************************
+23 - Components - Button
+*****************************/
+
+
+/*-- 23.00 - Global Button --*/
+.btn{
+	@extend %posrelative;
+	@extend %basetransition;
+	background-color: $color-white;
+	color: $primary-color;
+	font-size: 16px; 
+	min-width: 184px;
+	min-height: 55px;
+	line-height: 55px;
+	margin-bottom: 6px;
+	padding: 0;
+	border: none;
+	@include border-radius(0);
+	@include breakpoint(medium){
+		min-width: 170px;
+		min-height: 50px;
+		line-height: 50px;
+	}
+	@include breakpoint(small){
+		min-width: 160px;
+		min-height: 45px;
+		line-height: 45px; 
+	}
+	@include breakpoint(xsmall){
+		min-width: 150px; 
+	}
+	&:after{
+		@extend %pseudo;
+		left: 0;
+		bottom: -6px;
+		height: 3px;
+		width: 100%;
+		@extend %white-bg-color;
+	}
+	&:hover{
+		@extend %primary-bg-color;
+		@extend %white-color;
+		&:after{
+			@extend %primary-bg-color;
+		}
+	}
+	i{
+		padding-left: 5px;
+	} 
+	&.icon-left{
+		i{
+			padding-right: 5px;
+			padding-left: 0;
+		}
+	}
+	&-fullwidth{
+		width: 100%;
+		display: block;
+	}
+	&-small{
+		min-width: 147px;
+		min-height: 40px;
+		line-height: 40px;
+	}
+	&-bg{
+		&-sand{
+			@extend %sand-bg-color;
+			&:after{
+				@extend %sand-bg-color;
+			}
+		}
+		&-red{
+			@extend %primary-bg-color;
+			&:after{
+				@extend %primary-bg-color;
+			}
+		}
+		&-dark{
+			@extend %heading-bg-color;
+			&:after{
+				@extend %heading-bg-color;
+			}
+		}
+	}
+	&-no-bg{
+		padding: 0;
+		min-width: auto;
+		min-height: auto;
+		line-height: 1;
+		margin-bottom: 0;
+		@extend %transparent-bg;
+		&:after{
+			display: none;
+		}
+		&:hover{
+			@extend %transparent-bg;
+			@extend %primary-color;	
+		}
+	}
+	&-color{
+		&-dark{
+			@extend %heading-color;
+		}
+		&-white{
+			@extend %white-color;
+		}
+	}
+	&-hover{
+		&-2{
+			&:hover{
+				@extend %heading-bg-color;
+				&:after{
+					@extend %heading-bg-color;
+				}
+			}
+		}
+	}
+}
+
+/*-- 23.01 - Submit Button --*/
+
+.btn-submit{
+	@include border-radius(5px);
+	background-color: $color-persi;
+	padding: 19px 21px;	
+	line-height: 1;
+	@extend %white-color;
+	font-weight: 700;
+	font-family: $font-3;
+	border: none;
+	cursor: pointer;
+	@extend %basetransition;
+	&:hover{
+		@extend %primary-bg-color;
+	}
+	&--small{
+		padding: 15px 20px;	
+	}
+}
+
+/*-- 23.02 - Action Button --*/
+
+.action-btn{
+	@extend %white-bg-color;
+	@extend %body-color;
+	@extend %actionBtn;
+	cursor: pointer;
+	&.quick-view{
+		i.flaticon{
+			font-size: 24px;
+		}
+	}
+	i{
+		@extend %body-color;
+		font-size: 18px;
+		line-height: 45px;
+	}
+}
+
+/*-- 23.03 - Close Button --*/
+
+.btn-close {
+    font-size: 40px;
+    display: block;
+    position: absolute;
+    z-index: 5;
+    line-height: 40px;
+    height: 40px;
+    opacity: 1;
+    @extend %heading-color;
+    &:hover{
+    	@extend %primary-color;
+    }
+}

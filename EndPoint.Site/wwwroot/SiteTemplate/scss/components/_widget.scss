@@ -1,0 +1,155 @@
+/*****************************
+35 - Components - Widget
+*****************************/
+ 
+/*-- 35.00 - Widget Title --*/
+
+.widget-title{
+	font-weight: 500;
+	text-transform: uppercase;
+	font-size: 16px;
+	line-height: 1;
+	padding-bottom: 20px;
+	margin-bottom: 0;
+	border-bottom: 1px solid rgb(240, 240, 240);
+	@extend %posrelative;
+	&:after{
+		@extend %pseudo;
+		left: 0;
+		bottom: 0;
+		height: 4px;
+		width: 30px;
+		@extend %heading-bg-color;
+	}
+}
+
+/*-- 35.01 - Widget List --*/
+
+.widget-list{
+	li{
+		&:not(:last-child){
+			margin-bottom: 1.8rem;
+		}
+		a{
+			@extend %verticalFlexCenter;
+			@extend %justify-between;
+			@extend %body-color;
+			@extend %posrelative;
+			font-size: 14px;
+			strong{
+				@extend %heading-color;
+			}
+		}
+	}
+	&.category-list{
+		li{
+			a{
+				&:after{
+					@extend %pseudo;
+					right: 25px;
+					top: 50%;
+					height: 1px;
+					width: 69px;
+					background-color: rgb(240, 240, 240);
+				}
+			}
+		}
+	}
+}
+
+/*-- 35.02 - Widget Color --*/
+
+.widget-color{
+	a{
+		display: inline-block;
+		padding: 8px 14px;
+		@extend %white-color;
+		font-size: 14px;
+		margin-bottom: 5px;
+		&.red{
+			background-color: $color-red-2;
+		}
+		&.pink{
+			background-color: $color-pink-2;
+		}
+		&.black{
+			background-color: $color-black;
+		}
+		&.brown{
+			background-color: $color-brown;
+		}
+		&.blue{
+			background-color: $color-blue-2;
+		}
+		&.cholate{
+			background-color: $color-cholate;
+		}
+		&.copper{
+			background-color: $color-copper;
+		}
+		&.gray{
+			background-color: $color-gray-3;
+		}
+	}
+}
+
+/*-- 35.03 - Tagcloud --*/
+
+.tagcloud{
+	a{
+		font-size: 14px;
+		@extend %heading-color;
+		@extend %posrelative;
+		display: inline-block;
+		line-height: 1;
+		margin-right: 12px;
+		padding-right: 10px;
+		&:after{
+			@extend %pseudo;
+			right: 0;
+			top: 0;
+			width: 2px;
+			height: 100%;
+			background-color: #bbb
+		}
+	}
+}
+
+/*-- 35.04 - Recent Post --*/
+
+.recent-post{
+	&__item{
+		@extend %flexbox;
+		padding-bottom: 30px;
+		border-bottom: 1px solid $border-color;
+		@include breakpoint(small){
+			padding-bottom: 20px;
+		}
+		&:not(:last-child){
+			margin-bottom: 30px;
+			@include breakpoint(small){
+				margin-bottom: 20px;
+			}
+		}
+	}
+	&__thumb{
+		@include flex-basis(70px);
+		max-width: 70px;
+	}
+	&__content{
+		@include flex-basis(calc(100% - 70px));
+		max-width: calc(100% - 70px);
+		padding-left: 20px;
+	}
+	&__title{
+		font-size: 16px;
+		margin-bottom: 5px;
+		a{	
+			@extend %heading-color;
+			font-family: $font-2;
+		}
+	}
+	&__meta{
+
+	}
+}

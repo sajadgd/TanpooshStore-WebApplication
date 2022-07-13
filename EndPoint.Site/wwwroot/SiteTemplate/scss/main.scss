@@ -1,0 +1,150 @@
+/******************************
+
+INDEX:
+
+    00 - Base - Global
+    01 - Base - Typography
+
+    10 - Layout - Header
+    11 - Layout - Footer
+
+    20 - Components - Animation
+    21 - Components - Banner
+    22 - Components - Blog
+        22.00 - Blog
+        22.01 - Single Post
+        22.02 - Post Navigation
+        22.03 - Related Post
+
+    23 - Components - Button
+        23.00 - Global Button
+        23.01 - Submit Button
+        23.02 - Action Button
+        23.03 - Close Button
+
+    24 - Components - Carousel
+        24.00 - Carousel Helper
+        24.01 - Carousel Nav
+
+    25 - Components - Comment
+    26 - Components - Form
+        25.00 - Global Form
+        25.01 - Newsletter Form
+        25.02 - Search Form
+        25.03 - Nice Select
+        25.04 - Review Form
+        25.05 - Cart Form
+
+    27 - Components - Mini Cart
+    28 - Components - Modal
+        28.00 - Quick View Modal
+        28.01 - Search Form Popup
+
+    29 - Components - Navigation
+        29.00 - Main Navigation
+        29.01 - Mobile Menu
+        29.02 - Off Canvas Menu
+
+    30 - Components - Product
+        30.00 - Proudct Global
+        30.01 - Proudct List
+        30.02 - Proudct Summary
+        30.03 - Product Variations
+        30.04 - Special Proudct
+
+    31 - Components - Slider
+        31.00 - Slider Height
+        31.01 - Slider Content BG Shap
+        31.02 - Accordion Slide
+
+    32 - Components - Social
+    33 - Components - Table
+    34 - Components - Tabs
+        34.01 - Tab Style 1
+        34.02 - Tab Style 2
+        34.03 - Tab Style 3
+        34.04 - User Dashboard tab
+        34.05 - Tab Content
+
+    35 - Components - Widget
+        35.00 - Widget Title
+        35.01 - Widget List
+        35.02 - Widget Color
+        35.03 - Tagcloud
+        35.04 - Recent Post  
+
+    40 - Pages - Cart
+    41 - Pages - Checkout
+    42 - Pages - Shop
+    43 - Pages - Single Product
+
+    50 - Utilities - Helper
+    51 - Utilities - Common
+    52 - Utilities - Color
+
+
+
+
+******************************/
+
+
+/*
+    Defult Primary Color:       #2c2e3d
+    Default Secondary Color:    #ff6a00
+    Default Border Color:       #a6a6a6
+    Default Text Color:         #2c2e3d
+    Default Body Font:          'Poppins', sans-serif;
+
+*/
+
+
+
+// Fonts
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900|Roboto:300,400,500,700,900|Open+Sans:400,600,700');
+
+
+// Base 
+
+@import 'base/variables';
+@import 'base/mixins';
+@import 'base/typography';
+
+// Layout 
+
+@import 'layout/header';
+@import 'layout/footer';
+
+// Components
+@import 'components/animation';
+@import 'components/banner';
+@import 'components/blog';
+@import 'components/button';
+@import 'components/carousel';
+@import 'components/comment';
+@import 'components/form';
+@import 'components/modal';
+@import 'components/mini-cart';
+@import 'components/navigation';
+@import 'components/product';
+@import 'components/slider';
+@import 'components/social';
+@import 'components/tabs';
+@import 'components/table';
+@import 'components/widget';
+
+
+ 
+// Pages 
+
+@import 'pages/cart'; 
+@import 'pages/checkout'; 
+@import 'pages/shop'; 
+@import 'pages/single-product'; 
+
+
+// Utilities
+
+@import 'utilities/common';
+@import 'utilities/helper';
+@import 'utilities/color'; 

@@ -1,0 +1,81 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{715670FE-E62C-47C4-8595-6D372EA3FC58}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{CA921844-CD61-47F3-AEB7-6C8DEA609841}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{7E112FA4-ABF7-45D6-A352-2A356D45C986}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{C56D0FE3-431C-480E-ACB9-4CC5D8192E60}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TanpooshStore.Domain", "TanpooshStore.Domain\TanpooshStore.Domain.csproj", "{D8190285-6ABC-46F3-B6AF-5F5491016ACF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TanpooshStore.Application", "TanpooshStore.Application\TanpooshStore.Application.csproj", "{0C38911E-812C-47DB-9FB9-196387566CB8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TanpooshStore.Infrastructure", "TanpooshStore.Infrastructure\TanpooshStore.Infrastructure.csproj", "{095D497E-8E43-4C30-8D0D-885A4B858EF0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TanpooshStore.Presistence", "TanpooshStore.Presistence\TanpooshStore.Presistence.csproj", "{28108E59-7F61-46BB-851E-1CE3BF5138C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{EE4012C5-1BB2-4DC2-9414-19C5C50E6BA5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{4C288236-A482-4CE3-BE35-50C18B6F27CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{CE27B326-3AA6-4D34-ABEB-9813DBF1704C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EndPoint.Site", "EndPoint.Site\EndPoint.Site.csproj", "{EE90C2DE-63CF-43ED-9AEB-770299142349}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TanpooshStore.Common", "TanpooshStore.Common\TanpooshStore.Common.csproj", "{4BFD909F-AE60-47E9-AB14-EBCA7B2A27CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8190285-6ABC-46F3-B6AF-5F5491016ACF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8190285-6ABC-46F3-B6AF-5F5491016ACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8190285-6ABC-46F3-B6AF-5F5491016ACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8190285-6ABC-46F3-B6AF-5F5491016ACF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C38911E-812C-47DB-9FB9-196387566CB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C38911E-812C-47DB-9FB9-196387566CB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C38911E-812C-47DB-9FB9-196387566CB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C38911E-812C-47DB-9FB9-196387566CB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{095D497E-8E43-4C30-8D0D-885A4B858EF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{095D497E-8E43-4C30-8D0D-885A4B858EF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{095D497E-8E43-4C30-8D0D-885A4B858EF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{095D497E-8E43-4C30-8D0D-885A4B858EF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28108E59-7F61-46BB-851E-1CE3BF5138C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28108E59-7F61-46BB-851E-1CE3BF5138C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28108E59-7F61-46BB-851E-1CE3BF5138C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28108E59-7F61-46BB-851E-1CE3BF5138C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE90C2DE-63CF-43ED-9AEB-770299142349}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE90C2DE-63CF-43ED-9AEB-770299142349}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE90C2DE-63CF-43ED-9AEB-770299142349}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE90C2DE-63CF-43ED-9AEB-770299142349}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BFD909F-AE60-47E9-AB14-EBCA7B2A27CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BFD909F-AE60-47E9-AB14-EBCA7B2A27CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BFD909F-AE60-47E9-AB14-EBCA7B2A27CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BFD909F-AE60-47E9-AB14-EBCA7B2A27CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{715670FE-E62C-47C4-8595-6D372EA3FC58} = {EE4012C5-1BB2-4DC2-9414-19C5C50E6BA5}
+		{7E112FA4-ABF7-45D6-A352-2A356D45C986} = {EE4012C5-1BB2-4DC2-9414-19C5C50E6BA5}
+		{D8190285-6ABC-46F3-B6AF-5F5491016ACF} = {715670FE-E62C-47C4-8595-6D372EA3FC58}
+		{0C38911E-812C-47DB-9FB9-196387566CB8} = {715670FE-E62C-47C4-8595-6D372EA3FC58}
+		{095D497E-8E43-4C30-8D0D-885A4B858EF0} = {7E112FA4-ABF7-45D6-A352-2A356D45C986}
+		{28108E59-7F61-46BB-851E-1CE3BF5138C5} = {7E112FA4-ABF7-45D6-A352-2A356D45C986}
+		{4C288236-A482-4CE3-BE35-50C18B6F27CE} = {EE4012C5-1BB2-4DC2-9414-19C5C50E6BA5}
+		{CE27B326-3AA6-4D34-ABEB-9813DBF1704C} = {EE4012C5-1BB2-4DC2-9414-19C5C50E6BA5}
+		{EE90C2DE-63CF-43ED-9AEB-770299142349} = {4C288236-A482-4CE3-BE35-50C18B6F27CE}
+		{4BFD909F-AE60-47E9-AB14-EBCA7B2A27CA} = {CE27B326-3AA6-4D34-ABEB-9813DBF1704C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A7939939-A239-4F8B-AD99-A18518F5CDDF}
+	EndGlobalSection
+EndGlobal

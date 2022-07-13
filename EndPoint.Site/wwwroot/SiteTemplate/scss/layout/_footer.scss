@@ -1,0 +1,60 @@
+/*****************************
+11 - Layout - Footer
+*****************************/
+
+.footer{
+	&-widget{
+
+	}
+	&-menu{
+		line-height: 1;
+		li{
+			display: inline-block;
+			line-height: 1;
+			@include breakpoint(xsmall){
+				display: block;
+			}
+			&:not(:last-child){
+				border-right: 2px solid #c9c9c9;
+				padding-right: 18px;
+				margin-right: 18px;
+				@include breakpoint(small){
+					padding-right: 8px;
+					margin-right: 8px;
+				}
+				@include breakpoint(xsmall){
+					padding-right: 0px;
+					margin-right: 0px;
+					margin-bottom: 8px;
+					border-width: 0px;
+				}
+			}
+			a{
+				@extend %body-color;
+				&:hover{
+					@extend %primary-color;
+				}
+			}
+		}
+		&.color-2{
+			li{
+				a{
+					&:hover{
+						@extend %white-color;
+					}
+				}
+			}
+		}
+	}
+	.copyright-text{
+		a{
+			@extend %primary-color;
+			font-size: 14px;
+		}
+		&.color--white{
+			a{
+				@extend %white-color;
+			}
+		}
+	}
+}
