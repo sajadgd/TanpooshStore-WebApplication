@@ -1,0 +1,105 @@
+﻿@using TanpooshStore.Application.Services.Products.Queries.Dto
+@model GetAdminProductDetailDto
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        جزئیات
+        <small>محصول</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-shopping-bag"></i> خانه</a></li>
+        <li><a href="#">محصولات</a></li>
+        <li class="active">جزئیات</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+
+                <strong> نام محصول</strong>
+
+                <p class="text-muted">
+                    @Model.Name
+                </p>
+
+                <hr>
+
+                <strong> برند محصول</strong>
+
+                <p class="text-muted">@Model.Brand</p>
+
+                <hr>
+
+                <strong> قیمت محصول</strong>
+
+                <p class="text-muted">
+                    @Model.Price
+                </p>
+
+                <hr>
+
+                <strong> موجودی انبار</strong>
+
+                <p class="text-muted">@Model.Invertory</p>
+
+                <hr>
+
+                <strong> توضیحات</strong>
+
+                <p class="text-muted">@Model.Description</p>
+
+                <hr>
+
+                <strong> وضعیت نمایش</strong>
+
+                <p class="text-muted">@Model.Displayed</p>
+
+                <hr>
+
+                <strong> دسته بندی</strong>
+
+                <p class="text-muted">@Model.Category</p>
+
+                <hr>
+
+                <strong> تصاویر</strong>
+
+                @{
+                    foreach (var item in Model.Images)
+                    {
+                        <img width="200" height="200" src="~/@item.Src" />
+                    }
+                }
+
+                <hr>
+
+                <strong> ویژگی ها</strong>
+
+                <ul>
+                    @{
+
+                        foreach (var item in Model.Features)
+                        {
+                            <li>
+                                <span>@item.DisplayName</span>
+                                <span>@item.Value</span>
+                            </li>
+                        }
+                    }
+                </ul>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+</section>
