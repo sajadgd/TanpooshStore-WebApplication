@@ -281,6 +281,19 @@
                             </li>
                             <li><a asp-controller="Category" asp-action="AddNewCategory"><i class="fa fa-circle-o"></i>افزودن دسته بندی جدید *</a></li>
                         </ul>
+
+                        <a href="#">
+                            <i class="fa fa-shopping-bag"></i> <span>مدیریت محصولات</span>
+                            <span class="pull-left-container">
+                                <i class="fa fa-angle-right pull-left"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="active">
+                                <a asp-controller="Product" asp-action="Index"><i class="fa fa-circle-o"></i>لیست محصولات</a>
+                            </li>
+                            <li><a asp-controller="Product" asp-action="AddNewProduct"><i class="fa fa-circle-o"></i>افزودن محصول جدید *</a></li>
+                        </ul>
                     </li>
                 </ul>
             </section>
@@ -492,6 +505,8 @@
     <!-- ./wrapper -->
     <!-- jQuery 3 -->
     <script src="~/AdminTemplate/bower_components/jquery/dist/jquery.min.js"></script>
+    <!--jQuery Validation-->
+    <script src="~/AdminTemplate/bower_components/jquery/dist/jquery.validate.min.js"></script>
     <!-- Bootstrap 3.3.7 -->
     <script src="~/AdminTemplate/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

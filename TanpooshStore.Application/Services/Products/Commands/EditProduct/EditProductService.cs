@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TanpooshStore.Application.Interfaces;
 using TanpooshStore.Application.Services.Products.Queries.Dto;
+using TanpooshStore.Application.Validators;
 using TanpooshStore.Common.Dto;
 
 namespace TanpooshStore.Application.Services.Products.Commands.EditProduct
@@ -17,32 +18,47 @@ namespace TanpooshStore.Application.Services.Products.Commands.EditProduct
         {
             _context = context;
         }
-        public ResultDto Execute(GetAdminProductsDto request)
+        public ResultDto Execute(EditProductRequestDto request)
         {
-            var product = _context.Tbl_Products.Find(request.Id);
-            if (product == null)
+            EditProductRequestValidator validations = new EditProductRequestValidator();
+            if (validations.Validate(request).IsValid)
             {
-                var result1 = new ResultDto
+                var product = _context.Tbl_Products.Find(request.Id);
+                if (product == null)
+                {
+                    var result1 = new ResultDto
+                    {
+                        IsSuccess = false,
+                        Message = "محصول مورد نظر یافت نشد !"
+                    };
+                    return result1;
+                }
+                product.Name = request.Name;
+                product.Brand = request.Brand;
+                product.Invertory = request.Invertory;
+                product.CategoryId = request.CategoryId;
+                product.Price = request.Price;
+                product.Displayed = request.Displayed;
+                product.UpdateTime = DateTime.Now;
+                _context.SaveChanges();
+                var result = new ResultDto
+                {
+                    IsSuccess = true,
+                    Message = "ویرایش محصول با موفقیت انجام شد !"
+                };
+                return result;
+            }
+            else
+            {
+                var result2 = new ResultDto
                 {
                     IsSuccess = false,
-                    Message = "محصول مورد نظر یافت نشد !"
+                    Message = "لطفا اطلاعات را به درستی وارد کنید ."
                 };
-                return result1;
+                return result2;
             }
-            product.Name = request.Name;
-            product.Brand = request.Brand;
-            product.Invertory = request.Invertory;
-            product.Category.Name = request.Category;
-            product.Price = request.Price;
-            product.Displayed = request.Displayed;
-            product.UpdateTime = DateTime.Now;
-            _context.SaveChanges();
-            var result = new ResultDto
-            {
-                IsSuccess = true,
-                Message = "ویرایش محصول با موفقیت انجام شد !"
-            };
-            return result;
+
+
         }
     }
 }

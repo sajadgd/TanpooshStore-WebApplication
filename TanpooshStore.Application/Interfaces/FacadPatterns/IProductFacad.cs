@@ -10,6 +10,7 @@ using TanpooshStore.Application.Services.Products.Commands.EditProduct;
 using TanpooshStore.Application.Services.Products.Commands.RemoveCategory;
 using TanpooshStore.Application.Services.Products.Commands.RemoveProduct;
 using TanpooshStore.Application.Services.Products.Queries;
+using TanpooshStore.Application.Services.Products.Queries.GetAdminProductDetailService;
 using TanpooshStore.Application.Services.Products.Queries.GetAdminProductService;
 using TanpooshStore.Application.Services.Products.Queries.GetAllCategories;
 
@@ -25,6 +26,7 @@ namespace TanpooshStore.Application.Interfaces.FacadPatterns
         AddNewProductService addNewProductService { get; }
         RemoveProductService removeProductService { get; }
         EditProductService editProductService { get; }
+        GetAdminProductDetailService getAdminProductDetailService { get; }
 
         /// <summary>
         /// گرفتن لیست محصولات ادمین پنل

@@ -28,6 +28,7 @@ using TanpooshStore.Application.Interfaces.FacadPatterns;
 using TanpooshStore.Application.Services.Products.FacadPattern;
 using TanpooshStore.Application.Validators;
 using TanpooshStore.Application.Services.Products.Commands.AddNewProduct.Dto;
+using TanpooshStore.Application.Services.Products.Commands.EditProduct;
 
 namespace EndPoint.Site
 {
@@ -70,6 +71,7 @@ namespace EndPoint.Site
             services.AddControllersWithViews().AddFluentValidation();
             services.AddTransient<IValidator<RegisterRequestDto>, RegisterRequestValidator>();
             services.AddTransient<IValidator<AddNewProductRequestDto>, AddNewProductRequestValidator>();
+            services.AddTransient<IValidator<EditProductRequestDto>, EditProductRequestValidator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

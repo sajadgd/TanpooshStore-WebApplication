@@ -13,7 +13,7 @@
         <small>لیست</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fas fa-tshirt"></i> خانه</a></li>
+        <li><a href="#"><i class="fa fa-shopping-bag"></i> خانه</a></li>
         <li><a href="#">محصولات</a></li>
         <li class="active">لیست</li>
     </ol>
@@ -63,9 +63,8 @@
                                                     <td>@item.Displayed</td>
                                                     <td>@item.Category</td>
                                                     <td><button class="btn btn-danger" onclick="DeleteProduct('@item.Id')">حذف</button></td>
-                                                    <td><button class="btn btn-warning" onclick="ShowModal('@item.Id', '@item.Name', '@item.Brand', '@item.Displayed', '@item.Invertory', '@item.Price')">ویرایش</button></td>
-                                                    <td><button class="btn btn-primary" onclick="ChangeDisplayed('@item.Id')">تغییر وضعیت نمایش</button></td>
-                                                    <td><button class="btn btn-info">جزئیات</button></td>
+                                                    <td><button class="btn btn-warning" onclick="ShowModal('@item.Id', '@item.Name', '@item.Brand', '@item.Invertory', '@item.Price')">ویرایش</button></td>
+                                                    <td><a asp-area="Admin" asp-controller="Product" asp-action="Details" asp-route-productId="@item.Id" class="btn btn-info">جزئیات</a></td>
                                                 </tr>
                                             }
                                         }
@@ -169,24 +168,72 @@
         })
     }
 
-    function ShowModal(prodId, prodName, prodBrand, prodDisplayed, prodInvertory, prodPrice){
+    function ShowModal(prodId, prodName, prodBrand, prodInvertory, prodPrice){
         $("#Edit_ProductId").val(prodId);
         $("#Edit_Name").val(prodName);
         $("#Edit_Brand").val(prodBrand);
-        $("#Edit_Displayed").val(prodDisplayed);
         $("#Edit_Invertory").val(prodInvertory);
         $("#Edit_Price").val(prodPrice);
 
-        $("#EditProduct").modal("show");
+        $("#EditProductModal").modal("show");
+    }
+
+    function EditProduct(){
+        var prodId = $("#Edit_ProductId").val();
+        var prodName = $("#Edit_Name").val();
+        var prodBrand = $("#Edit_Brand").val();
+        var prodDisplayed = $("#Edit_Displayed").is(":checked");
+        var prodCategory = parseInt($("#Edit_Category").val());
+        var prodInvertory = $("#Edit_Invertory").val();
+        var prodPrice = $("#Edit_Price").val();
+
+        var postData = {
+            'Id': prodId,
+            'Name': prodName,
+            'Brand': prodBrand,
+            'CategoryId': prodCategory,
+            'Invertory': prodInvertory,
+            'Price': prodPrice,
+            'Displayed': prodDisplayed,
+        }
+
+        $.ajax({
+            contentType: 'application/x-www-form-urlencoded',
+            dataType: 'json',
+            type: 'POST',
+            url: "Product/Edit",
+            data: postData,
+            success: function (data) {
+                if (data.isSuccess) {
+                    swal.fire(
+                        'موفق !',
+                        data.message,
+                        'success'
+                    ).then(function (isConfirm) {
+                        location.reload();
+                    });
+                }
+                else {
+                    swal.fire(
+                        'خطا !',
+                        data.message,
+                        'warning'
+                    );
+                }
+            },
+            error: function (request, status, error) {
+                alert(request.responseText);
+            }
+        })
     }
 </script>
 }
 
 @section Modals
 {
-<div class="modal fade" id="EditProduct" tabindex="-1" role="dialog" area-labelledby="exampleModalCenterTitle" area-hidden="true">
+<div class="modal fade" id="EditProductModal" tabindex="-1" role="dialog" area-labelledby="exampleModalCenterTitle" area-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
+        <form role="form" class="modal-content" id="EditProductForm">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">ویرایش محصول</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -198,13 +245,15 @@
                     <fieldset class="form-group">
                         <input type="hidden" id="Edit_ProductId" />
                         <label for="Edit_Name">نام محصول</label>
-                        <input type="text" class="form-control" id="Edit_Name" />
+                        <input type="text" class="form-control" id="Edit_Name" name="Edit_Name" />
                         <label for="Edit_Brand">برند</label>
                         <input type="text" class="form-control" id="Edit_Brand" />
                         <label for="Edit_Displayed">وضعیت نمایش</label>
+                        <br />
                         <input type="checkbox" id="Edit_Displayed" />
+                        <br />
                         <label for="Edit_Category">دسته بندی</label>
-                        <select class="form-control" id="Edit_Category"><option value=""></option></select>
+                        <select class="form-control" id="Edit_Category" asp-items="@ViewBag.Categories"></select>
                         <label for="Edit_Invertory">موجودی انبار</label>
                         <input type="number" class="form-control" id="Edit_Invertory" />
                         <label for="Edit_Price">قیمت</label>
@@ -215,9 +264,9 @@
             </div>
             <div class="modal-footer">
                 <a class="btn btn-secondary" data-dismiss="modal">بستن</a>
-                <a class="btn btn-primary" onclick="Edituser()">ویرایش</a>
+                <button type="submit" class="btn btn-primary" onclick="EditProduct()" data-dismiss="modal">ویرایش</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 }

@@ -10,6 +10,6 @@ namespace TanpooshStore.Application.Services.Products.Commands.EditProduct
 {
     public interface IEditProductService
     {
-        ResultDto Execute(GetAdminProductsDto request);
+        ResultDto Execute(EditProductRequestDto request);
     }
 }

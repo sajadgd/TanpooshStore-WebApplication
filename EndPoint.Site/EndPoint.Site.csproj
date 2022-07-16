@@ -1577,6 +1577,7 @@
     <None Include="wwwroot\AdminTemplate\bower_components\jquery\dist\jquery.slim.js" />
     <None Include="wwwroot\AdminTemplate\bower_components\jquery\dist\jquery.slim.min.js" />
     <None Include="wwwroot\AdminTemplate\bower_components\jquery\dist\jquery.slim.min.map" />
+    <None Include="wwwroot\AdminTemplate\bower_components\jquery\dist\jquery.validate.min.js" />
     <None Include="wwwroot\AdminTemplate\bower_components\jquery\external\sizzle\dist\sizzle.js" />
     <None Include="wwwroot\AdminTemplate\bower_components\jquery\external\sizzle\dist\sizzle.min.js" />
     <None Include="wwwroot\AdminTemplate\bower_components\jquery\external\sizzle\dist\sizzle.min.map" />

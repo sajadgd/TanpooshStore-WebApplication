@@ -13,6 +13,7 @@ using TanpooshStore.Application.Services.Products.Commands.EditProduct;
 using TanpooshStore.Application.Services.Products.Commands.RemoveCategory;
 using TanpooshStore.Application.Services.Products.Commands.RemoveProduct;
 using TanpooshStore.Application.Services.Products.Queries;
+using TanpooshStore.Application.Services.Products.Queries.GetAdminProductDetailService;
 using TanpooshStore.Application.Services.Products.Queries.GetAdminProductService;
 using TanpooshStore.Application.Services.Products.Queries.GetAllCategories;
 
@@ -79,6 +80,12 @@ namespace TanpooshStore.Application.Services.Products.FacadPattern
         public EditProductService editProductService
         {
             get { return _editProductService ?? new EditProductService(_context); }
+        }
+
+        private readonly GetAdminProductDetailService _getAdminProductDetailService;
+        public GetAdminProductDetailService getAdminProductDetailService
+        {
+            get { return _getAdminProductDetailService ?? new GetAdminProductDetailService(_context); }
         }
     }
 }

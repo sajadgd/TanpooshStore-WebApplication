@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using TanpooshStore.Application.Interfaces.FacadPatterns;
 using TanpooshStore.Application.Services.Products.Commands.AddNewProduct.Dto;
+using TanpooshStore.Application.Services.Products.Commands.EditProduct;
 using TanpooshStore.Application.Services.Products.Queries.Dto;
 
 namespace EndPoint.Site.Areas.Admin.Controllers
@@ -19,13 +20,9 @@ namespace EndPoint.Site.Areas.Admin.Controllers
         }
         public IActionResult Index(int page = 1, int pageSize = 20)
         {
-            AdminProductRequestViewModel viewModel = new AdminProductRequestViewModel();
-            var model = _productFacad.getAdminProductService.Execute(page, pageSize).Data = new AdminProductPaginationDto
-            {
-                Products = new List<GetAdminProductsDto>
-                {
-                }
-            };
+
+            var model = _productFacad.getAdminProductService.Execute(page, pageSize).Data;
+            ViewBag.Categories = new SelectList(_productFacad.getAllCategoriesService.Execute().Data,"Id" , "Name");
             return View(model);
         }
 
@@ -61,10 +58,10 @@ namespace EndPoint.Site.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Edit(AdminProductRequestViewModel request)
         {
-            var result = _productFacad.editProductService.Execute(new GetAdminProductsDto
+            var result = _productFacad.editProductService.Execute(new EditProductRequestDto
             {
                 Brand = request.Brand,
-                Category = request.Category,
+                CategoryId = request.CategoryId,
                 Id = request.Id,
                 Name = request.Name,
                 Invertory = request.Invertory,
@@ -72,6 +69,13 @@ namespace EndPoint.Site.Areas.Admin.Controllers
                 Displayed = request.Displayed,
             });
             return Json(result);
+        }
+
+        [HttpGet]
+        public IActionResult Details(int productId)
+        {
+            var model = _productFacad.getAdminProductDetailService.Execute(productId).Data;
+            return View(model);
         }
     }
 }

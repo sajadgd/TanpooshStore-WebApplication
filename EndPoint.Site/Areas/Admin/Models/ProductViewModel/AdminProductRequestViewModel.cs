@@ -11,7 +11,6 @@ namespace EndPoint.Site.Areas.Admin.Models.ProductViewModel
         public int Price { get; set; }
         public int Invertory { get; set; }
         public bool Displayed { get; set; }
-        public string Category { get; set; }
-        public List<AllCategoriesDto> Categories { get; set; }
+        public int CategoryId { get; set; }
     }
 }
