@@ -13,6 +13,7 @@ using TanpooshStore.Application.Services.Products.Queries;
 using TanpooshStore.Application.Services.Products.Queries.GetAdminProductDetailService;
 using TanpooshStore.Application.Services.Products.Queries.GetAdminProductService;
 using TanpooshStore.Application.Services.Products.Queries.GetAllCategories;
+using TanpooshStore.Application.Services.Products.Queries.GetSiteProductService;
 
 namespace TanpooshStore.Application.Interfaces.FacadPatterns
 {
@@ -28,9 +29,15 @@ namespace TanpooshStore.Application.Interfaces.FacadPatterns
         EditProductService editProductService { get; }
         GetAdminProductDetailService getAdminProductDetailService { get; }
 
+
         /// <summary>
         /// گرفتن لیست محصولات ادمین پنل
         /// </summary>
         GetAdminProductService getAdminProductService { get; }
+
+        /// <summary>
+        /// گرفتن لیست محصولات پنل کاربر
+        /// </summary>
+        GetSiteProductService getSiteProductService { get; }
     }
 }

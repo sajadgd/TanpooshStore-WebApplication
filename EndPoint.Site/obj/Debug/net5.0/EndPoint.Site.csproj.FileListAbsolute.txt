@@ -173,3 +173,4 @@ E:\Web\TanpooshStore\EndPoint.Site\obj\Debug\net5.0\Razor\Areas\Admin\Views\Prod
 E:\Web\TanpooshStore\EndPoint.Site\obj\Debug\net5.0\Razor\Areas\Admin\Views\Product\Index.cshtml.g.cs
 E:\Web\TanpooshStore\EndPoint.Site\bin\Debug\net5.0\LazZiya.TagHelpers.dll
 E:\Web\TanpooshStore\EndPoint.Site\obj\Debug\net5.0\Razor\Areas\Admin\Views\Product\Details.cshtml.g.cs
+E:\Web\TanpooshStore\EndPoint.Site\obj\Debug\net5.0\Razor\Views\Products\Index.cshtml.g.cs

@@ -18,10 +18,10 @@ namespace EndPoint.Site.Areas.Admin.Controllers
         {
             _productFacad = productFacad;
         }
-        public IActionResult Index(int page = 1, int pageSize = 20)
+        public IActionResult Index(int page = 1, int pageSize = 10, string searchKey="")
         {
 
-            var model = _productFacad.getAdminProductService.Execute(page, pageSize).Data;
+            var model = _productFacad.getAdminProductService.Execute(page, pageSize, searchKey).Data;
             ViewBag.Categories = new SelectList(_productFacad.getAllCategoriesService.Execute().Data,"Id" , "Name");
             return View(model);
         }

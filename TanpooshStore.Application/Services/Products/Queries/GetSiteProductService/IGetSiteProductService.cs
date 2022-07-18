@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using TanpooshStore.Application.Services.Products.Queries.Dto;
 using TanpooshStore.Common.Dto;
 
-namespace TanpooshStore.Application.Services.Products.Queries.GetAdminProductService
+namespace TanpooshStore.Application.Services.Products.Queries.GetSiteProductService
 {
-    public interface IGetAdminProductService
+    public interface IGetSiteProductService
     {
-        ResultDto<AdminProductPaginationDto> Execute(int page, int pageSize, string searchKey);
+        ResultDto<SiteProductPaginationDto> Execute(int page, int pageSize);
     }
 }

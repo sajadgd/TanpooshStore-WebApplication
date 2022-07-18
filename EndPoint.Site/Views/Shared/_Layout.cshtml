@@ -76,18 +76,18 @@
                                         {
                                             <ul class="mainmenu">
                                                 <li class="mainmenu__item menu-item-has-children active">
-                                                    <a href="index.html" class="mainmenu__link">
+                                                    <a asp-controller="Home" class="mainmenu__link">
                                                         <span class="mm-text">خانه</span>
                                                     </a>
                                                 </li>
                                                 <li class="mainmenu__item menu-item-has-children">
-                                                    <a href="shop.html" class="mainmenu__link">
+                                                    <a asp-controller="Products" class="mainmenu__link">
                                                         <span class="mm-text">فروشگاه</span>
                                                     </a>
 
                                                 </li>
                                                 <li class="mainmenu__item menu-item-has-children">
-                                                    <a asp-controller="LoginRegister" asp-action="Index" class="mainmenu__link">
+                                                    <a asp-controller="LoginRegister" class="mainmenu__link">
                                                         <span class="mm-text">ورود و ثبت نام</span>
                                                     </a>
                                                 </li>
@@ -183,7 +183,7 @@
         </header>
         <!-- Header End -->
         <!-- Main Wrapper Start -->
-        <div class="main-content-wrapper">
+        <div>
             @RenderBody()
         </div>
         <!-- Main Wrapper End -->

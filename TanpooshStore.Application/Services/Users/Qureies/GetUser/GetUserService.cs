@@ -23,8 +23,8 @@ namespace TanpooshStore.Application.Services.Users.Qureies.GetUser
             {
                 users = users.Where(p => p.FullName.Contains(request.SearchKey) || p.Email.Contains(request.SearchKey));
             }
-            int rowCount = 0;
-            var result = users.ToPaged(request.Page, 20, out rowCount).Select(s => new GetUserDto
+            int rowCount;
+            var result = users.ToPaged(request.Page, request.PageSize, out rowCount).Select(s => new GetUserDto
             {
                 Id = s.Id,
                 FullName = s.FullName,
@@ -34,7 +34,9 @@ namespace TanpooshStore.Application.Services.Users.Qureies.GetUser
             return new GetUserResultDto
             {
                 Users = result,
-                Rows = rowCount
+                Rows = rowCount,
+                Page = request.Page,
+                PageSize = request.PageSize,
             };
         }
     }

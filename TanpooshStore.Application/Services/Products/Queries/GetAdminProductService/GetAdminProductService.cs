@@ -18,7 +18,7 @@ namespace TanpooshStore.Application.Services.Products.Queries.GetAdminProductSer
         {
             _context = context;
         }
-        public ResultDto<AdminProductPaginationDto> Execute(int page, int pageSize)
+        public ResultDto<AdminProductPaginationDto> Execute(int page, int pageSize, string searchKey)
         {
             try
             {
@@ -36,6 +36,11 @@ namespace TanpooshStore.Application.Services.Products.Queries.GetAdminProductSer
                         Invertory = p.Invertory,
                         Price = p.Price,
                     }).ToList();
+
+                if (!string.IsNullOrWhiteSpace(searchKey))
+                {
+                    product = product.Where(p => p.Name.Contains(searchKey) || p.Brand.Contains(searchKey) || p.Category.Contains(searchKey)).ToList();
+                }
 
                 var result = new ResultDto<AdminProductPaginationDto>
                 {

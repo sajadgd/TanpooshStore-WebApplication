@@ -1,0 +1,95 @@
+﻿@using TanpooshStore.Application.Services.Products.Queries.Dto
+@model SiteProductPaginationDto
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumb-area bg-color ptb--90" data-bg-color="#f6f6f6" style="background-color: rgb(246, 246, 246);">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center flex-sm-row flex-column">
+                    <h1 class="page-title">فروشگاه</h1>
+                    <ul class="breadcrumb">
+                        <li><a asp-controller="Home" class="text-danger">خانه</a></li>/
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main-content-wrapper">
+    <div class="shop-page-wrapper shop-fullwidth ptb--80">
+        <div class="container">
+            <div class="row mb--50">
+                <div class="col-xl-12 mb-md--50 mb-xs--10">
+                    <div class="shop-toolbar">
+                        <div class="row align-items-center">
+                            <div class="col-lg-12 mb-md--50 mb-xs--10">
+                                <div class="row shop-toolbar__left d-flex align-items-sm-center align-items-start flex-sm-row flex-column">
+                                    <div>
+                                        <p class="product-pages">از 1 تا 20 نشان داده می شود :</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="shop-products grid container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="tab-content" id="product-tab-content">
+                        <div class="tab-pane fade show active" id="nav-all">
+                            <div class="row xxl-block-grid-6 grid-space-20">
+                                @{
+                                    foreach (var item in Model.Products)
+                                    {
+                                        <div class="col-xl-3 col-md-4 col-sm-6 mb--50">
+                                            <div class="zakas-product">
+                                                <div class="product-inner">
+
+                                                    <figure class="product-image">
+                                                        <a href="product-details.html">
+                                                            <img src="~/@item.ImageSrc" style="width:270px;height:370px;">
+                                                        </a>
+                                                        <span class="product-badge">جدید</span>
+                                                    </figure>
+                                                    <div class="product-info">
+                                                        <h3 class="product-title mb--15">
+                                                            <a href="product-details.html">@item.Title</a>
+                                                        </h3>
+                                                        <div class="product-price-wrapper mb--30">
+                                                            <span class="money">@item.Price.ToString("n0")</span>
+                                                        </div>
+                                                        <a href="cart.html" class="btn btn-small btn-bg-sand btn-color-dark">افزودن به سبد خرید</a>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <nav class="pagination-wrap mt--35 mt-md--25">
+                        <ul class="pagination">
+                            <li><a href="#" class="prev page-number"><i class="fa fa-angle-double-left"></i></a></li>
+                            <li><span class="current page-number">1</span></li>
+                            <li><a href="#" class="page-number">2</a></li>
+                            <li><a href="#" class="page-number">3</a></li>
+                            <li><a href="#" class="next page-number"><i class="fa fa-angle-double-right"></i></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

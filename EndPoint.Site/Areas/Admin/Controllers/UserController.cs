@@ -36,12 +36,13 @@ namespace EndPoint.Site.Areas.Admin.Controllers
             _editUserService = editUserService;
         }
 
-        public IActionResult Index(string searchKey, int page= 1)
+        public IActionResult Index(string searchKey, int page= 1, int pageSize=10)
         {
             var model = _getUserService.Execute(new GetUserRequestDto
             {
                 Page = page,
-                SearchKey = searchKey
+                PageSize = pageSize,
+                SearchKey = searchKey,
             });
             return View(model);
         }

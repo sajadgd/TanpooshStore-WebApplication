@@ -16,6 +16,7 @@ using TanpooshStore.Application.Services.Products.Queries;
 using TanpooshStore.Application.Services.Products.Queries.GetAdminProductDetailService;
 using TanpooshStore.Application.Services.Products.Queries.GetAdminProductService;
 using TanpooshStore.Application.Services.Products.Queries.GetAllCategories;
+using TanpooshStore.Application.Services.Products.Queries.GetSiteProductService;
 
 namespace TanpooshStore.Application.Services.Products.FacadPattern
 {
@@ -86,6 +87,12 @@ namespace TanpooshStore.Application.Services.Products.FacadPattern
         public GetAdminProductDetailService getAdminProductDetailService
         {
             get { return _getAdminProductDetailService ?? new GetAdminProductDetailService(_context); }
+        }
+
+        private readonly GetSiteProductService _getSiteProductService;
+        public GetSiteProductService getSiteProductService
+        {
+            get { return _getSiteProductService ?? new GetSiteProductService(_context); }
         }
     }
 }
