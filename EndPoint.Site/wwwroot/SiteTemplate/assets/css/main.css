@@ -2444,7 +2444,7 @@ a, a:hover, a:focus, a:active, button, button:focus, input, select, textarea, .s
 .product-slide-nav.slick-vertical .slick-btn, .product-slide-nav.slick-vertical .accordion-slider__btn, .product-slide-nav.slick-vertical .accordion-click-slider__btn {
   bottom: 15px;
   top: auto;
-  left: 50%;
+  right : 50%;
   z-index: 2;
   -webkit-transform: translate(-50%, 0);
   -moz-transform: translate(-50%, 0);
@@ -2457,13 +2457,13 @@ a, a:hover, a:focus, a:active, button, button:focus, input, select, textarea, .s
     content: '\f107'; }
 
 .product-slide-nav.slick-vertical .slick-prev {
-  margin-left: -25px; }
+  margin-right: -25px !important; }
   @media (max-width: 47.94em) {
     .product-slide-nav.slick-vertical .slick-prev {
       margin-left: 0; } }
 
 .product-slide-nav.slick-vertical .slick-next {
-  margin-right: -25px; }
+  margin-left: -25px !important; }
   @media (max-width: 47.94em) {
     .product-slide-nav.slick-vertical .slick-next {
       margin-right: 0; } }
@@ -4874,7 +4874,7 @@ a, a:hover, a:focus, a:active, button, button:focus, input, select, textarea, .s
   -ms-flex-preferred-size: calc(100% - 170px);
   flex-basis: calc(100% - 170px);
   max-width: calc(100% - 170px);
-  padding-left: 30px;
+  padding-right: 30px;
   -webkit-box-ordinal-group: 3;
   -webkit-order: 2;
   -moz-order: 2;

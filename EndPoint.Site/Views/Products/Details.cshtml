@@ -1,0 +1,376 @@
+﻿@using TanpooshStore.Application.Services.Products.Queries.Dto
+@model GetSiteProductDetailsDto
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="breadcrumb-area bg-color ptb--90" data-bg-color="#f6f6f6" style="background-color: rgb(246, 246, 246);">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center flex-sm-row flex-column">
+                    <h1 class="page-title">جزئیات محصول</h1>
+                    <ul class="breadcrumb">
+                        <li><a asp-controller="Home" asp-action="Index" class="text-danger">خانه</a></li>/
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main-content-wrapper">
+    <div class="page-content-inner ptb--80">
+        <div class="container">
+            <div class="row no-gutters mb--80">
+                <div class="col-xl-4 offset-xl-1 col-lg-5 product-main-details mt-md--50">
+                    <div class="product-summary pl-lg--30 pl-md--0">
+                        <div class="product-navigation text-right mb--20">
+                            <a href="#" class="next"><i class="fa fa-angle-double-right"></i></a>
+                            <a href="#" class="prev"><i class="fa fa-angle-double-left"></i></a>
+                        </div>
+                        <div class="product-rating d-flex mb--20">
+                            <div class="rating">
+                                @for (int i = 1; i <= Model.Stars; i++)
+                                {
+                                    <span><i class="fa fa-star"></i></span>
+                                }
+                                @for (int i = 1; i <= (5 - Model.Stars); i++)
+                                {
+                                    <span><i class="fa fa-star-o"></i></span>
+                                }
+                            </div>
+                        </div>
+                        <h3 class="product-title mb--20">@Model.Name</h3>
+                        <p class="product-short-description mb--20">
+                            @Model.Description
+                        </p>
+                        <div class="product-price-wrapper mb--25">
+                            <span class="money">@Model.Price.ToString("n0")</span>
+                        </div>
+                        <p>
+                            <span class="variation-label">برند:</span>
+                            <span class="variation-label">@Model.Brand</span>
+                        </p>
+                        <form action="#" class="variation-form mb--20">
+                            <div class="product-size-variations d-flex align-items-center mb--15">
+                                <ul>
+                                    @{
+                                        foreach (var item in Model.Features.Take(5))
+                                        {
+                                            <li>
+                                                <span class="variation-label">@item.DisplayName</span>
+                                                <span class="variation-label">@item.Value</span>
+                                            </li>
+
+                                        }
+                                    }
+
+                                </ul>
+                            </div>
+                        </form>
+                        <div class="product-action d-flex flex-sm-row align-items-sm-center flex-column align-items-start mb--30">
+
+                            <button type="button" class="btn btn-small btn-bg-red btn-color-white btn-hover-2" onclick="window.location.href='cart.html'">
+                                افزودن به سبد خرید
+                            </button>
+                            <div class="quantity-wrapper d-flex align-items-center mr--30 mr-xs--0 mb-xs--30">
+                                <label class="quantity-label" for="qty">تعداد:</label>
+                                <div class="quantity">
+                                    <input type="number" class="quantity-input" name="qty" id="qty" value="1" min="1">
+                                    <div class="dec qtybutton">-</div><div class="inc qtybutton">+</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-footer-meta">
+                            <p>
+                                <span>دسته بندی:</span>
+                                <a asp-action="Index">@Model.Category</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 product-main-image">
+                    <div class="product-image">
+                        <div class="product-gallery vertical-slide-nav">
+                            <div class="product-gallery__nav-image">
+                                <div class="zakas-element-carousel nav-slider slick-vertical product-slide-nav slick-carousel-1 slick-gutter-30 slick-initialized slick-slider"
+                                     data-slick-options="{
+                                            &quot;spaceBetween&quot;: &quot;30px&quot;,
+                                            &quot;slidesToShow&quot;: 3,
+                                            &quot;slidesToScroll&quot;: 1,
+                                            &quot;vertical&quot;: true,
+                                            &quot;swipe&quot;: true,
+                                            &quot;verticalSwiping&quot;: true,
+                                            &quot;infinite&quot;: true,
+                                            &quot;focusOnSelect&quot;: true,
+                                            &quot;asNavFor&quot;: &quot;.main-slider&quot;,
+                                            &quot;arrows&quot;: true,
+                                            &quot;prevArrow&quot;: {&quot;buttonClass&quot;: &quot;slick-btn slick-prev&quot;, &quot;iconClass&quot;: &quot;fa fa-angle-up&quot; },
+                                            &quot;nextArrow&quot;: {&quot;buttonClass&quot;: &quot;slick-btn slick-next&quot;, &quot;iconClass&quot;: &quot;fa fa-angle-down&quot; }
+                                        }" data-slick-responsive="[
+                                            {
+                                                &quot;breakpoint&quot;:767,
+                                                &quot;settings&quot;: {
+                                                    &quot;slidesToShow&quot;: 4,
+                                                    &quot;vertical&quot;: false
+                                                }
+                                            },
+                                            {
+                                                &quot;breakpoint&quot;:575,
+                                                &quot;settings&quot;: {
+                                                    &quot;slidesToShow&quot;: 3,
+                                                    &quot;vertical&quot;: false
+                                                }
+                                            },
+                                            {
+                                                &quot;breakpoint&quot;:480,
+                                                &quot;settings&quot;: {
+                                                    &quot;slidesToShow&quot;: 2,
+                                                    &quot;vertical&quot;: false
+                                                }
+                                            }
+                                        ]">
+                                    <span class="slick-btn slick-prev slick-arrow" style=""><i class="fa fa-angle-down"></i></span>
+
+                                    <div class="slick-list draggable" style="height: 675px;">
+                                        <div class="slick-track nav-slick" style="opacity: 1; height: 2475px; transform: translate3d(0px, -675px, 0px);">
+                                            @{
+                                                int a = -3;
+                                                foreach (var item in Model.Images)
+                                                {
+                                                    if (a <= -1)
+                                                    {
+                                                        <figure class="product-gallery__nav-image--single slick-slide slick-cloned" data-slick-index="@a" aria-hidden="true" tabindex="-1" style="width: 170px; height: 225px;">
+                                                            <img src="~/@item.Src" alt="Products" style="height:100%">
+                                                        </figure>
+                                                    }
+                                                    a++;
+                                                }
+
+                                                int b = 0;
+                                                foreach (var item in Model.Images)
+                                                {
+                                                    if (b <= 2)
+                                                    {
+                                                        <figure class="product-gallery__nav-image--single slick-slide slick-current slick-active" data-slick-index="@b" aria-hidden="false" tabindex="0" style="width: 170px; height: 225px;">
+                                                            <img src="~/@item.Src" alt="Products" style="height:100%">
+                                                        </figure>
+                                                    }
+                                                    b++;
+                                                }
+
+
+                                                int c = 3;
+                                                foreach (var item in Model.Images)
+                                                {
+                                                    if (c <= 7)
+                                                    {
+                                                        <figure class="product-gallery__nav-image--single slick-slide slick-cloned" data-slick-index="@c" aria-hidden="true" tabindex="-1" style="width: 170px; height: 225px;">
+                                                            <img src="~/@item.Src" alt="Products" style="height:100%">
+                                                        </figure>
+                                                    }
+                                                    c++;
+                                                }
+                                            }
+
+                                        </div>
+                                    </div>
+                                    <span class="slick-btn slick-next slick-arrow" style=""><i class="fa fa-angle-up"></i></span>
+                                </div>
+                            </div>
+                            <div class="product-gallery__large-image mb-md--30">
+                                <div class="product-gallery__wrapper">
+                                    <div class="zakas-element-carousel main-slider image-popup slick-carousel-0 slick-initialized slick-slider"
+                                         data-slick-options="{
+                                                &quot;slidesToShow&quot;: 1,
+                                                &quot;slidesToScroll&quot;: 1,
+                                                &quot;infinite&quot;: true,
+                                                &quot;arrows&quot;: false,
+                                                &quot;asNavFor&quot;: &quot;.nav-slider&quot;
+                                            }">
+                                        <div class="slick-list draggable">
+                                            <div class="slick-track" style="opacity: 1; width: 4491px; transform: translate3d(499px, 0px, 0px);">
+                                                @{
+                                                    int z = -1;
+                                                    foreach (var item in Model.Images)
+                                                    {
+                                                        if (z <= -1)
+                                                        {
+                                                            <figure class="product-gallery__image zoom slick-slide slick-cloned" data-slick-index="-1" aria-hidden="true" tabindex="-1" style="width: 499px; height: 625px; position: relative; overflow: hidden;">
+
+                                                                <img src="~/@item.Src" alt="Product">
+                                                                <div class="product-gallery__actions">
+                                                                    <button class="action-btn btn-zoom-popup" tabindex="-1"><i class="fa fa-eye"></i></button>
+                                                                </div>
+                                                                <img role="presentation" alt="" src="@item.Src" class="zoomImg" style="position: absolute; top: 0px; left: 0px; opacity: 0; width: 499px; height: 625px; border: none; max-width: none; max-height: none;">
+
+                                                            </figure>
+                                                        }
+                                                        z++;
+                                                    }
+
+                                                    int y = 0;
+                                                    foreach (var item in Model.Images)
+                                                    {
+                                                        if (y <= 0)
+                                                        {
+                                                            <figure class="product-gallery__image zoom slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="0" style="width: 499px; height: 625px; position: relative; overflow: hidden;">
+
+                                                                <img src="~/@item.Src" alt="Product">
+                                                                <div class="product-gallery__actions">
+                                                                    <button class="action-btn btn-zoom-popup" tabindex="0"><i class="fa fa-eye"></i></button>
+                                                                </div>
+                                                                <img role="presentation" alt="" src="@item.Src" class="zoomImg" style="position: absolute; top: 0px; left: 0px; opacity: 0; width: 499px; height: 625px; border: none; max-width: none; max-height: none;">
+
+                                                            </figure>
+                                                        }
+                                                        y++;
+                                                    }
+
+                                                    int x = 1;
+                                                    foreach (var item in Model.Images)
+                                                    {
+                                                        if (x <= 7)
+                                                        {
+                                                            <figure class="product-gallery__image zoom slick-slide slick-cloned" data-slick-index="@x" aria-hidden="true" tabindex="-1" style="width: 499px; height: 625px; position: relative; overflow: hidden;">
+
+                                                                <img src="~/@item.Src" alt="Product">
+                                                                <div class="product-gallery__actions">
+                                                                    <button class="action-btn btn-zoom-popup" tabindex="-1"><i class="fa fa-eye"></i></button>
+                                                                </div>
+                                                                <img role="presentation" alt="" src="@item.Src" class="zoomImg" style="position: absolute; top: 0px; left: 0px; opacity: 0; width: 499px; height: 625px; border: none; max-width: none; max-height: none;">
+
+                                                            </figure>
+                                                        }
+                                                        x++;
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center mb--80">
+                <div class="col-12">
+                    <div class="product-data-tab tab-style-3">
+                        <div class="nav nav-tabs product-data-tab__head mb--35 mb-sm--25" id="product-tab" role="tablist">
+                            <a class="product-data-tab__link nav-link active" id="nav-description-tab" data-toggle="tab" href="#nav-description" role="tab" aria-selected="true">
+                                <span>توضیحات</span>
+                            </a>
+                            <a class="product-data-tab__link nav-link" id="nav-info-tab" data-toggle="tab" href="#nav-info" role="tab" aria-selected="true">
+                                <span>ویژگی های بیشتر</span>
+                            </a>
+                            <a class="product-data-tab__link nav-link" id="nav-reviews-tab" data-toggle="tab" href="#nav-reviews" role="tab" aria-selected="true">
+                                <span>نظرات</span>
+                            </a>
+                        </div>
+                        <div class="tab-content product-data-tab__content" id="product-tabContent">
+                            <div class="tab-pane fade show active" id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
+                                <div class="product-description">
+                                    <p>@Model.Description</p>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="nav-info" role="tabpanel" aria-labelledby="nav-info-tab">
+                                <div class="table-content table-responsive">
+                                    <table class="table shop_attributes">
+                                        <tbody>
+                                            @{
+                                                foreach (var item in Model.Features)
+                                                {
+                                                    <tr>
+                                                        <th>@item.DisplayName</th>
+                                                        <td>@item.Value</td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="nav-reviews" role="tabpanel" aria-labelledby="nav-reviews-tab">
+                                <div class="product-reviews">
+                                    <h3 class="review__title">1 review for Black Blazer</h3>
+                                    <ul class="review__list">
+                                        <li class="review__item">
+                                            <div class="review__container">
+                                                <img src="assets/img/others/comment-1.jpg" alt="Review Avatar" class="review__avatar">
+                                                <div class="review__text">
+                                                    <div class="d-flex flex-sm-row flex-column justify-content-between">
+                                                        <div class="review__meta">
+                                                            <strong class="review__author">John Snow </strong>
+                                                            <span class="review__dash">-</span>
+                                                            <span class="review__published-date">November 20, 2018</span>
+                                                        </div>
+                                                        <div class="product-rating">
+                                                            <div class="star-rating star-2">
+                                                                <span>Rated <strong class="rating">5.00</strong> out of 5</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <p class="review__description">Aliquam egestas libero ac turpis pharetra, in vehicula lacus scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu.</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="review-form-wrapper">
+                                        <div class="row">
+                                            <div class="col-lg-8">
+                                                <span class="reply-title">Add a review</span>
+                                                <form action="#" class="form pr--30">
+                                                    <div class="form-notes mb--20">
+                                                        <p>Your email address will not be published. Required fields are marked <span class="required">*</span></p>
+                                                    </div>
+                                                    <div class="form__group mb--10 pb--1">
+                                                        <label class="form__label d-block">Your Ratings</label>
+                                                        <div class="rating">
+                                                            <span><i class="fa fa-star"></i></span>
+                                                            <span><i class="fa fa-star"></i></span>
+                                                            <span><i class="fa fa-star"></i></span>
+                                                            <span><i class="fa fa-star"></i></span>
+                                                            <span><i class="fa fa-star"></i></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form__group mb--10">
+                                                        <label class="form__label d-block" for="email">Your Review<span class="required">*</span></label>
+                                                        <textarea name="review" id="review" class="form__input form__input--textarea"></textarea>
+                                                    </div>
+                                                    <div class="form__group mb--20">
+                                                        <label class="form__label d-block" for="name">Name<span class="required">*</span></label>
+                                                        <input type="text" name="name" id="name" class="form__input">
+                                                    </div>
+                                                    <div class="form__group mb--20">
+                                                        <label class="form__label d-block" for="email">Email<span class="required">*</span></label>
+                                                        <input type="email" name="email" id="email" class="form__input">
+                                                    </div>
+                                                    <div class="form__group">
+                                                        <div class="form-row">
+                                                            <div class="col-12">
+                                                                <input type="submit" value="Submit Now" class="btn-submit">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+<script type="text/javascript" src="~/SiteTemplate/assets/js/slick.min.js"></script>
+}

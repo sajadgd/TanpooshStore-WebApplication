@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using TanpooshStore.Application.Interfaces;
 using TanpooshStore.Application.Services.Products.Queries.Dto;
 using TanpooshStore.Common.Dto;
+using TanpooshStore.Common.Utilities;
 using TanpooshStore.Domain.Entities.Product;
 
 namespace TanpooshStore.Application.Services.Products.Queries.GetAdminProductDetailService

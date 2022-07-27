@@ -13,6 +13,7 @@ using TanpooshStore.Application.Services.Products.Queries;
 using TanpooshStore.Application.Services.Products.Queries.GetAdminProductDetailService;
 using TanpooshStore.Application.Services.Products.Queries.GetAdminProductService;
 using TanpooshStore.Application.Services.Products.Queries.GetAllCategories;
+using TanpooshStore.Application.Services.Products.Queries.GetSiteProductDetailService;
 using TanpooshStore.Application.Services.Products.Queries.GetSiteProductService;
 
 namespace TanpooshStore.Application.Interfaces.FacadPatterns
@@ -28,6 +29,7 @@ namespace TanpooshStore.Application.Interfaces.FacadPatterns
         RemoveProductService removeProductService { get; }
         EditProductService editProductService { get; }
         GetAdminProductDetailService getAdminProductDetailService { get; }
+        GetSiteProductDetailService getSiteProductDetailService { get; }
 
 
         /// <summary>

@@ -6,7 +6,7 @@
 
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Zakas - Fashion eCommerce Bootstrap 4 Template</title>
+    <title>TanpooshStore</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicons -->
@@ -19,13 +19,16 @@
 
     <!-- style css -->
     <link rel="stylesheet" href="~/SiteTemplate/assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="~/SiteTemplate/assets/css/slick.css" />
+    <link rel="stylesheet" type="text/css" href="~/SiteTemplate/assets/css/slick-theme.css" />
+
 
 </head>
 
 <body>
 
     <!-- Preloader Start -->
-    <div class="zakas-preloader active">
+    <div class="zakas-preloader">
         <div class="zakas-preloader-inner h-100 d-flex align-items-center justify-content-center">
             <div class="zakas-child zakas-bounce1"></div>
             <div class="zakas-child zakas-bounce2"></div>
@@ -76,18 +79,18 @@
                                         {
                                             <ul class="mainmenu">
                                                 <li class="mainmenu__item menu-item-has-children active">
-                                                    <a asp-controller="Home" class="mainmenu__link">
+                                                    <a asp-controller="Home" asp-action="Index" class="mainmenu__link">
                                                         <span class="mm-text">خانه</span>
                                                     </a>
                                                 </li>
                                                 <li class="mainmenu__item menu-item-has-children">
-                                                    <a asp-controller="Products" class="mainmenu__link">
+                                                    <a asp-controller="Products" asp-action="Index" class="mainmenu__link">
                                                         <span class="mm-text">فروشگاه</span>
                                                     </a>
 
                                                 </li>
                                                 <li class="mainmenu__item menu-item-has-children">
-                                                    <a asp-controller="LoginRegister" class="mainmenu__link">
+                                                    <a asp-controller="LoginRegister" asp-action="Index" class="mainmenu__link">
                                                         <span class="mm-text">ورود و ثبت نام</span>
                                                     </a>
                                                 </li>

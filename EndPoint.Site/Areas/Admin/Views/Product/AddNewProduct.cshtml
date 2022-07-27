@@ -28,7 +28,7 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                     <form role="form" action="javascript:void(0);">
-                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <!-- text input -->
                         <div class="form-group">
                             <label asp-for="Name"></label>
@@ -65,6 +65,7 @@
                                     <input type="checkbox" id="displayed">
                                     نمایش داده شود ؟
                                 </label>
+
                             </div>
                         </div>
 
@@ -183,7 +184,7 @@
                 data.append("Price" , $("#price").val());
                 data.append("Invertory" , $("#invertory").val());
                 data.append("Description" , $("#description").val());
-                data.append("Displayed" , $("#displayed").attr("checked") ? true : false);
+                data.append("Displayed" , $("#displayed").attr('checked')?true:false);
                 data.append("CategoryId" , $("#categories").find("option:selected").val());
 
                 var productImages = document.getElementById("images");

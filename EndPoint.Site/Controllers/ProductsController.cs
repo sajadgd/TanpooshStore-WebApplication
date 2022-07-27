@@ -15,5 +15,12 @@ namespace EndPoint.Site.Controllers
             var model = _productFacad.getSiteProductService.Execute(page, pageSize).Data;
             return View(model);
         }
+
+        [HttpGet]
+        public IActionResult Details(int productId)
+        {
+            var model = _productFacad.getSiteProductDetailService.Execute(productId).Data;
+            return View(model);
+        }
     }
 }
