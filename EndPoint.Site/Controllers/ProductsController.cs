@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using TanpooshStore.Application.Interfaces.FacadPatterns;
+using TanpooshStore.Application.Services.Products.Queries.Dto;
 
 namespace EndPoint.Site.Controllers
 {
@@ -10,9 +12,15 @@ namespace EndPoint.Site.Controllers
         {
             _productFacad = productFacad;
         }
-        public IActionResult Index(int page=1, int pageSize=10)
+        public IActionResult Index(int page = 1, int pageSize = 10, int? cateId = null, string searchKey= "")
         {
-            var model = _productFacad.getSiteProductService.Execute(page, pageSize).Data;
+            var model = _productFacad.getSiteProductService.Execute(new GetSiteProductRequestDto
+            {
+                CateId = cateId,
+                Page = page,
+                PageSize = pageSize,
+                SearchKey = searchKey
+            }).Data;
             return View(model);
         }
 

@@ -10,6 +10,6 @@ namespace TanpooshStore.Application.Services.Products.Queries.GetSiteProductServ
 {
     public interface IGetSiteProductService
     {
-        ResultDto<SiteProductPaginationDto> Execute(int page, int pageSize);
+        ResultDto<SiteProductPaginationDto> Execute(GetSiteProductRequestDto request);
     }
 }

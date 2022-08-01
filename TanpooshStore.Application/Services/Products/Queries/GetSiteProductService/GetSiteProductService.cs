@@ -18,26 +18,37 @@ namespace TanpooshStore.Application.Services.Products.Queries.GetSiteProductServ
         {
             _context = context;
         }
-        public ResultDto<SiteProductPaginationDto> Execute(int page, int pageSize)
+        public ResultDto<SiteProductPaginationDto> Execute(GetSiteProductRequestDto request)
         {
             int rowCount;
-            var product = _context.Tbl_Products
+            var productQuery = _context.Tbl_Products
                 .Include(p => p.ProductImages)
-                .Where(p => p.Displayed != false)
-                .ToPaged(page, pageSize, out rowCount)
-                .Select(p => new GetSiteProductDto
-                {
-                    Id = p.Id,
-                    Price = p.Price,
-                    Title = p.Name,
-                    ImageSrc = p.ProductImages.FirstOrDefault().Src
-                }).ToList();
+                .Where(p => p.Displayed != false).AsQueryable();
+
+            if (request.CateId != null)
+            {
+                productQuery = productQuery.Where(p => p.CategoryId == request.CateId).AsQueryable();
+            }
+
+            if (request.SearchKey != null)
+            {
+                productQuery = productQuery.Where(p => p.Name.Contains(request.SearchKey) || p.Brand.Contains(request.SearchKey)).AsQueryable();
+            }
+
+            var product = productQuery.ToPaged(request.Page, request.PageSize, out rowCount)
+             .Select(p => new GetSiteProductDto
+             {
+                 Id = p.Id,
+                 Price = p.Price,
+                 Title = p.Name,
+                 ImageSrc = p.ProductImages.FirstOrDefault().Src
+             }).ToList();
 
             var productResult = new SiteProductPaginationDto
             {
-                PageSize = pageSize,
+                PageSize = request.PageSize,
                 RowCount = rowCount,
-                CurrentPage = page,
+                CurrentPage = request.Page,
                 Products = product,
             };
 

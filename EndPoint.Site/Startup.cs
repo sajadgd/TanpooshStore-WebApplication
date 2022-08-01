@@ -29,6 +29,7 @@ using TanpooshStore.Application.Services.Products.FacadPattern;
 using TanpooshStore.Application.Validators;
 using TanpooshStore.Application.Services.Products.Commands.AddNewProduct.Dto;
 using TanpooshStore.Application.Services.Products.Commands.EditProduct;
+using TanpooshStore.Application.Services.Common.Queries.GetMenuItem;
 
 namespace EndPoint.Site
 {
@@ -65,6 +66,9 @@ namespace EndPoint.Site
 
             // FacadInjects
             services.AddScoped<IProductFacad, ProductFacad>();
+
+            // Common Inject
+            services.AddScoped<IGetMenuItemService, GetMenuItemService>();
 
             services.AddEntityFrameworkSqlServer().AddDbContext<DatabaseContext>(option =>
                 option.UseSqlServer(Configuration.GetConnectionString("TanpooshStoreConnection")));

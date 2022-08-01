@@ -1,0 +1,30 @@
+﻿@using TanpooshStore.Application.Services.Common.Queries.GetMenuItem.Dto
+@model List<GetMenuItemDto>
+
+@{
+    Layout = null;
+}
+
+
+<ul class="megamenu">
+
+    @foreach (var item in Model)
+    {
+        <li>
+            <a class="megamenu-title" href="#">
+                <span class="mm-text">@item.Name</span>
+            </a>
+            <ul>
+                @foreach (var item2 in item.Child)
+                {
+                    <li>
+                        <a asp-controller="Products" asp-action="Index" asp-route-cateId="@item2.CateId">
+                            <span class="mm-text">@item2.Name</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </li>
+    }
+
+</ul>

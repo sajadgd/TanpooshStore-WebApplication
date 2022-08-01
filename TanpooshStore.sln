@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31729.503
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{715670FE-E62C-47C4-8595-6D372EA3FC58}"
 EndProject
@@ -25,9 +25,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{CE27B326-3AA6-4D34-ABEB-9813DBF1704C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EndPoint.Site", "EndPoint.Site\EndPoint.Site.csproj", "{EE90C2DE-63CF-43ED-9AEB-770299142349}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EndPoint.Site", "EndPoint.Site\EndPoint.Site.csproj", "{EE90C2DE-63CF-43ED-9AEB-770299142349}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TanpooshStore.Common", "TanpooshStore.Common\TanpooshStore.Common.csproj", "{4BFD909F-AE60-47E9-AB14-EBCA7B2A27CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TanpooshStore.Common", "TanpooshStore.Common\TanpooshStore.Common.csproj", "{4BFD909F-AE60-47E9-AB14-EBCA7B2A27CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

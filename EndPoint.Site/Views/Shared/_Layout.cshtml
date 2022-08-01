@@ -63,10 +63,12 @@
                                                     </a>
                                                 </li>
                                                 <li class="mainmenu__item menu-item-has-children">
-                                                    <a href="shop.html" class="mainmenu__link">
+                                                    <a asp-controller="Products" asp-action="Index" class="mainmenu__link">
                                                         <span class="mm-text">فروشگاه</span>
                                                     </a>
 
+                                                    @* Component Menu *@
+                                                    @await Component.InvokeAsync("GetMenu")
                                                 </li>
                                                 <li class="mainmenu__item">
                                                     <a href="contact-us.html" class="mainmenu__link">
@@ -88,6 +90,8 @@
                                                         <span class="mm-text">فروشگاه</span>
                                                     </a>
 
+                                                    @* Component Menu *@
+                                                    @await Component.InvokeAsync("GetMenu")
                                                 </li>
                                                 <li class="mainmenu__item menu-item-has-children">
                                                     <a asp-controller="LoginRegister" asp-action="Index" class="mainmenu__link">
@@ -259,9 +263,9 @@
         <div class="searchform__popup" id="searchForm">
             <a href="#" class="btn-close"><i class="flaticon flaticon-cross"></i></a>
             <div class="searchform__body">
-                <p>Start typing and press Enter to search</p>
-                <form class="searchform">
-                    <input type="text" name="popup-search" id="popup-search" class="searchform__input" placeholder="Search Entire Store...">
+                <p>محصول مورد نظر را تایپ کنید سپس دکمه Enter را بزنید .</p>
+                <form class="searchform" asp-controller="Products" asp-action="Index" method="get">
+                    <input type="text" name="searchKey" id="popup-search" class="searchform__input" placeholder="جستجو در تمام فروشگاه...">
                     <button type="submit" class="searchform__submit"><i class="flaticon flaticon-magnifying-glass-icon"></i></button>
                 </form>
             </div>
@@ -471,6 +475,7 @@
 
     <!-- Main JS -->
     <script src="~/SiteTemplate/assets/js/main.js"></script>
+    <script type="text/javascript" src="~/SiteTemplate/assets/js/slick.min.js"></script>
 
     @RenderSection("Scripts", required: false)
 
