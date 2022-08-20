@@ -19,6 +19,36 @@ namespace TanpooshStore.Presistence.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
 
+            modelBuilder.Entity("TanpooshStore.Domain.Entities.HomePages.SliderEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("InsertTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsRemoved")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Link")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("RemoveTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Src")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdateTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tbl_Slider");
+                });
+
             modelBuilder.Entity("TanpooshStore.Domain.Entities.Product.CategoryEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -90,6 +120,9 @@ namespace TanpooshStore.Presistence.Migrations
 
                     b.Property<DateTime?>("UpdateTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("ViewCount")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -196,21 +229,21 @@ namespace TanpooshStore.Presistence.Migrations
                         new
                         {
                             Id = 1,
-                            InsertTime = new DateTime(2022, 5, 25, 14, 40, 49, 8, DateTimeKind.Local).AddTicks(3150),
+                            InsertTime = new DateTime(2022, 8, 8, 13, 33, 28, 677, DateTimeKind.Local).AddTicks(5705),
                             IsRemoved = false,
                             Name = "Admin"
                         },
                         new
                         {
                             Id = 2,
-                            InsertTime = new DateTime(2022, 5, 25, 14, 40, 49, 14, DateTimeKind.Local).AddTicks(6158),
+                            InsertTime = new DateTime(2022, 8, 8, 13, 33, 28, 682, DateTimeKind.Local).AddTicks(9553),
                             IsRemoved = false,
                             Name = "Operator"
                         },
                         new
                         {
                             Id = 3,
-                            InsertTime = new DateTime(2022, 5, 25, 14, 40, 49, 14, DateTimeKind.Local).AddTicks(6378),
+                            InsertTime = new DateTime(2022, 8, 8, 13, 33, 28, 682, DateTimeKind.Local).AddTicks(9998),
                             IsRemoved = false,
                             Name = "Customer"
                         });

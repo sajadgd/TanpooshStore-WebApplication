@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "AddNewSlider";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        اسلایدر جدید
+        <small>تنظیمات</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-crop"></i> خانه</a></li>
+        <li><a href="#">اسلایدر ها</a></li>
+        <li class="active">افزودن</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Form Element sizes -->
+            <form method="post" enctype="multipart/form-data" class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">اضافه کردن اسلایدر جدید برای صفحه اصلی</h3>
+                </div>
+                <div class="box-body">
+                    <fieldset>
+                        <label for="sliderLink">لینک اسلایدر</label>
+                        <input class="form-control input-lg" type="text" placeholder="لینک اسلایدر را وارد کنید" id="sliderLink" name="link">
+                    </fieldset>
+                    <fieldset>
+                        <label for="sliderFile">فایل اسلایدر</label>
+                        <input class="form-control input-lg" type="file" id="sliderFile" name="file">
+                    </fieldset>
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">اضافه کردن به لیست</button>
+                </div>
+                <!-- /.box-body -->
+            </form>
+            <!-- /.box -->
+        </div>
+    </div>
+</section>

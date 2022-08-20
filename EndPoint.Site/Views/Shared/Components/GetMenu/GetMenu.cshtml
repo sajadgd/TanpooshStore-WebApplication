@@ -11,7 +11,7 @@
     @foreach (var item in Model)
     {
         <li>
-            <a class="megamenu-title" href="#">
+            <a class="megamenu-title" asp-controller="Products" asp-action="Index" asp-route-pCateId="@item.CateId">
                 <span class="mm-text">@item.Name</span>
             </a>
             <ul>

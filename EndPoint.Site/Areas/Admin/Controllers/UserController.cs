@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TanpooshStore.Application.Interfaces.FacadPatterns;
 using TanpooshStore.Application.Services.Users.Commands.UserChangeStatus;
 using TanpooshStore.Application.Services.Users.Commands.UserEdit;
 using TanpooshStore.Application.Services.Users.Commands.UserRegister;
@@ -19,26 +20,15 @@ namespace EndPoint.Site.Areas.Admin.Controllers
     [Area("Admin")]
     public class UserController : Controller
     {
-        private readonly IGetUserService _getUserService;
-        private readonly IGetRoleService _getRoleService;
-        private readonly IRegisterUserService _registerUserService;
-        private readonly IRemoveUserService _removeUserService;
-        private readonly IChangeStatusUserService _changeStatusUserService;
-        private readonly IEditUserService _editUserService;
-        public UserController(IGetUserService getUserService, IGetRoleService getRoleService, IRegisterUserService registerUserService,
-            IRemoveUserService removeUserService, IChangeStatusUserService changeStatusUserService, IEditUserService editUserService)
+        private readonly IUserFacad _userFacad;
+        public UserController(IUserFacad userFacad)
         {
-            _getUserService = getUserService;
-            _getRoleService = getRoleService;
-            _registerUserService = registerUserService;
-            _removeUserService = removeUserService;
-            _changeStatusUserService = changeStatusUserService;
-            _editUserService = editUserService;
+            _userFacad = userFacad;
         }
 
         public IActionResult Index(string searchKey, int page= 1, int pageSize=10)
         {
-            var model = _getUserService.Execute(new GetUserRequestDto
+            var model = _userFacad.getUserService.Execute(new GetUserRequestDto
             {
                 Page = page,
                 PageSize = pageSize,
@@ -50,14 +40,14 @@ namespace EndPoint.Site.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            ViewBag.Roles = new SelectList(_getRoleService.Execute().Data, "Id", "Name"); 
+            ViewBag.Roles = new SelectList(_userFacad.getRoleService.Execute().Data, "Id", "Name"); 
             return View();
         }
 
         [HttpPost]
         public IActionResult Create(CreateUserViewModel model)
         {
-            var result = _registerUserService.Execute(new RegisterRequestDto
+            var result = _userFacad.registerUserService.Execute(new RegisterRequestDto
             {
                 Email = model.Email,
                 FullName = model.FullName,
@@ -77,21 +67,21 @@ namespace EndPoint.Site.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Delete(int userId)
         {
-            var result = _removeUserService.Execute(userId);
+            var result = _userFacad.removeUserService.Execute(userId);
             return Json(result);
         }
 
         [HttpPost]
         public IActionResult ChangeStatus(int userId)
         {
-            var result = _changeStatusUserService.Execute(userId);
+            var result = _userFacad.changeStatusUserService.Execute(userId);
             return Json(result);
         }
 
         [HttpPost]
         public IActionResult Edit(int userId, string fullName, string email)
         {
-            var result = _editUserService.Execute(new EditUserRequestDto
+            var result = _userFacad.editUserService.Execute(new EditUserRequestDto
             {
                 UserId = userId,
                 FullName = fullName,

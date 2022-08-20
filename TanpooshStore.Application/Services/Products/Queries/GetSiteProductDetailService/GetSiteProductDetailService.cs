@@ -35,6 +35,9 @@ namespace TanpooshStore.Application.Services.Products.Queries.GetSiteProductDeta
                 };
             }
 
+            product.ViewCount++;
+            _context.SaveChanges();
+
             Random rand = new Random();
             var prodDetail = new GetSiteProductDetailsDto
             {
@@ -55,7 +58,7 @@ namespace TanpooshStore.Application.Services.Products.Queries.GetSiteProductDeta
                 {
                     Id = i.Id,
                     Src = i.Src,
-                }).ToList()
+                }).ToList(),
             };
 
             var result = new ResultDto<GetSiteProductDetailsDto>

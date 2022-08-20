@@ -176,3 +176,5 @@ E:\Web\TanpooshStore\EndPoint.Site\obj\Debug\net5.0\Razor\Areas\Admin\Views\Prod
 E:\Web\TanpooshStore\EndPoint.Site\obj\Debug\net5.0\Razor\Views\Products\Index.cshtml.g.cs
 E:\Web\TanpooshStore\EndPoint.Site\obj\Debug\net5.0\Razor\Views\Products\Details.cshtml.g.cs
 E:\Web\TanpooshStore\EndPoint.Site\obj\Debug\net5.0\Razor\Views\Shared\Components\GetMenu\GetMenu.cshtml.g.cs
+E:\Web\TanpooshStore\EndPoint.Site\obj\Debug\net5.0\Razor\Areas\Admin\Views\Slider\AddNewSlider.cshtml.g.cs
+E:\Web\TanpooshStore\EndPoint.Site\obj\Debug\net5.0\Razor\Areas\Admin\Views\Slider\Index.cshtml.g.cs

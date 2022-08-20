@@ -16,6 +16,7 @@ namespace TanpooshStore.Domain.Entities.Product
         public int Price { get; set; }
         public int Invertory { get; set; }
         public bool Displayed { get; set; }
+        public int ViewCount { get; set; }
         public int CategoryId { get; set; } //fk
 
         [ForeignKey("CategoryId")]

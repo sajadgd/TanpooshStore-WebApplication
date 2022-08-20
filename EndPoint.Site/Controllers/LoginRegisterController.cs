@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using TanpooshStore.Application.Interfaces.FacadPatterns;
 using TanpooshStore.Application.Services.Users.Commands.UserLogin;
 using TanpooshStore.Application.Services.Users.Commands.UserRegister;
 using TanpooshStore.Application.Services.Users.Commands.UserRegister.Dto;
@@ -17,12 +18,10 @@ namespace EndPoint.Site.Controllers
 {
     public class LoginRegisterController : Controller
     {
-        private readonly IRegisterUserService _registerUserService;
-        private readonly ILoginUserService _loginUserService;
-        public LoginRegisterController(IRegisterUserService registerUserService, ILoginUserService loginUserService)
+        private readonly IUserFacad _userFacad;
+        public LoginRegisterController(IUserFacad userFacad)
         {
-            _registerUserService = registerUserService;
-            _loginUserService = loginUserService;
+            _userFacad = userFacad;
         }
 
         [HttpGet]
@@ -38,7 +37,7 @@ namespace EndPoint.Site.Controllers
             {
                 return Json(new ResultDto { IsSuccess = false, Message = "در حال حاضر نمیتوانید ثبت نام مجدد نمایید !" });
             }
-            var signupResult = _registerUserService.Execute(new RegisterRequestDto
+            var signupResult = _userFacad.registerUserService.Execute(new RegisterRequestDto
             {
                 FullName = request.FullName,
                 Email = request.Email,
@@ -72,7 +71,7 @@ namespace EndPoint.Site.Controllers
         [HttpPost]
         public IActionResult Login(string email, string password)
         {
-            var loginResult = _loginUserService.Execute(email, password);
+            var loginResult = _userFacad.loginUserService.Execute(email, password);
             if (loginResult.IsSuccess == true)
             {
                 var claims = new List<Claim>()

@@ -29,18 +29,48 @@
                 <div class="col-xl-12 mb-md--50 mb-xs--10">
                     <div class="shop-toolbar">
                         <div class="row align-items-center">
-                            <div class="col-lg-6 mb-md--50 mb-xs--10">
+                            <div class="col-lg-4 mb-md--50 mb-xs--10">
                                 <div class="row shop-toolbar__left d-flex align-items-sm-center align-items-start flex-sm-row flex-column">
                                     <div>
                                         <p class="product-pages">از 1 تا 20 نشان داده می شود :</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="row col-lg-8">
                                 <form class="dataTables_filter" method="get" style="text-align:right">
                                     <label>جستجو :<input type="text" name="searchKey" class="form-control input-sm" style="font-size:inherit"></label>
                                     <button type="submit" class="btn">جستجو</button>
                                 </form>
+                                <div class="product-ordering mb-xs--15 mr--50 mr-xs--0">
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            مرتب سازی بر اساس :
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" asp-controller="Products" asp-action="Index"
+                                               asp-route-cateId="@Context.Request.Query["CateId"]" asp-route-searchKey="@Context.Request.Query["SearchKey"]"
+                                               asp-route-ordering="NotOrdered">پیش فرض</a>
+                                            <a class="dropdown-item" asp-controller="Products" asp-action="Index"
+                                               asp-route-cateId="@Context.Request.Query["CateId"]" asp-route-searchKey="@Context.Request.Query["SearchKey"]"
+                                               asp-route-ordering="MostVisited">پر بازدید ترین</a>
+                                            <a class="dropdown-item" asp-controller="Products" asp-action="Index"
+                                               asp-route-cateId="@Context.Request.Query["CateId"]" asp-route-searchKey="@Context.Request.Query["SearchKey"]"
+                                               asp-route-ordering="MostPaid">پرفروش ترین</a>
+                                            <a class="dropdown-item" asp-controller="Products" asp-action="Index"
+                                               asp-route-cateId="@Context.Request.Query["CateId"]" asp-route-searchKey="@Context.Request.Query["SearchKey"]"
+                                               asp-route-ordering="MostWished">محبوب ترین</a>
+                                            <a class="dropdown-item" asp-controller="Products" asp-action="Index"
+                                               asp-route-cateId="@Context.Request.Query["CateId"]" asp-route-searchKey="@Context.Request.Query["SearchKey"]"
+                                               asp-route-ordering="MostNew">جدید ترین</a>
+                                            <a class="dropdown-item" asp-controller="Products" asp-action="Index"
+                                               asp-route-cateId="@Context.Request.Query["CateId"]" asp-route-searchKey="@Context.Request.Query["SearchKey"]"
+                                               asp-route-ordering="MostExpensive">گران ترین</a>
+                                            <a class="dropdown-item" asp-controller="Products" asp-action="Index"
+                                               asp-route-cateId="@Context.Request.Query["CateId"]" asp-route-searchKey="@Context.Request.Query["SearchKey"]"
+                                               asp-route-ordering="MostCheap">ارزان ترین</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

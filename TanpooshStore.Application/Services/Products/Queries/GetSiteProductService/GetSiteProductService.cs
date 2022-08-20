@@ -25,6 +25,11 @@ namespace TanpooshStore.Application.Services.Products.Queries.GetSiteProductServ
                 .Include(p => p.ProductImages)
                 .Where(p => p.Displayed != false).AsQueryable();
 
+            if (request.ParentCateId != null)
+            {
+                productQuery = productQuery.Where(p => p.Category.ParentCategoryId == request.ParentCateId).AsQueryable();
+            }
+
             if (request.CateId != null)
             {
                 productQuery = productQuery.Where(p => p.CategoryId == request.CateId).AsQueryable();
@@ -33,6 +38,32 @@ namespace TanpooshStore.Application.Services.Products.Queries.GetSiteProductServ
             if (request.SearchKey != null)
             {
                 productQuery = productQuery.Where(p => p.Name.Contains(request.SearchKey) || p.Brand.Contains(request.SearchKey)).AsQueryable();
+            }
+
+            switch (request.Ordering)
+            {
+                case GetSiteProductOrdering.NotOrdered:
+                    productQuery = productQuery.OrderByDescending(p => p.Id).AsQueryable();
+                    break;
+                case GetSiteProductOrdering.MostVisited:
+                    productQuery = productQuery.OrderByDescending(p => p.ViewCount).AsQueryable();
+                    break;
+                case GetSiteProductOrdering.MostPaid:
+                    break;
+                case GetSiteProductOrdering.MostWished:
+                    break;
+                case GetSiteProductOrdering.MostNew:
+                    productQuery = productQuery.OrderByDescending(p => p.InsertTime).AsQueryable();
+                    break;
+                case GetSiteProductOrdering.MostExpensive:
+                    productQuery= productQuery.OrderByDescending(p => p.Price).AsQueryable();
+                    break;
+                case GetSiteProductOrdering.MostCheap:
+                    productQuery = productQuery.OrderBy(p => p.Price).AsQueryable();
+                    break;
+                default:
+                    productQuery = productQuery.OrderByDescending(p => p.Id).AsQueryable();
+                    break;
             }
 
             var product = productQuery.ToPaged(request.Page, request.PageSize, out rowCount)
