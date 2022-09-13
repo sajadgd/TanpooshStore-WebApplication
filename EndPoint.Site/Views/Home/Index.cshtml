@@ -36,7 +36,6 @@
                         </div>
                     </div>
                 </div>
-
             }
         }
 
@@ -94,21 +93,21 @@
                                                         </a>
                                                         <div class="zakas-product-action">
                                                             <div class="product-action d-flex">
-                                                                <a data-toggle="modal" data-target="#productModal" class="action-btn quick-view">
+                                                                <button data-toggle="modal" data-target="#productModal" class="action-btn quick-view">
                                                                     <i class="flaticon flaticon-eye"></i>
-                                                                </a>
+                                                                </button>
                                                             </div>
                                                         </div>
                                                         <span class="product-badge">جدید</span>
                                                     </figure>
                                                     <div class="product-info">
                                                         <h3 class="product-title mb--15">
-                                                            <a href="product-details.html">@item.Title</a>
+                                                            <a asp-controller="Products" asp-action="Details" asp-route-productId="@item.Id">@item.Title</a>
                                                         </h3>
                                                         <div class="product-price-wrapper mb--30">
-                                                            <span class="money">@item.Price</span>
+                                                            <span class="money">@item.Price.ToString("n0")</span>
                                                         </div>
-                                                        <a href="cart.html" class="btn btn-small btn-bg-sand btn-color-dark">افزودن به سبد خرید</a>
+                                                        <a asp-controller="Cart" asp-action="AddToCart" asp-route-productId="@item.Id" class="btn btn-small btn-bg-sand btn-color-dark">افزودن به سبد خرید</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -141,12 +140,12 @@
                                                     </figure>
                                                     <div class="product-info">
                                                         <h3 class="product-title mb--15">
-                                                            <a href="product-details.html">@item.Title</a>
+                                                            <a asp-controller="Products" asp-action="Details" asp-route-productId="@item.Id">@item.Title</a>
                                                         </h3>
                                                         <div class="product-price-wrapper mb--30">
-                                                            <span class="money">@item.Price</span>
+                                                            <span class="money">@item.Price.ToString("n0")</span>
                                                         </div>
-                                                        <a href="cart.html" class="btn btn-small btn-bg-sand btn-color-dark">افزودن به سبد خرید</a>
+                                                        <a asp-controller="Cart" asp-action="AddToCart" asp-route-productId="@item.Id" class="btn btn-small btn-bg-sand btn-color-dark">افزودن به سبد خرید</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -178,12 +177,12 @@
                                                     </figure>
                                                     <div class="product-info">
                                                         <h3 class="product-title mb--15">
-                                                            <a href="product-details.html">@item.Title</a>
+                                                            <a asp-controller="Products" asp-action="Details" asp-route-productId="@item.Id">@item.Title</a>
                                                         </h3>
                                                         <div class="product-price-wrapper mb--30">
-                                                            <span class="money">@item.Price</span>
+                                                            <span class="money">@item.Price.ToString("n0")</span>
                                                         </div>
-                                                        <a href="cart.html" class="btn btn-small btn-bg-sand btn-color-dark">افزودن به سبد خرید</a>
+                                                        <a asp-controller="Cart" asp-action="AddToCart" asp-route-productId="@item.Id" class="btn btn-small btn-bg-sand btn-color-dark">افزودن به سبد خرید</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -215,12 +214,12 @@
                                                     </figure>
                                                     <div class="product-info">
                                                         <h3 class="product-title mb--15">
-                                                            <a href="product-details.html">@item.Title</a>
+                                                            <a asp-controller="Products" asp-action="Details" asp-route-productId="@item.Id">@item.Title</a>
                                                         </h3>
                                                         <div class="product-price-wrapper mb--30">
-                                                            <span class="money">@item.Price</span>
+                                                            <span class="money">@item.Price.ToString("n0")</span>
                                                         </div>
-                                                        <a href="cart.html" class="btn btn-small btn-bg-sand btn-color-dark">افزودن به سبد خرید</a>
+                                                        <a asp-controller="Cart" asp-action="AddToCart" asp-route-productId="@item.Id" class="btn btn-small btn-bg-sand btn-color-dark">افزودن به سبد خرید</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -252,12 +251,12 @@
                                                     </figure>
                                                     <div class="product-info">
                                                         <h3 class="product-title mb--15">
-                                                            <a href="product-details.html">@item.Title</a>
+                                                            <a asp-controller="Products" asp-action="Details" asp-route-productId="@item.Id">@item.Title</a>
                                                         </h3>
                                                         <div class="product-price-wrapper mb--30">
-                                                            <span class="money">@item.Price</span>
+                                                            <span class="money">@item.Price.ToString("n0")</span>
                                                         </div>
-                                                        <a href="cart.html" class="btn btn-small btn-bg-sand btn-color-dark">افزودن به سبد خرید</a>
+                                                        <a asp-controller="Cart" asp-action="AddToCart" asp-route-productId="@item.Id" class="btn btn-small btn-bg-sand btn-color-dark">افزودن به سبد خرید</a>
                                                     </div>
                                                 </div>
                                             </div>

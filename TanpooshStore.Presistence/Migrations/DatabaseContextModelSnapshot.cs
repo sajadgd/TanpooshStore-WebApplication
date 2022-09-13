@@ -19,6 +19,81 @@ namespace TanpooshStore.Presistence.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
 
+            modelBuilder.Entity("TanpooshStore.Domain.Entities.Carts.CartEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<Guid>("BrowserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Finished")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("InsertTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsRemoved")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("RemoveTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("UpdateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Tbl_Cart");
+                });
+
+            modelBuilder.Entity("TanpooshStore.Domain.Entities.Carts.CartItemEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("CartId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("InsertTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsRemoved")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("RemoveTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("UpdateTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Tbl_CartItem");
+                });
+
             modelBuilder.Entity("TanpooshStore.Domain.Entities.HomePages.SliderEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -229,21 +304,21 @@ namespace TanpooshStore.Presistence.Migrations
                         new
                         {
                             Id = 1,
-                            InsertTime = new DateTime(2022, 8, 8, 13, 33, 28, 677, DateTimeKind.Local).AddTicks(5705),
+                            InsertTime = new DateTime(2022, 8, 25, 13, 16, 45, 815, DateTimeKind.Local).AddTicks(5701),
                             IsRemoved = false,
                             Name = "Admin"
                         },
                         new
                         {
                             Id = 2,
-                            InsertTime = new DateTime(2022, 8, 8, 13, 33, 28, 682, DateTimeKind.Local).AddTicks(9553),
+                            InsertTime = new DateTime(2022, 8, 25, 13, 16, 45, 819, DateTimeKind.Local).AddTicks(3170),
                             IsRemoved = false,
                             Name = "Operator"
                         },
                         new
                         {
                             Id = 3,
-                            InsertTime = new DateTime(2022, 8, 8, 13, 33, 28, 682, DateTimeKind.Local).AddTicks(9998),
+                            InsertTime = new DateTime(2022, 8, 25, 13, 16, 45, 819, DateTimeKind.Local).AddTicks(3497),
                             IsRemoved = false,
                             Name = "Customer"
                         });
@@ -323,6 +398,34 @@ namespace TanpooshStore.Presistence.Migrations
                     b.ToTable("Tbl_UserInRole");
                 });
 
+            modelBuilder.Entity("TanpooshStore.Domain.Entities.Carts.CartEntity", b =>
+                {
+                    b.HasOne("TanpooshStore.Domain.Entities.Users.UserEntity", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("TanpooshStore.Domain.Entities.Carts.CartItemEntity", b =>
+                {
+                    b.HasOne("TanpooshStore.Domain.Entities.Carts.CartEntity", "Cart")
+                        .WithMany("CartItem")
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TanpooshStore.Domain.Entities.Product.ProductEntity", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cart");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("TanpooshStore.Domain.Entities.Product.CategoryEntity", b =>
                 {
                     b.HasOne("TanpooshStore.Domain.Entities.Product.CategoryEntity", "ParentCategory")
@@ -382,6 +485,11 @@ namespace TanpooshStore.Presistence.Migrations
                     b.Navigation("Role");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("TanpooshStore.Domain.Entities.Carts.CartEntity", b =>
+                {
+                    b.Navigation("CartItem");
                 });
 
             modelBuilder.Entity("TanpooshStore.Domain.Entities.Product.CategoryEntity", b =>

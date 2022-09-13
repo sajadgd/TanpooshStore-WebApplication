@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TanpooshStore.Application.Interfaces;
 using TanpooshStore.Common.Roles;
+using TanpooshStore.Domain.Entities.Carts;
 using TanpooshStore.Domain.Entities.HomePages;
 using TanpooshStore.Domain.Entities.Product;
 using TanpooshStore.Domain.Entities.Users;
@@ -27,6 +28,8 @@ namespace TanpooshStore.Presistence.Context
         public DbSet<ProductImageEntity> Tbl_ProductImages { get; set; }
         public DbSet<ProductFeaturesEntity> Tbl_ProductFeatures { get; set; }
         public DbSet<SliderEntity> Tbl_Slider { get; set; }
+        public DbSet<CartEntity> Tbl_Cart { get; set; }
+        public DbSet<CartItemEntity> Tbl_CartItem { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -49,6 +52,8 @@ namespace TanpooshStore.Presistence.Context
             modelBuilder.Entity<CategoryEntity>().HasQueryFilter(p => !p.IsRemoved);
             modelBuilder.Entity<ProductEntity>().HasQueryFilter(p => !p.IsRemoved);
             modelBuilder.Entity<SliderEntity>().HasQueryFilter(p => !p.IsRemoved);
+            modelBuilder.Entity<CartEntity>().HasQueryFilter(p => !p.IsRemoved);
+            modelBuilder.Entity<CartItemEntity>().HasQueryFilter(p => !p.IsRemoved);
         } 
 
         private void SeedData(ModelBuilder modelBuilder)

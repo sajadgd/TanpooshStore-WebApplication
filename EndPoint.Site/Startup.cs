@@ -12,6 +12,7 @@ using System;
 using TanpooshStore.Application;
 using TanpooshStore.Application.Interfaces;
 using TanpooshStore.Application.Interfaces.FacadPatterns;
+using TanpooshStore.Application.Services.Carts;
 using TanpooshStore.Application.Services.Common.Queries.GetMenuItem;
 using TanpooshStore.Application.Services.HomePages.FacadPattern;
 using TanpooshStore.Application.Services.Products.Commands.AddNewProduct.Dto;
@@ -59,6 +60,9 @@ namespace EndPoint.Site
 
             // HomePage Inject
             services.AddScoped<IHomePageFacad, HomePageFacad>();
+
+            // Cart Inject
+            services.AddScoped<ICartService, CartService>();
 
             services.AddEntityFrameworkSqlServer().AddDbContext<DatabaseContext>(option =>
                 option.UseSqlServer(Configuration.GetConnectionString("TanpooshStoreConnection")));

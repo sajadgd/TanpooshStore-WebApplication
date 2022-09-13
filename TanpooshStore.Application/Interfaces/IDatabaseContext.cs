@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using TanpooshStore.Domain.Entities.Carts;
 using TanpooshStore.Domain.Entities.HomePages;
 using TanpooshStore.Domain.Entities.Product;
 using TanpooshStore.Domain.Entities.Users;
@@ -21,6 +22,8 @@ namespace TanpooshStore.Application.Interfaces
         DbSet<ProductImageEntity> Tbl_ProductImages { get; set; }
         DbSet<ProductFeaturesEntity> Tbl_ProductFeatures { get; set; }
         DbSet<SliderEntity> Tbl_Slider { get; set; }
+        DbSet<CartEntity> Tbl_Cart { get; set; }
+        DbSet<CartItemEntity> Tbl_CartItem { get; set; }
 
         int SaveChanges(bool acceptAllChangesOnSuccess);
         int SaveChanges();

@@ -250,7 +250,7 @@
 	* Product Quantity
 	***********************/
 
-    $(".quantity").append('<div class="dec qtybutton">-</div><div class="inc qtybutton">+</div>');
+    //$(".quantity").append('<div class="dec qtybutton">-</div><div class="inc qtybutton">+</div>');
 
     $(".qtybutton").on("click", function () {
         var $button = $(this);

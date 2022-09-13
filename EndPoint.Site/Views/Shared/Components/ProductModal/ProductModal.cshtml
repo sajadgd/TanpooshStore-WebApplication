@@ -1,0 +1,81 @@
+﻿@using TanpooshStore.Application.Services.Products.Queries.Dto
+@model GetSiteProductDetailsDto
+@{
+    Layout = null;
+}
+
+@{
+    if (Model != null)
+    {
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="flaticon flaticon-cross"></i></span>
+                    </button>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="zakas-element-carousel nav-vertical-center"
+                             data-slick-options='{
+                                        "slidesToShow": 1,
+                                        "slidesToScroll": 1,
+                                        "arrows": true,
+                                        "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fa fa-angle-double-left" },
+                                        "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fa fa-angle-double-right" }
+                                    }'>
+                                @{
+                                    foreach (var item in Model.Images)
+                                    {
+                                        <div class="product-image">
+                                            <div class="product-image--holder">
+                                                <a href="product-details.html">
+                                                    <img src="~/@item.Src" alt="Product Image" class="primary-image">
+                                                </a>
+                                            </div>
+                                            <span class="product-badge sale">فروش</span>
+                                        </div>
+                                    }
+                                }
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="modal-box product-summary">
+                                <div class="product-navigation text-right mb--20">
+                                    <a href="#" class="next"><i class="fa fa-angle-double-right"></i></a>
+                                    <a href="#" class="prev"><i class="fa fa-angle-double-left"></i></a>
+                                </div>
+                                <div class="product-rating d-flex mb--20">
+                                    <div class="star-rating star-three">
+                                        <span>Rated <strong class="rating">5.00</strong> out of 5</span>
+                                    </div>
+                                </div>
+                                <h3 class="product-title mb--20">@Model.Name</h3>
+                                <p class="product-short-description mb--25">@Model.Description</p>
+                                <div class="product-price-wrapper mb--25">
+                                    <span class="money">@Model.Price.ToString("n0")</span>
+                                </div>
+                                <div class="product-action d-flex flex-sm-row flex-column align-items-sm-center align-items-start mb--30">
+                                    <button type="button" class="btn btn-small btn-bg-red btn-color-white btn-hover-2" onclick="window.location.href='/cart/AddToCart?@Model.Id'">
+                                        افزودن به سبد خرید
+                                    </button>
+                                </div>
+                                <div class="product-footer-meta">
+                                    <p>
+                                        <span>دسته بندی :</span>
+                                        <a asp-controller="Products" asp-action="Index">@Model.Category</a>,
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div></div>
+    }
+}
+

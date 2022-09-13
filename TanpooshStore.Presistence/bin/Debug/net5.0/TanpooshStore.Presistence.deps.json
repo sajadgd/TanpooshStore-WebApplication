@@ -1430,6 +1430,9 @@
         }
       },
       "TanpooshStore.Common/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0"
+        },
         "runtime": {
           "TanpooshStore.Common.dll": {}
         }

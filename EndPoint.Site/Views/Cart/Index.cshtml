@@ -1,0 +1,179 @@
+﻿@using TanpooshStore.Application.Services.Carts.Dto
+@model CartDto
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int sumTotal = 0;
+}
+
+<div class="breadcrumb-area bg-color ptb--90" data-bg-color="#f6f6f6" style="background-color: rgb(246, 246, 246);">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center flex-sm-row flex-column">
+                    <h1 class="page-title">سبد خرید</h1>
+                    <ul class="breadcrumb">
+                        <li><a asp-controller="Home" class="text-danger">خانه</a></li>/
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main-content-wrapper">
+    <div class="page-content-inner ptb--80">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mb-md--50">
+                    <form class="cart-form" action="#">
+                        <div class="row no-gutters">
+                            <div class="col-12">
+                                <div class="table-content table-responsive">
+                                    <table class="table text-center">
+                                        <thead>
+                                            <tr>
+                                                <th>&nbsp;</th>
+                                                <th>&nbsp;</th>
+                                                <th class="text-left">محصول</th>
+                                                <th>قیمت</th>
+                                                <th>تعداد</th>
+                                                <th>قیمت کل</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                if (Model != null)
+                                                {
+                                                    foreach (var item in Model.CartItems)
+                                                    {
+
+                                                        <tr>
+                                                            <td class="product-remove text-left"><a asp-controller="Cart" asp-action="Remove" asp-route-productId="@item.ProductId"><i class="flaticon flaticon-cross"></i></a></td>
+                                                            <td class="product-thumbnail text-left">
+                                                                <img src="~/@item.ProductImage" alt="Product Thumnail">
+                                                            </td>
+                                                            <td class="product-name text-left wide-column">
+                                                                <h3>
+                                                                    <a asp-controller="Products" asp-action="Details" asp-route-productId="@item.ProductId">@item.ProductName</a>
+                                                                </h3>
+                                                            </td>
+                                                            <td class="product-price">
+                                                                <span class="product-price-wrapper">
+                                                                    <span class="money">@item.ProductPrice.ToString("n0")</span>
+                                                                </span>
+                                                            </td>
+                                                            <td class="product-quantity">
+                                                                <div class="quantity">
+                                                                    <input type="number" class="quantity-input" id="qty-@item.Id" value="@item.ProductCount" min="1">
+                                                                    <div class="dec qtybutton" onclick="DecCount('@item.Id')">-</div><div class="inc qtybutton" onclick="IncCount('@item.Id')">+</div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="product-total-price">
+                                                                <span class="product-price-wrapper">
+                                                                    @{
+                                                                        int total = item.ProductCount * item.ProductPrice;
+                                                                        sumTotal += total;
+                                                                    }
+                                                                    <span class="money">@total.ToString("n0")</span>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <h1>سبد خرید شما خالی می باشد !</h1>
+                                                }
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row no-gutters border-top pt--20 mt--20">
+                            <div class="col-sm-6 text-sm-right">
+                                <button type="submit" class="cart-form__btn">بازگردانی سبد</button>
+                                <button type="submit" class="cart-form__btn">بازیابی سبد</button>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="coupon">
+                                    <button type="submit" class="cart-form__btn">اعمال</button>
+                                    <input type="text" id="coupon" name="coupon" class="cart-form__input" placeholder="کد تخفیف" style="text-align:left;">
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-4">
+                    <div class="cart-collaterals">
+                        @{
+                            if (Model != null)
+                            {
+                                <div class="cart-totals">
+                                    <h5 class="font-size-14 font-bold mb--15">کل سبد خرید</h5>
+                                    <div class="cart-calculator">
+                                        <div class="cart-calculator__item">
+                                            <div class="cart-calculator__item--head">
+                                                <span>جمع کل قیمت</span>
+                                            </div>
+                                            <div class="cart-calculator__item--value">
+                                                <span>@sumTotal.ToString("n0")</span>
+                                            </div>
+                                        </div>
+                                        <div class="cart-calculator__item">
+                                            <div class="cart-calculator__item--head">
+                                                <span>حمل و نقل</span>
+                                            </div>
+                                            <div class="cart-calculator__item--value">
+                                                <span>نرخ حمل: 20,000 تومان</span>
+                                            </div>
+                                        </div>
+                                        <div class="cart-calculator__item order-total">
+                                            <div class="cart-calculator__item--head">
+                                                <span>قیمت تمام شده</span>
+                                            </div>
+                                            <div class="cart-calculator__item--value">
+                                                <span class="product-price-wrapper">
+                                                    <span class="money">
+                                                        @{
+                                                            int allMoney = sumTotal + 20000;
+                                                        }
+                                                        @allMoney.ToString("n0") تومان
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <h3>اطلاعاتی از سبد خرید شما موجود نیست !!!</h3>
+                            }
+                        }
+
+                        <a href="checkout.html" class="btn btn-fullwidth btn-bg-red btn-color-white btn-hover-2">
+                            تسویه حساب
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+<script>
+    function IncCount(cartItemId){
+        window.location.replace('/Cart/IncreaseCount?cartItemId=' + cartItemId);
+    }
+    function DecCount(cartItemId){
+        window.location.replace('/Cart/DecreaseCount?cartItemId=' + cartItemId);
+    }
+</script>
+}

@@ -1,0 +1,55 @@
+﻿@using TanpooshStore.Application.Services.Carts.Dto
+@model CartDto
+
+@{
+    Layout = null;
+    int sumTotal = 0;
+}
+
+<div class="mini-cart-wrapper">
+    <a href="" class="btn-close"><i class="flaticon flaticon-cross"></i></a>
+    <div class="mini-cart-inner">
+        <h3 class="mini-cart__heading mb--40 mb-lg--30">سبد خرید</h3>
+        <div class="mini-cart__content">
+            <ul class="mini-cart__list">
+                @{
+                    if (Model != null)
+                    {
+                        foreach (var item in Model.CartItems)
+                        {
+                            <li class="mini-cart__product">
+                                <a asp-controller="Cart" asp-action="Remove" asp-route-productId="@item.ProductId" class="remove-from-cart remove">
+                                    <i class="flaticon flaticon-cross"></i>
+                                </a>
+                                <div class="mini-cart__product__image">
+                                    <img src="~/@item.ProductImage" alt="products">
+                                </div>
+                                <div class="mini-cart__product__content">
+                                    <a class="mini-cart__product__title" asp-controller="Products" asp-action="Details" asp-route-productId="@item.ProductId">@item.ProductName</a>
+                                    @{
+                                        int total = @item.ProductCount * @item.ProductPrice;
+                                        sumTotal += total;
+                                    }
+                                    <span class="mini-cart__product__quantity">@total.ToString("n0")</span>
+                                </div>
+                            </li>
+                        }
+                    }
+                    else
+                    {
+                        <h1>سبد خرید شما خالی است !!!!!</h1>
+                    }
+                }
+
+            </ul>
+            <div class="mini-cart__total">
+                <span>جمع کل</span>
+                <span class="ammount">@sumTotal.ToString("n0")</span>
+            </div>
+            <div class="mini-cart__buttons">
+                <a asp-controller="Cart" asp-action="Index" class="btn btn-fullwidth btn-bg-sand mb--20">مشاهده سبد خرید</a>
+                <a href="checkout.html" class="btn btn-fullwidth btn-bg-sand">صورتحساب</a>
+            </div>
+        </div>
+    </div>
+</div>
