@@ -44,7 +44,7 @@
                                         </thead>
                                         <tbody>
                                             @{
-                                                if (Model != null)
+                                                if (Model.CartItems != null)
                                                 {
                                                     foreach (var item in Model.CartItems)
                                                     {
@@ -73,10 +73,9 @@
                                                             <td class="product-total-price">
                                                                 <span class="product-price-wrapper">
                                                                     @{
-                                                                        int total = item.ProductCount * item.ProductPrice;
-                                                                        sumTotal += total;
+                                                                        sumTotal += Model.SumAmount;
                                                                     }
-                                                                    <span class="money">@total.ToString("n0")</span>
+                                                                    <span class="money">@Model.SumAmount.ToString("n0")</span>
                                                                 </span>
                                                             </td>
                                                         </tr>
@@ -111,7 +110,7 @@
                 <div class="col-lg-4">
                     <div class="cart-collaterals">
                         @{
-                            if (Model != null)
+                            if (Model.CartItems != null)
                             {
                                 <div class="cart-totals">
                                     <h5 class="font-size-14 font-bold mb--15">کل سبد خرید</h5>
@@ -156,7 +155,7 @@
                             }
                         }
 
-                        <a href="checkout.html" class="btn btn-fullwidth btn-bg-red btn-color-white btn-hover-2">
+                        <a asp-controller="Pay" asp-action="Index" class="btn btn-fullwidth btn-bg-red btn-color-white btn-hover-2">
                             تسویه حساب
                         </a>
                     </div>

@@ -181,3 +181,7 @@ E:\Web\TanpooshStore\EndPoint.Site\obj\Debug\net5.0\Razor\Areas\Admin\Views\Slid
 E:\Web\TanpooshStore\EndPoint.Site\obj\Debug\net5.0\Razor\Views\Cart\Index.cshtml.g.cs
 E:\Web\TanpooshStore\EndPoint.Site\obj\Debug\net5.0\Razor\Views\Shared\Components\MiniCart\MiniCart.cshtml.g.cs
 E:\Web\TanpooshStore\EndPoint.Site\obj\Debug\net5.0\Razor\Views\Shared\Components\ProductModal\ProductModal.cshtml.g.cs
+E:\Web\TanpooshStore\EndPoint.Site\bin\Debug\net5.0\Dto.dll
+E:\Web\TanpooshStore\EndPoint.Site\bin\Debug\net5.0\Service.dll
+E:\Web\TanpooshStore\EndPoint.Site\bin\Debug\net5.0\ZarinPal.dll
+E:\Web\TanpooshStore\EndPoint.Site\obj\Debug\net5.0\Razor\Views\Orders\Index.cshtml.g.cs

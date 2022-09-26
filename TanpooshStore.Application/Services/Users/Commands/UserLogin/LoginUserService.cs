@@ -65,10 +65,10 @@ namespace TanpooshStore.Application.Services.Users.Commands.UserLogin
                 };
                 return result3;
             }
-            var roles = "";
+            var roles = new List<string>();
             foreach (var item in user.UserInRole)
             {
-                roles += $"{item.Role.Name}";
+                roles.Add(item.Role.Name);
             }
             var result = new ResultDto<LoginResultDto>()
             {

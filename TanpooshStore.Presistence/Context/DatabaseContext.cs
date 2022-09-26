@@ -8,16 +8,18 @@ using TanpooshStore.Application.Interfaces;
 using TanpooshStore.Common.Roles;
 using TanpooshStore.Domain.Entities.Carts;
 using TanpooshStore.Domain.Entities.HomePages;
+using TanpooshStore.Domain.Entities.Order;
 using TanpooshStore.Domain.Entities.Product;
+using TanpooshStore.Domain.Entities.RequestPay;
 using TanpooshStore.Domain.Entities.Users;
 
 namespace TanpooshStore.Presistence.Context
 {
-    public class DatabaseContext:DbContext, IDatabaseContext
+    public class DatabaseContext : DbContext, IDatabaseContext
     {
-        public DatabaseContext(DbContextOptions options):base(options)
+        public DatabaseContext(DbContextOptions options) : base(options)
         {
-            
+
         }
 
         public DbSet<UserEntity> Tbl_Users { get; set; }
@@ -30,14 +32,27 @@ namespace TanpooshStore.Presistence.Context
         public DbSet<SliderEntity> Tbl_Slider { get; set; }
         public DbSet<CartEntity> Tbl_Cart { get; set; }
         public DbSet<CartItemEntity> Tbl_CartItem { get; set; }
+        public DbSet<RequestPayEntity> Tbl_RequestPay { get; set; }
+        public DbSet<OrderEntity> Tbl_Order { get; set; }
+        public DbSet<OrderDetailEntity> Tbl_OrderDetail { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<OrderEntity>()
+                .HasOne(p => p.User)
+                .WithMany(u => u.Order)
+                .OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<OrderEntity>()
+                .HasOne(p => p.RequestPay)
+                .WithMany(u => u.Order)
+                .OnDelete(DeleteBehavior.NoAction);
+
             SeedData(modelBuilder);
 
             //////////////
 
             modelBuilder.Entity<UserEntity>().HasIndex(u => u.Email).IsUnique();
+            modelBuilder.Entity<UserEntity>().HasIndex(u => u.Mobile).IsUnique();
 
             //////////////
             ///
@@ -54,7 +69,10 @@ namespace TanpooshStore.Presistence.Context
             modelBuilder.Entity<SliderEntity>().HasQueryFilter(p => !p.IsRemoved);
             modelBuilder.Entity<CartEntity>().HasQueryFilter(p => !p.IsRemoved);
             modelBuilder.Entity<CartItemEntity>().HasQueryFilter(p => !p.IsRemoved);
-        } 
+            modelBuilder.Entity<RequestPayEntity>().HasQueryFilter(p => !p.IsRemoved);
+            modelBuilder.Entity<OrderEntity>().HasQueryFilter(p => !p.IsRemoved);
+            modelBuilder.Entity<OrderDetailEntity>().HasQueryFilter(p => !p.IsRemoved);
+        }
 
         private void SeedData(ModelBuilder modelBuilder)
         {

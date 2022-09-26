@@ -84,7 +84,7 @@ namespace TanpooshStore.Application.Services.Carts
             return result;
         }
 
-        public ResultDto<CartDto> GetMyCart(Guid browserId)
+        public ResultDto<CartDto> GetMyCart(Guid browserId, int? userId)
         {
             var cart = _context.Tbl_Cart
                 .Include(p => p.CartItem).
@@ -97,11 +97,23 @@ namespace TanpooshStore.Application.Services.Carts
             {
                 var result1 = new ResultDto<CartDto>
                 {
-                    Data = null,
+                    Data = new CartDto
+                    {
+                        CartItems = null,
+                        ProductCount = 0,
+                        SumAmount = 0,
+                    },
                     IsSuccess = false,
                     Message = ""
                 };
                 return result1;
+            }
+     
+            if (userId != null)
+            {
+                var user = _context.Tbl_Users.Find(userId);
+                cart.User = user;
+                _context.SaveChanges();
             }
 
             var cartData = new CartDto
@@ -114,7 +126,10 @@ namespace TanpooshStore.Application.Services.Carts
                     ProductName = c.Product.Name,
                     ProductImage = c.Product.ProductImages.FirstOrDefault().Src,
                     ProductPrice = c.Price
-                }).ToList()
+                }).ToList(),
+                SumAmount = cart.CartItem.Sum(s => s.Count * s.Price),
+                ProductCount = cart.CartItem.Count(),
+                CartId = cart.Id,
             };
 
             var result = new ResultDto<CartDto>

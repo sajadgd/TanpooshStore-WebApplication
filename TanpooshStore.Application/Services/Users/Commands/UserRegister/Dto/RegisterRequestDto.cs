@@ -16,6 +16,9 @@ namespace TanpooshStore.Application.Services.Users.Commands.UserRegister.Dto
         [Display(Name = "ایمیل")]
         public string Email { get; set; }
 
+        [Display(Name = "شماره تلفن")]
+        public string Mobile { get; set; }
+
         [Display(Name = "گذرواژه")]
         public string Password { get; set; }
 

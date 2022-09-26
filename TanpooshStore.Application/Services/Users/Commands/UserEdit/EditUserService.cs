@@ -47,6 +47,7 @@ namespace TanpooshStore.Application.Services.Users.Commands.UserEdit
             }
             user.FullName = request.FullName;
             user.Email = request.Email;
+            user.Mobile = request.Mobile;
             user.UpdateTime = DateTime.Now;
             _context.SaveChanges();
 

@@ -14,13 +14,16 @@ using TanpooshStore.Application.Interfaces;
 using TanpooshStore.Application.Interfaces.FacadPatterns;
 using TanpooshStore.Application.Services.Carts;
 using TanpooshStore.Application.Services.Common.Queries.GetMenuItem;
+using TanpooshStore.Application.Services.Finances.FacadPattern;
 using TanpooshStore.Application.Services.HomePages.FacadPattern;
+using TanpooshStore.Application.Services.Order.FacadPattern;
 using TanpooshStore.Application.Services.Products.Commands.AddNewProduct.Dto;
 using TanpooshStore.Application.Services.Products.Commands.EditProduct;
 using TanpooshStore.Application.Services.Products.FacadPattern;
 using TanpooshStore.Application.Services.Users.Commands.UserRegister.Dto;
 using TanpooshStore.Application.Services.Users.FacadPattern;
 using TanpooshStore.Application.Validators;
+using TanpooshStore.Common.Roles;
 using TanpooshStore.Presistence.Context;
 
 namespace EndPoint.Site
@@ -37,6 +40,13 @@ namespace EndPoint.Site
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy(UserRoles.Admin, policy => policy.RequireRole(UserRoles.Admin));
+                options.AddPolicy(UserRoles.Operator, policy => policy.RequireRole(UserRoles.Operator));
+                options.AddPolicy(UserRoles.Customer, policy => policy.RequireRole(UserRoles.Customer));
+            });
+
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -44,7 +54,7 @@ namespace EndPoint.Site
                 options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             }).AddCookie(options =>
             {
-                options.LoginPath = new PathString("/");
+                options.LoginPath = new PathString("/LoginRegister");
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(0.5);
             });
             services.AddScoped<IDatabaseContext, DatabaseContext>();
@@ -63,6 +73,12 @@ namespace EndPoint.Site
 
             // Cart Inject
             services.AddScoped<ICartService, CartService>();
+
+            // Finances Inject
+            services.AddScoped<IFinancesFacad, FinancesFacad>();
+
+            // Order Inject
+            services.AddScoped<IOrderFacad, OrderFacad>();
 
             services.AddEntityFrameworkSqlServer().AddDbContext<DatabaseContext>(option =>
                 option.UseSqlServer(Configuration.GetConnectionString("TanpooshStoreConnection")));
@@ -90,8 +106,8 @@ namespace EndPoint.Site
 
             app.UseRouting();
 
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

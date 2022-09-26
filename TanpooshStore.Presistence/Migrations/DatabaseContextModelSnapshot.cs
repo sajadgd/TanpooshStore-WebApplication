@@ -32,6 +32,9 @@ namespace TanpooshStore.Presistence.Migrations
                     b.Property<bool>("Finished")
                         .HasColumnType("bit");
 
+                    b.Property<DateTime>("FinishedTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("InsertTime")
                         .HasColumnType("datetime2");
 
@@ -122,6 +125,86 @@ namespace TanpooshStore.Presistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tbl_Slider");
+                });
+
+            modelBuilder.Entity("TanpooshStore.Domain.Entities.Order.OrderDetailEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("InsertTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsRemoved")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("RemoveTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("UpdateTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Tbl_OrderDetail");
+                });
+
+            modelBuilder.Entity("TanpooshStore.Domain.Entities.Order.OrderEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("InsertTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsRemoved")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("OrderState")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("RemoveTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("RequestPayId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RequestPayId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Tbl_Order");
                 });
 
             modelBuilder.Entity("TanpooshStore.Domain.Entities.Product.CategoryEntity", b =>
@@ -273,6 +356,53 @@ namespace TanpooshStore.Presistence.Migrations
                     b.ToTable("Tbl_ProductImages");
                 });
 
+            modelBuilder.Entity("TanpooshStore.Domain.Entities.RequestPay.RequestPayEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Authority")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("GUId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("InsertTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsPaid")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsRemoved")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("PayDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("RefId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("RemoveTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("UpdateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Tbl_RequestPay");
+                });
+
             modelBuilder.Entity("TanpooshStore.Domain.Entities.Users.RoleEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -304,21 +434,21 @@ namespace TanpooshStore.Presistence.Migrations
                         new
                         {
                             Id = 1,
-                            InsertTime = new DateTime(2022, 8, 25, 13, 16, 45, 815, DateTimeKind.Local).AddTicks(5701),
+                            InsertTime = new DateTime(2022, 9, 24, 17, 33, 56, 602, DateTimeKind.Local).AddTicks(6620),
                             IsRemoved = false,
                             Name = "Admin"
                         },
                         new
                         {
                             Id = 2,
-                            InsertTime = new DateTime(2022, 8, 25, 13, 16, 45, 819, DateTimeKind.Local).AddTicks(3170),
+                            InsertTime = new DateTime(2022, 9, 24, 17, 33, 56, 606, DateTimeKind.Local).AddTicks(9408),
                             IsRemoved = false,
                             Name = "Operator"
                         },
                         new
                         {
                             Id = 3,
-                            InsertTime = new DateTime(2022, 8, 25, 13, 16, 45, 819, DateTimeKind.Local).AddTicks(3497),
+                            InsertTime = new DateTime(2022, 9, 24, 17, 33, 56, 606, DateTimeKind.Local).AddTicks(9577),
                             IsRemoved = false,
                             Name = "Customer"
                         });
@@ -346,6 +476,9 @@ namespace TanpooshStore.Presistence.Migrations
                     b.Property<bool>("IsRemoved")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Mobile")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
@@ -360,6 +493,10 @@ namespace TanpooshStore.Presistence.Migrations
                     b.HasIndex("Email")
                         .IsUnique()
                         .HasFilter("[Email] IS NOT NULL");
+
+                    b.HasIndex("Mobile")
+                        .IsUnique()
+                        .HasFilter("[Mobile] IS NOT NULL");
 
                     b.ToTable("Tbl_Users");
                 });
@@ -426,6 +563,44 @@ namespace TanpooshStore.Presistence.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("TanpooshStore.Domain.Entities.Order.OrderDetailEntity", b =>
+                {
+                    b.HasOne("TanpooshStore.Domain.Entities.Order.OrderEntity", "Order")
+                        .WithMany()
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TanpooshStore.Domain.Entities.Product.ProductEntity", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("TanpooshStore.Domain.Entities.Order.OrderEntity", b =>
+                {
+                    b.HasOne("TanpooshStore.Domain.Entities.RequestPay.RequestPayEntity", "RequestPay")
+                        .WithMany("Order")
+                        .HasForeignKey("RequestPayId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("TanpooshStore.Domain.Entities.Users.UserEntity", "User")
+                        .WithMany("Order")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("RequestPay");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("TanpooshStore.Domain.Entities.Product.CategoryEntity", b =>
                 {
                     b.HasOne("TanpooshStore.Domain.Entities.Product.CategoryEntity", "ParentCategory")
@@ -468,6 +643,17 @@ namespace TanpooshStore.Presistence.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("TanpooshStore.Domain.Entities.RequestPay.RequestPayEntity", b =>
+                {
+                    b.HasOne("TanpooshStore.Domain.Entities.Users.UserEntity", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("TanpooshStore.Domain.Entities.Users.UserInRoleEntity", b =>
                 {
                     b.HasOne("TanpooshStore.Domain.Entities.Users.RoleEntity", "Role")
@@ -506,6 +692,11 @@ namespace TanpooshStore.Presistence.Migrations
                     b.Navigation("ProductImages");
                 });
 
+            modelBuilder.Entity("TanpooshStore.Domain.Entities.RequestPay.RequestPayEntity", b =>
+                {
+                    b.Navigation("Order");
+                });
+
             modelBuilder.Entity("TanpooshStore.Domain.Entities.Users.RoleEntity", b =>
                 {
                     b.Navigation("UserInRole");
@@ -513,6 +704,8 @@ namespace TanpooshStore.Presistence.Migrations
 
             modelBuilder.Entity("TanpooshStore.Domain.Entities.Users.UserEntity", b =>
                 {
+                    b.Navigation("Order");
+
                     b.Navigation("UserInRole");
                 });
 #pragma warning restore 612, 618

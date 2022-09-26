@@ -16,7 +16,8 @@ namespace EndPoint.Site.Controllers
         public IActionResult Index()
         {
             var browserId = _cookieManager.GetBrowserId(HttpContext);
-            var model = _cartService.GetMyCart(browserId).Data;
+            var userId = ClaimsUtility.GetUserId(User);
+            var model = _cartService.GetMyCart(browserId, userId).Data;
             return View(model);
         }
 
@@ -31,7 +32,8 @@ namespace EndPoint.Site.Controllers
         public IActionResult IncreaseCount(int cartItemId)
         {
             var browserId = _cookieManager.GetBrowserId(HttpContext);
-            var model = _cartService.GetMyCart(browserId).Data.CartItems;
+            var userId = ClaimsUtility.GetUserId(User);
+            var model = _cartService.GetMyCart(browserId, userId).Data.CartItems;
             foreach (var item in model)
             {
                 if (item.Id == cartItemId)
@@ -48,7 +50,8 @@ namespace EndPoint.Site.Controllers
         public IActionResult DecreaseCount(int cartItemId)
         {
             var browserId = _cookieManager.GetBrowserId(HttpContext);
-            var model = _cartService.GetMyCart(browserId).Data.CartItems;
+            var userId = ClaimsUtility.GetUserId(User);
+            var model = _cartService.GetMyCart(browserId, userId).Data.CartItems;
             foreach (var item in model)
             {
                 if (item.Id == cartItemId)
@@ -65,7 +68,8 @@ namespace EndPoint.Site.Controllers
         public IActionResult Remove(int productId)
         {
             var browserId = _cookieManager.GetBrowserId(HttpContext);
-            var model = _cartService.GetMyCart(browserId).Data.CartItems;
+            var userId = ClaimsUtility.GetUserId(User);
+            var model = _cartService.GetMyCart(browserId, userId).Data.CartItems;
             foreach (var item in model)
             {
                 if (item.ProductId == productId)

@@ -14,6 +14,7 @@ namespace TanpooshStore.Domain.Entities.Carts
         public int? UserId { get; set; } //fk
         public Guid BrowserId { get; set; }
         public bool Finished { get; set; }
+        public DateTime FinishedTime { get; set; }
 
         [ForeignKey("UserId")]
         public virtual UserEntity User { get; set; }

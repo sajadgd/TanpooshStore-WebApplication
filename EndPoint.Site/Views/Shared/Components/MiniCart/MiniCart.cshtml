@@ -13,7 +13,7 @@
         <div class="mini-cart__content">
             <ul class="mini-cart__list">
                 @{
-                    if (Model != null)
+                    if (Model.CartItems != null)
                     {
                         foreach (var item in Model.CartItems)
                         {
@@ -48,7 +48,7 @@
             </div>
             <div class="mini-cart__buttons">
                 <a asp-controller="Cart" asp-action="Index" class="btn btn-fullwidth btn-bg-sand mb--20">مشاهده سبد خرید</a>
-                <a href="checkout.html" class="btn btn-fullwidth btn-bg-sand">صورتحساب</a>
+                <a class="btn btn-fullwidth btn-bg-sand" asp-controller="Pay" asp-action="Index">صورتحساب</a>
             </div>
         </div>
     </div>

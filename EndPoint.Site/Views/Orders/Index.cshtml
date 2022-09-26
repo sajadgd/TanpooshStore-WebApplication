@@ -1,0 +1,47 @@
+﻿@using TanpooshStore.Application.Services.Order.Queries.GetUserOrder.Dto
+@model List<UserOrderDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>سفارشات من</h1>
+
+<table>
+    <thead>
+        <tr style="border:solid">
+            <th>شماره سفارش</th>
+            <th>شماره فاکتور</th>
+            <th>وضعیت سفارش</th>
+            <th>محصولات سفارش</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var item in Model)
+            {
+                <tr style="border:solid">
+                    <td>@item.OrderId</td>
+                    <td>@item.RequestPayId</td>
+                    <td>@item.OrderState</td>
+                    <td>
+                        <table>
+                            @{
+                                foreach(var item2 in item.OrderDetails)
+                                {
+                                    <tr style="border:outset">
+                                        <td>@item2.ProductName</td>
+                                        <td>@item2.Price</td>
+                                        <td>@item2.Count</td>
+                                    </tr>
+                                }
+                            }
+                        </table>
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>

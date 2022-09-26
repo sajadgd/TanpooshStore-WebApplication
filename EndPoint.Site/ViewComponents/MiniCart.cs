@@ -17,7 +17,8 @@ namespace EndPoint.Site.ViewComponents
         public IViewComponentResult Invoke()
         {
             var browserId = _cookieManager.GetBrowserId(HttpContext);
-            var model = _cartService.GetMyCart(browserId).Data;
+            var userId = ClaimsUtility.GetUserId(HttpContext.User);
+            var model = _cartService.GetMyCart(browserId, userId).Data;
             return View(viewName: "MiniCart", model);
 
         }

@@ -78,9 +78,12 @@ namespace EndPoint.Site.Controllers
                 {
                     new Claim(ClaimTypes.NameIdentifier, loginResult.Data.UserId.ToString()),
                     new Claim(ClaimTypes.Email, email),
-                    new Claim(ClaimTypes.Name, loginResult.Data.FullName),
-                    new Claim(ClaimTypes.Role, loginResult.Data.Roles)
+                    new Claim(ClaimTypes.Name, loginResult.Data.FullName) 
                 };
+                foreach (var item in loginResult.Data.Roles)
+                {
+                    claims.Add(new Claim(ClaimTypes.Role, item));
+                }   
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var principal = new ClaimsPrincipal(identity);
                 var properties = new AuthenticationProperties()

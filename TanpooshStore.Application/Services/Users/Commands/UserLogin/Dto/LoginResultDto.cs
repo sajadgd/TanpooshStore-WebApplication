@@ -10,6 +10,6 @@ namespace TanpooshStore.Application.Services.Users.Commands.UserLogin.Dto
     {
         public int UserId { get; set; }
         public string FullName { get; set; }
-        public string Roles { get; set; }
+        public List<string> Roles { get; set; }
     }
 }

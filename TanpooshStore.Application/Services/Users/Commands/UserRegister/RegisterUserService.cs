@@ -51,6 +51,7 @@ namespace TanpooshStore.Application.Services.Users.Commands.UserRegister
                     {
                         FullName = request.FullName,
                         Email = request.Email,
+                        Mobile = request.Mobile,
                         Password = hashedPassword,
                         IsActive = true
                     };

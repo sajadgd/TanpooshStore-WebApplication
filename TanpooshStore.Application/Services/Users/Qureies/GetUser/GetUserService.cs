@@ -29,6 +29,7 @@ namespace TanpooshStore.Application.Services.Users.Qureies.GetUser
                 Id = s.Id,
                 FullName = s.FullName,
                 Email = s.Email,
+                Mobile = s.Mobile,
                 IsActive= s.IsActive
             }).ToList();
             return new GetUserResultDto
