@@ -270,6 +270,20 @@
                         </ul>
 
                         <a href="#">
+                            <i class="fa fa-users"></i> <span>مدیریت سفارشات</span>
+                            <span class="pull-left-container">
+                                <i class="fa fa-angle-right pull-left"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="active">
+                                <a asp-controller="Order" asp-action="Index" asp-route-orderState="Processing"><i class="fa fa-circle-o"></i>لیست در حال پردازش</a>
+                            </li>
+                            <li><a asp-controller="Order" asp-action="Index" asp-route-orderState="Canceled"><i class="fa fa-circle-o"></i>لیست لغو شده ها</a></li>
+                            <li><a asp-controller="Order" asp-action="Index" asp-route-orderState="Delivered"><i class="fa fa-circle-o"></i>لیست تحویل شده ها</a></li>
+                        </ul>
+
+                        <a href="#">
                             <i class="fa fa-crop"></i> <span>مدیریت دسته بندیها</span>
                             <span class="pull-left-container">
                                 <i class="fa fa-angle-right pull-left"></i>

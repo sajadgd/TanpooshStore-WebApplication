@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TanpooshStore.Application.Interfaces;
 using TanpooshStore.Application.Interfaces.FacadPatterns;
 using TanpooshStore.Application.Services.Order.Commands.AddNewOrder;
+using TanpooshStore.Application.Services.Order.Queries.GetAdminOrder;
 using TanpooshStore.Application.Services.Order.Queries.GetUserOrder;
 
 namespace TanpooshStore.Application.Services.Order.FacadPattern
@@ -28,6 +29,12 @@ namespace TanpooshStore.Application.Services.Order.FacadPattern
         public GetUserOrderService getUserOrderService 
         {
             get { return _getUserOrderService ?? new GetUserOrderService(_context); }
+        }
+
+        private readonly GetAdminOrderService _getAdminOrderService;
+        public GetAdminOrderService getAdminOrderService
+        {
+            get { return _getAdminOrderService ?? new GetAdminOrderService(_context); }
         }
     }
 }

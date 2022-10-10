@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TanpooshStore.Application.Services.Order.Commands.AddNewOrder;
+using TanpooshStore.Application.Services.Order.Queries.GetAdminOrder;
 using TanpooshStore.Application.Services.Order.Queries.GetUserOrder;
 
 namespace TanpooshStore.Application.Interfaces.FacadPatterns
@@ -12,5 +13,6 @@ namespace TanpooshStore.Application.Interfaces.FacadPatterns
     {
         AddNewOrderService addNewOrderService { get; }
         GetUserOrderService getUserOrderService { get; }
+        GetAdminOrderService getAdminOrderService { get; }
     }
 }

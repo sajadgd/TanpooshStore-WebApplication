@@ -185,3 +185,4 @@ E:\Web\TanpooshStore\EndPoint.Site\bin\Debug\net5.0\Dto.dll
 E:\Web\TanpooshStore\EndPoint.Site\bin\Debug\net5.0\Service.dll
 E:\Web\TanpooshStore\EndPoint.Site\bin\Debug\net5.0\ZarinPal.dll
 E:\Web\TanpooshStore\EndPoint.Site\obj\Debug\net5.0\Razor\Views\Orders\Index.cshtml.g.cs
+E:\Web\TanpooshStore\EndPoint.Site\obj\Debug\net5.0\Razor\Areas\Admin\Views\Order\Index.cshtml.g.cs

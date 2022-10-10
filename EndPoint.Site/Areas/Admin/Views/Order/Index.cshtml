@@ -1,0 +1,99 @@
+﻿@addTagHelper *, LazZiya.TagHelpers
+@using TanpooshStore.Application.Services.Order.Queries.GetAdminOrder.Dto
+@model AdminOrderPaginationDto
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        سفارشات
+        <small>لیست</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-users"></i> خانه</a></li>
+        <li><a href="#">سفارشات</a></li>
+        <li class="active">لیست</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">لیست سفارشات</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="شناسه سفارش : activate to sort column descending" aria-sort="ascending" style="width: 182.225px;">شناسه سفارش</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="زمان ثبت : activate to sort column ascending" style="width: 340.788px;">زمان ثبت</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="شناسه فاکتور : activate to sort column ascending" style="width: 327.375px;">شناسه فاکتور</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="وضعیت سفارش : activate to sort column ascending" style="width: 327.375px;">وضعیت سفارش</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="تعداد محصول : activate to sort column ascending" style="width: 327.375px;">تعداد محصول</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="activate to sort column ascending" style="width: 327.375px;"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                                            foreach (var item in Model.Orders)
+                                            {
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1">@item.OrderId</td>
+                                                    <td>@item.InsertTime</td>
+                                                    <td>@item.RequestPayId</td>
+                                                    <td>@item.OrderState</td>
+                                                    <td>@item.ProductCount</td>
+                                                    <td>
+                                                        <a class="btn btn-info">کاربر ثبت کننده سفارش</a>
+                                                        <a class="btn btn-danger">مشاهده فاکتور</a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th rowspan="1" colspan="1">شناسه سفارش</th>
+                                            <th rowspan="1" colspan="1">زمان ثبت</th>
+                                            <th rowspan="1" colspan="1">شناسه فاکتور</th>
+                                            <th rowspan="1" colspan="1">وضعیت سفارش</th>
+                                            <th rowspan="1" colspan="1">تعداد محصول</th>
+                                            <th rowspan="1" colspan="1"></th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-sm-7">
+                            <paging class="row" total-records="Model.RowCount"
+                                    page-no="Model.Page"
+                                    page-size="Model.PageSize"
+                                    show-prev-next="true"
+                                    show-total-pages="false"
+                                    show-total-records="false"
+                                    show-page-size-nav="true"
+                                    show-first-last="true"
+                                    query-string-key-page-no="page"
+                                    query-string-key-page-size="pageSize">
+                            </paging>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
