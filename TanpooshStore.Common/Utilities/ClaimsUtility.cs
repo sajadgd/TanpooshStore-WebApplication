@@ -22,5 +22,37 @@ namespace TanpooshStore.Common.Utilities
                 return null;
             }
         }
+
+        public static string GetUserName(ClaimsPrincipal user)
+        {
+            try
+            {
+                var claimsIdentity = user.Identity as ClaimsIdentity;
+                string userName = claimsIdentity.FindFirst(ClaimTypes.Name).Value;
+                return userName;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static List<string> GetUserRoles(ClaimsPrincipal user)
+        {
+            try
+            {
+                var claimsIdentity = user.Identity as ClaimsIdentity;
+                List<string> userRoles = new List<string>();
+                foreach (var item in claimsIdentity.Claims.Where(p => p.Type.EndsWith("role")))
+                {
+                    userRoles.Add(item.Value);
+                }
+                return userRoles;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

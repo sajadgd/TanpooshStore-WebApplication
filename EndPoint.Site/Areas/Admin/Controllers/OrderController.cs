@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TanpooshStore.Application.Interfaces.FacadPatterns;
 using TanpooshStore.Application.Services.Order.Queries.GetAdminOrder.Dto;
 using TanpooshStore.Domain.Entities.Order;
@@ -6,6 +7,7 @@ using TanpooshStore.Domain.Entities.Order;
 namespace EndPoint.Site.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin,Operator")]
     public class OrderController : Controller
     {
         private readonly IOrderFacad _orderFacad;
@@ -22,6 +24,13 @@ namespace EndPoint.Site.Areas.Admin.Controllers
                 OrderState = orderState
             }).Data;
             return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult ChangeOrderState(int orderId, int orderState)
+        {
+            var result = _orderFacad.changeOrderStateService.Execute(orderId, orderState);
+            return Json(result);
         }
     }
 }

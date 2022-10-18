@@ -55,6 +55,7 @@ namespace EndPoint.Site
             }).AddCookie(options =>
             {
                 options.LoginPath = new PathString("/LoginRegister");
+                options.AccessDeniedPath = new PathString("/LoginRegister");
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(0.5);
             });
             services.AddScoped<IDatabaseContext, DatabaseContext>();

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TanpooshStore.Application.Interfaces;
 using TanpooshStore.Application.Interfaces.FacadPatterns;
 using TanpooshStore.Application.Services.Finances.Commands.AddRequestPay;
+using TanpooshStore.Application.Services.Finances.Queries.GetAdminRequestPay;
 using TanpooshStore.Application.Services.Finances.Queries.GetRequsetPay;
 
 namespace TanpooshStore.Application.Services.Finances.FacadPattern
@@ -28,6 +29,12 @@ namespace TanpooshStore.Application.Services.Finances.FacadPattern
         public GetRequestPayService getRequestPayService
         {
             get { return _getRequestPayService ?? new GetRequestPayService(_context); }
+        }
+
+        private readonly GetAdminRequestPayService _getAdminRequestPayService;
+        public GetAdminRequestPayService getAdminRequestPayService
+        {
+            get { return _getAdminRequestPayService ?? new GetAdminRequestPayService(_context); }
         }
     }
 }

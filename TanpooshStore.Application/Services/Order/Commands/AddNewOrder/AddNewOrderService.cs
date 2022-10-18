@@ -28,6 +28,8 @@ namespace TanpooshStore.Application.Services.Order.Commands.AddNewOrder
 
             requestPay.IsPaid = true;
             requestPay.PayDate = DateTime.Now;
+            requestPay.RefId = request.RefId;
+            requestPay.Authority = request.Authority;
 
             cart.Finished = true;
             cart.FinishedTime = DateTime.Now;

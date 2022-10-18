@@ -78,7 +78,8 @@ namespace EndPoint.Site.Controllers
                     {
                         CartId = cart.Data.CartId,
                         RequestPayId = requestPay.Data.Id,
-                        UserId = userId.Value
+                        UserId = userId.Value,
+                        Authority = authority,
                     });
                     return RedirectToAction("Index", "Orders");
                 }

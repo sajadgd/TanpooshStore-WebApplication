@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TanpooshStore.Application.Interfaces.FacadPatterns;
 using TanpooshStore.Application.Services.HomePages.AddNewSlider;
@@ -6,6 +7,7 @@ using TanpooshStore.Application.Services.HomePages.AddNewSlider;
 namespace EndPoint.Site.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class SliderController : Controller
     {
         private readonly IHomePageFacad _homePageFacad;

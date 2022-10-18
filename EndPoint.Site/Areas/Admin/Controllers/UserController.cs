@@ -1,4 +1,5 @@
 ﻿using EndPoint.Site.Areas.Admin.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -18,6 +19,7 @@ using TanpooshStore.Application.Services.Users.Qureies.GetUser;
 namespace EndPoint.Site.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class UserController : Controller
     {
         private readonly IUserFacad _userFacad;
